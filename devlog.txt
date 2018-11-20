@@ -5,8 +5,9 @@ Ahnaf Hasan
 Jiayang Chen
 Alex Liu
 pd 07
----------------------
-Multiple API webiste with a front-end framework.
+-----------------------
+The Daily Bugle
+Newspaper app using The New York Times API, Dark Sky API, and xkcd API held together lovingly through Bootstrap.
 
 
  ______   ______   __   __   __       ______   _______
@@ -23,4 +24,9 @@ Multiple API webiste with a front-end framework.
 HasanA -- 2018-11-16 19:53
 --------------------------------------------------------------
 Created devlog.txt file.
+==============================================================
+
+HasanA -- 2018-11-19 22:22
+--------------------------------------------------------------
+Talked through various plans for project. Settled on weather application that uses the NYTimes API, Dark Sky API, and xkcd API, thereby emulating a newspaper. Decided on name of project to be The Daily Bugle. 
 ==============================================================
