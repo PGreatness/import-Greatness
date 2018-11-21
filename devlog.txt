@@ -31,6 +31,11 @@ hasanA -- 2018-11-19 22:22
 Talked through various plans for project. Settled on weather application that uses the NYTimes API, Dark Sky API, and xkcd API, thereby emulating a newspaper. Decided on name of project to be The Daily Bugle.
 ==============================================================
 
+alexL -- 2018-11-21 9:20
+--------------------------------------------------------------
+Uploaded the design.pdf document
+==============================================================
+
 chenJ -- 2018-11-21 13:15
 --------------------------------------------------------------
 We will be using IPAPI to retrieve the user's ip-address and location. While signing up we will ask them for permission to use their location for only showing weather that is relevant for them.
