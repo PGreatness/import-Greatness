@@ -29,6 +29,18 @@ def login():
 @app.route('/auth')
 def auth():
     ###Authenticate
+    username_input = request.form.get("username")
+    password_input = request.form.get("password")
+    all_usernames = dict() #FILL IN
+    if username_input in all_usernames:
+        hashed_pass = password_input #FILL IN 
+        if hashed_pass == all_usernames[username_input]:
+            #Log them in
+            pass
+        #Failed password and username match
+        pass
+    #Username doesnt exist
+
     return redirect(url_for(home))
 
 if __name__ == "__main__":
