@@ -18,7 +18,8 @@ def home():
     print(json_data['News']) #  should print      "api_key"
 
     # # # News API
-    n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News'])) # 34,-118 is LA
+
+    n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
     news = json.loads(n.read())
     print ( news["response"]["docs"][0]["headline"]["main"] )
 
