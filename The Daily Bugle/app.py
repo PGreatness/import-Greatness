@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, url_for
+from flask import Flask, render_template, request, session, url_for, redirect
 from os import urandom
 import json, urllib
 
@@ -17,9 +17,19 @@ def home():
     print(json_data) #should print           {'News': 'api_key', 'Weather': 'api_key', 'Comic': ''}
     print(json_data['News']) # should print      "api_key"
 
-
+    f = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'],34,-118)) #34,-118 is LA
+    weather = json.loads(f.read())
     return render_template('home.html')
 
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/auth')
+def auth():
+    ###Authenticate
+    return redirect(url_for(home))
 
 if __name__ == "__main__":
     app.debug = True
