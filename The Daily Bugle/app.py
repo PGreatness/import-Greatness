@@ -31,7 +31,7 @@ def home():
     w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], 34, -118), context=context) # 34,-118 is LA
     weather = json.loads(w.read())
 
-    return render_template('home.html')
+    return render_template('home.html',weatherData=weather)
 
 
 @app.route('/login')
