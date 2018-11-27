@@ -1,12 +1,8 @@
 from flask import Flask, render_template, request, session, url_for, redirect, flash
 import json
 import urllib
-<<<<<<< HEAD
-import ssl
 import os
 from util import db
-=======
->>>>>>> 2a9f5f551a0506f857372c15d204fd7870a4521f
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
