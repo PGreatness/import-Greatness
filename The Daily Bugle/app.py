@@ -23,15 +23,19 @@ def home():
 
     # # # News API
 
-    n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']), context=context)
+    n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']), context = context)
     news = json.loads(n.read())
     # print ( news )
 
     # # # Weather API
-    w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], 34, -118), context=context) # 34,-118 is LA
+    w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], 34, -118), context = context) # 34,-118 is LA
     weather = json.loads(w.read())
 
-    return render_template('home.html',weatherData=weather)
+    # # # XKCD API
+    c = urllib.request.urlopen(COMIC_STUB.format(1), context = context)
+    comic = json.loads(c.read())
+
+    return render_template('home.html', weatherData = weather)
 
 
 @app.route('/login')
