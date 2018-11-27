@@ -1,6 +1,13 @@
-{% extends base.html %}
+{% extends "base.html" %}
+
+{% block content %}
 <form action ="/auth" method="POST" >
 Username: <input type= "text" name="username" required><br><br>
   Password: <input type= "password" name="password" required><br><br>
   <input type="submit" value="Login"></h4>
 </form>
+<br>
+{% for msg in get_flashed_messages() %}
+{{msg}} <br>
+{% endfor %}
+{% endblock %}

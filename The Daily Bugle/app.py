@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request, session, url_for, redirect
+from flask import Flask, render_template, request, session, url_for, redirect, flash
 import json
 import urllib
 import ssl
+import os
+from util import db
 
 app = Flask(__name__)
-
+app.secret_key = os.urandom(32)
 # stubs for paths to REST APIs
 NEWS_STUB = "https://developers.nytimes.com/svc/topstories/v2/{}.json?api-key={}" # section of news, api key
 WEATHER_STUB = "https://api.darksky.net/forecast/{}/{},{}" # api key, longitude, latitude
@@ -38,7 +40,7 @@ def home():
 def login():
     return render_template('login.html')
 
-@app.route('/auth')
+@app.route('/auth',methods = ["POST"])
 def auth():
     # # # Authenticate
     username_input = request.form.get("username")
@@ -52,8 +54,8 @@ def auth():
         # Failed password and username match
         pass
     # Username doesnt exist
-
-    return redirect(url_for(home))
+    flash('wowow')
+    return redirect(url_for("login"))
 
 
 if __name__ == "__main__":
