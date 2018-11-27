@@ -22,7 +22,6 @@ def home():
     print(json_data['News']) #  should print      "api_key"
 
     # # # News API
-
     n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']), context = context)
     news = json.loads(n.read())
     # print ( news )
