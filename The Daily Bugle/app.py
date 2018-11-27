@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, session, url_for, redirect
 import json
 import urllib
+import ssl
 
 app = Flask(__name__)
 
@@ -11,20 +12,23 @@ COMIC_STUB = "http://xkcd.com/{}/info.0.json" # comic number
 
 @app.route('/')
 def home():
+    # for mac
+    context = ssl._create_unverified_context()
+
     # read json file containing the api keys
     with open('data/API_Keys/keys.json') as json_file:
         json_data = json.loads(json_file.read())
     print(json_data) # should print           {'News': 'api_key', 'Weather': 'api_key', 'Comic': ''}
     print(json_data['News']) #  should print      "api_key"
 
-    # # # News API
-
-    n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
-    news = json.loads(n.read())
-    print ( news["response"]["docs"][0]["headline"]["main"] )
+    # # # # News API
+    #
+    # n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
+    # news = json.loads(n.read())
+    # print ( news["response"]["docs"][0]["headline"]["main"] )
 
     # # # Weather API
-    w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], 34, -118)) # 34,-118 is LA
+    w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], 34, -118), context=context) # 34,-118 is LA
     weather = json.loads(w.read())
 
     return render_template('home.html')
