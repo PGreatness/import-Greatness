@@ -1,21 +1,22 @@
 from flask import Flask, render_template, request, session, url_for, redirect, flash
 import json
 import urllib
+<<<<<<< HEAD
 import ssl
 import os
 from util import db
+=======
+>>>>>>> 2a9f5f551a0506f857372c15d204fd7870a4521f
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
 # stubs for paths to REST APIs
-NEWS_STUB = "https://developers.nytimes.com/svc/topstories/v2/{}.json?api-key={}" # section of news, api key
+NEWS_STUB = "https://api.nytimes.com/svc/topstories/v2/{}.json?api-key={}" # section of news, api key
 WEATHER_STUB = "https://api.darksky.net/forecast/{}/{},{}" # api key, longitude, latitude
 COMIC_STUB = "http://xkcd.com/{}/info.0.json" # comic number
 
 @app.route('/')
 def home():
-    # for mac
-    context = ssl._create_unverified_context()
 
     # read json file containing the api keys
     with open('data/API_Keys/keys.json') as json_file:
@@ -23,17 +24,22 @@ def home():
     print(json_data) # should print           {'News': 'api_key', 'Weather': 'api_key', 'Comic': ''}
     print(json_data['News']) #  should print      "api_key"
 
-    # # # # News API
-    #
-    # n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
-    # news = json.loads(n.read())
-    # print ( news["response"]["docs"][0]["headline"]["main"] )
+    # # # News API
+    n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
+    news = json.loads(n.read())
+    # print ( news )
 
     # # # Weather API
-    w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], 34, -118), context=context) # 34,-118 is LA
+    w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], 34, -118)) # 34,-118 is LA
     weather = json.loads(w.read())
+    # print ( weather )
 
-    return render_template('home.html')
+    # # # XKCD API
+    c = urllib.request.urlopen(COMIC_STUB.format(1))
+    comic = json.loads(c.read())
+    # print ( comic )
+
+    return render_template('home.html', weatherData = weather)
 
 
 @app.route('/login')

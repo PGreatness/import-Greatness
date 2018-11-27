@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% block title %}
-Home
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -30,7 +30,7 @@ Home
   </div>
 </nav>
 
-<div class="container">
+<div class="container center">
   <div id="news">
     <h1 class="display-4">News</h1>
     <p> Newspaper stuff </p>
@@ -38,15 +38,16 @@ Home
   </div>
 </div>
 
-<div class="container">
+<div class="container center">
   <div id="weather">
     <h1 class="display-4">Weather</h1>
     <p> Weather stuff </p>
+    {{weatherData['daily']['summary']}}
     <!-- Weather info things will go in here -->
   </div>
 </div>
 
-<div class="container">
+<div class="container center">
   <div id="comic">
     <h1 class="display-4">Comic!</h1>
     <p> Comic stuff </p>
