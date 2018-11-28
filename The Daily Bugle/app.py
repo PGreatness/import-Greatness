@@ -35,7 +35,7 @@ def home():
     comic = json.loads(c.read())
     # print ( comic )
 
-    return render_template('home.html', weatherData = weather)
+    return render_template('home.html', weatherData = weather,newsData=news,comicData=comic)
 
 
 @app.route('/login')
