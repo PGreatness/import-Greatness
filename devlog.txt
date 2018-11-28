@@ -101,3 +101,9 @@ ahnafH -- 2018-11-27 15:20
 --------------------------------------------------------------
 Updated REAME.md for more information and clarity
 ==============================================================
+
+alexL -- 2018-11-28 12:52
+--------------------------------------------------------------
+Implemented the XKCD API and NEWYORKTIMES API to home.html
+Created a method to check user's ip address
+==============================================================
