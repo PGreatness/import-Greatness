@@ -102,6 +102,11 @@ ahnafH -- 2018-11-27 15:20
 Updated REAME.md for more information and clarity
 ==============================================================
 
+rayO -- 2018-11-28 12:42
+--------------------------------------------------------------
+Facilitated use of NYTIMES api and xkcd api with Alex, more work needs to be done with nytimes api
+==============================================================
+
 alexL -- 2018-11-28 12:52
 --------------------------------------------------------------
 Implemented the XKCD API and NEWYORKTIMES API to home.html
