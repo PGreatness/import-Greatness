@@ -42,7 +42,7 @@ def home():
 def login():
     return render_template('login.html')
 
-@app.route('/auth',methods = ["POST"])
+@app.route('/auth', methods = ["POST"])
 def auth():
     # # # Authenticate
     username_input = request.form.get("username")
