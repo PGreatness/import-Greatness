@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, session, url_for, redirect, flash
+from flask import Flask, render_template, request, session, url_for, redirect, flash, jsonify
 import json
 import urllib
 import os
 from util import db
+
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
@@ -10,6 +11,10 @@ app.secret_key = os.urandom(32)
 NEWS_STUB = "https://api.nytimes.com/svc/topstories/v2/{}.json?api-key={}" # section of news, api key
 WEATHER_STUB = "https://api.darksky.net/forecast/{}/{},{}" # api key, longitude, latitude
 COMIC_STUB = "http://xkcd.com/{}/info.0.json" # comic number
+
+@app.route("/getIP", methods=["GET"])
+def getIP():
+    print( jsonify({'ip': request.remote_addr}), 200 )
 
 @app.route('/')
 def home():
@@ -35,7 +40,9 @@ def home():
     comic = json.loads(c.read())
     # print ( comic )
 
-    return render_template('home.html', weatherData = weather,newsData=news,comicData=comic)
+    getIP()
+
+    return render_template('home.html', weatherData = weather, newsData = news, comicData = comic)
 
 
 @app.route('/login')
