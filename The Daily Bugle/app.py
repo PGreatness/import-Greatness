@@ -4,6 +4,12 @@ import urllib
 import os
 from util import db
 
+''' Rate Limits for APIs:
+    # Dark Sky API - 1000/day (needs to be credited)
+    # NYTimes API - 1000/day
+    # XKCD API - Unlimited
+    # IPAPI - 1000/day 
+'''
 
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
