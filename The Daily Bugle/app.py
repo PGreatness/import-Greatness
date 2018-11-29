@@ -3,6 +3,7 @@ import json
 import urllib
 import os
 from util import db
+import socket
 
 ''' Rate Limits for APIs:
     # Dark Sky API - 1000/day (needs to be credited)
@@ -17,10 +18,24 @@ app.secret_key = os.urandom(32)
 NEWS_STUB = "https://api.nytimes.com/svc/topstories/v2/{}.json?api-key={}" # section of news, api key
 WEATHER_STUB = "https://api.darksky.net/forecast/{}/{},{}" # api key, longitude, latitude
 COMIC_STUB = "http://xkcd.com/{}/info.0.json" # comic number
+IPAPI_STUB = "https://ipapi.co/{}/json/"
 
 @app.route("/getIP", methods=["GET"])
 def getIP():
-    print( jsonify({'ip': request.remote_addr}), 200 )
+    # return jsonify({'ip': request.remote_addr}), 200
+    # return request.headers['X-Real-IP']
+    # return request.environ['REMOTE_ADDR']
+    return request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+
+def get_Host_name_IP():
+    try:
+        host_name = socket.gethostname()
+        host_ip = socket.gethostbyname(host_name)
+        print("Hostname :  ", host_name)
+        print("IP : ", host_ip)
+    except:
+        print("Unable to get Hostname and IP")
+
 
 @app.route('/')
 def home():
@@ -46,7 +61,13 @@ def home():
     comic = json.loads(c.read())
     # print ( comic )
 
-    getIP()
+    print ("\n\nTHE IP ADDRESS: ")
+    print ( get_Host_name_IP() )
+    print ( getIP() )
+    p = urllib.request.urlopen(IPAPI_STUB.format(getIP()))
+    ip = json.loads(p.read())
+    print (ip)
+
 
     return render_template('home.html', weatherData = weather, newsData = news, comicData = comic)
 
