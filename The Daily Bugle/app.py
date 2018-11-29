@@ -90,9 +90,29 @@ def auth():
         # Failed password and username match
         else:
             flash("Invalid password")
-    # Username doesnt exist
-    flash("Invalid username")
+    else:
+        # Username doesnt exist
+        flash("Invalid username")
     return redirect(url_for("login"))
+
+@app.route('/register', methods = ["POST"])
+def register():
+    if request.form.get("reg_username") != None:
+        r_username = request.form.get("reg_username")
+        r_password = request.form.get("reg_password")
+        check_pass = request.form.get("check_password")
+        if r_password != check_pass:
+            flash("Passwords do not match!")
+        elif len(r_password) == 0:
+            flash("Password is too short")
+        elif len(r_username) == 0:
+            flash("Username is too short")
+        else:
+            session['user'] = r_username
+            db.add_user(r_username,r_password)
+            return redirect(url_for("home"))
+    return render_template('register.html')
+
 
 
 if __name__ == "__main__":
