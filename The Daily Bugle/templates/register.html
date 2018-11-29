@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<form action ="/register" method="POST" >
+Username: <input type= "text" name="reg_username" required><br><br>
+  Password: <input type= "password" name="reg_password" required><br><br>
+  Confirm Password: <input type= "password" name="check_password" required> <br><br>
+  <input type="submit" value="Signup"></h4>
+</form>
+
+{# To print messages if invalid registration #}
+{% for msg in get_flashed_messages() %}
+{{msg}} <br>
+{% endfor %}
+
+
+
+
+
+{% endblock %}
