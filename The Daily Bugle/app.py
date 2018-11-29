@@ -8,7 +8,7 @@ from util import db
     # Dark Sky API - 1000/day (needs to be credited)
     # NYTimes API - 1000/day
     # XKCD API - Unlimited
-    # IPAPI - 1000/day 
+    # IPAPI - 1000/day
 '''
 
 app = Flask(__name__)
@@ -60,16 +60,17 @@ def auth():
     # # # Authenticate
     username_input = request.form.get("username")
     password_input = request.form.get("password")
-    all_usernames = dict() # FILL IN
+    all_usernames = db.get_all_users()
     if username_input in all_usernames:
-        hashed_pass = password_input # FILL IN
-        if hashed_pass == all_usernames[username_input]:
+        if password_input == all_usernames[username_input]:
             # Log them in
-            pass
+            session['user'] = username_input
+            return redirect(url_for("home"))
         # Failed password and username match
-        pass
+        else:
+            flash("Invalid password")
     # Username doesnt exist
-    flash('wowow')
+    flash("Invalid username")
     return redirect(url_for("login"))
 
 

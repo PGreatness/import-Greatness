@@ -97,6 +97,11 @@ rayO -- 2018-11-27 13:12
 Added code to allow for use of css files in the templates
 ==============================================================
 
+jiayangC -- 2018-11-27 13:13
+--------------------------------------------------------------
+Expanded template for users and began simple database inserting and retrieving
+==============================================================
+
 ahnafH -- 2018-11-27 15:20
 --------------------------------------------------------------
 Updated REAME.md for more information and clarity
@@ -105,10 +110,20 @@ Updated REAME.md for more information and clarity
 rayO -- 2018-11-28 12:42
 --------------------------------------------------------------
 Facilitated use of NYTIMES api and xkcd api with Alex, more work needs to be done with nytimes api
+
+==============================================================
+jiayangC -- 2018-11-28 12:40
+--------------------------------------------------------------
+Created add_user and get_all_users in util/db.py
 ==============================================================
 
 alexL -- 2018-11-28 12:52
 --------------------------------------------------------------
 Implemented the XKCD API and NEWYORKTIMES API to home.html
 Created a method to check user's ip address
+==============================================================
+
+jiayangC -- 2018-11-28 22:17
+--------------------------------------------------------------
+Simple account system is now functional. Found bug where there is no multimedia in the NYTimes API.
 ==============================================================
