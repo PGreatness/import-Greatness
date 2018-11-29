@@ -109,7 +109,7 @@ def register():
             flash("Username is too short")
         else:
             session['user'] = r_username
-            db.add_user(r_username,r_password)
+            db.add_user(r_username, r_password)
             return redirect(url_for("home"))
     return render_template('register.html')
 
