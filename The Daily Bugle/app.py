@@ -70,6 +70,7 @@ def login():
 
 @app.route('/auth', methods = ["POST"])
 def auth():
+    '''Intermediate to authenticate login by user'''
     # # # Authenticate
     username_input = request.form.get("username")
     password_input = request.form.get("password")
@@ -89,16 +90,17 @@ def auth():
 
 @app.route('/register', methods = ["POST"])
 def register():
+    '''Adding users to the database'''
     if request.form.get("reg_username") != None:
         r_username = request.form.get("reg_username")
         r_password = request.form.get("reg_password")
         check_pass = request.form.get("check_password")
         if r_password != check_pass:
             flash("Passwords do not match!")
-        elif len(r_password) == 0:
-            flash("Password is too short")
-        elif len(r_username) == 0:
-            flash("Username is too short")
+        elif r_password.index(' ') != -1:
+            flash("Password can not contain spaces")
+        elif not r_username.isalnum():
+            flash("Username should be alphanumeric")
         else:
             session['user'] = r_username
             db.add_user(r_username, r_password)
