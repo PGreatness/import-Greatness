@@ -87,14 +87,16 @@ def auth():
         flash("Invalid username")
     return redirect(url_for("login"))
 
-@app.route('/register', methods = ["POST"])
+@app.route('/register', methods = ["GET","POST"])
 def register():
     '''Adding users to the database'''
     if request.form.get("reg_username") != None:
         r_username = request.form.get("reg_username")
         r_password = request.form.get("reg_password")
         check_pass = request.form.get("check_password")
-        if r_password != check_pass:
+        if r_username in db.get_all_users():
+            flash("Username taken")
+        elif r_password != check_pass:
             flash("Passwords do not match!")
         elif r_password.index(' ') != -1:
             flash("Password can not contain spaces")
