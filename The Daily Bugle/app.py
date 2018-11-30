@@ -26,15 +26,16 @@ def getIP():
     # return jsonify({'ip': request.remote_addr}), 200
     # return request.headers['X-Real-IP']
     # return request.environ['REMOTE_ADDR']
-    return request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+    # return request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
 
-
-@app.route('/')
-def home():
     # use another api to get ip, returns a text
     qwerty = urllib.request.urlopen('https://api.ipify.org')
     # decode else binary
-    print(qwerty.read().decode('utf-8'))
+    return(qwerty.read().decode('utf-8'))
+
+@app.route('/')
+def home():
+
     # read json file containing the api keys
     with open('data/API_Keys/keys.json') as json_file:
         json_data = json.loads(json_file.read())
