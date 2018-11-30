@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, session, url_for, redirect, flash, jsonify
 import json
 import urllib
 import os
+
+from flask import Flask, render_template, request, session, url_for, redirect, flash, jsonify
+
 from util import db
-import socket
 
 ''' Rate Limits for APIs:
     # Dark Sky API - 1000/day (needs to be credited)
@@ -26,15 +27,6 @@ def getIP():
     # return request.headers['X-Real-IP']
     # return request.environ['REMOTE_ADDR']
     return request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
-
-def get_Host_name_IP():
-    try:
-        host_name = socket.gethostname()
-        host_ip = socket.gethostbyname(host_name)
-        print("Hostname :  ", host_name)
-        print("IP : ", host_ip)
-    except:
-        print("Unable to get Hostname and IP")
 
 
 @app.route('/')
