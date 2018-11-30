@@ -7,7 +7,7 @@ def add_user(username, hashed_pass):
     db = sqlite3.connect(DB)
     c = db.cursor()
     command = "INSERT INTO users (username,password)VALUES(?,?);"
-    c.execute(command,(username,hashed_pass))
+    c.execute(command, (username, hashed_pass))
     db.commit()
     db.close()
 
@@ -24,11 +24,34 @@ def get_all_users():
     db.close()
     return users
 
+# def add_page(link, weather, comic):
+#     '''adds old page to use table'''
+#     db = sqlite3.connect(DB)
+#     c = db.cursor()
+#     command = "INSERT INTO users (link, weather, comic)VALUES(?,?);"
+#     c.execute(command, (link, weather, comic))
+#     db.commit()
+#     db.close()
+#
+# def old_page():
+#     '''returns all the old pages in dict'''
+#     db = sqlite3.connect(DB)
+#     c = db.cursor()
+#     command = "SELECT link,weather,comic from pages;"
+#     c.execute(command)
+#     info = c.fetchall()
+#     oldpage = {}
+#     for item in info:
+#         oldpage[item[0]] = item[1]
+#     db.close()
+#     return oldpage
 
-#MAKE TABLES AND DATABASE IF THEY DONT EXIST
+
+# MAKE TABLES AND DATABASE IF THEY DONT EXIST
 db = sqlite3.connect(DB)
 c = db.cursor()
 commands = []
 commands += ["CREATE TABLE IF NOT EXISTS users(username TEXT, password TEXT)"]
+# commands += ["CREATE TABLE IF NOT EXISTS pages(link TEXT, weather TEXT, comic TEXT)"]
 for command in commands:
     c.execute(command)
