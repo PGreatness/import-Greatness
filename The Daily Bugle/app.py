@@ -54,7 +54,6 @@ def home():
     # print ( comic )
 
     print ("\n\nTHE IP ADDRESS: ")
-    print ( get_Host_name_IP() )
     print ( getIP() )
     p = urllib.request.urlopen(IPAPI_STUB.format(getIP()))
     ip = json.loads(p.read())
