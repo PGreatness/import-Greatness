@@ -138,6 +138,12 @@ alexL -- 2018-11-30 12:52
 added the IPAPI to the app.py and worked on ipfinding function
 ==============================================================
 
+ahnafH -- 2018-11-30 13:52
+--------------------------------------------------------------
+Fix problems with finding ip address. Now the ip address can be
+correctly found and works with IPAPI
+==============================================================
+
 rayO -- 2018-11-30 22:51
 --------------------------------------------------------------
 Added accordion to homepage to be used with news
