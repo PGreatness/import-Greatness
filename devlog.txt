@@ -148,3 +148,9 @@ rayO -- 2018-11-30 22:51
 --------------------------------------------------------------
 Added accordion to homepage to be used with news
 ==============================================================
+
+rayO -- 2018-12-01 19:19
+--------------------------------------------------------------
+Added setup needed for newspaper section to browse daily top articles
+Items are hardcoded as of now, in the near future will add jinja to loop through articles and generate them instead. 
+==============================================================
