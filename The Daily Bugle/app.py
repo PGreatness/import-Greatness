@@ -63,8 +63,7 @@ def home():
     ip = json.loads(p.read())
     print (ip)
 
-
-    return render_template('home.html', weatherData = weather, newsData = news, comicData = comic)
+    return render_template('home.html', weatherData = weather, newsData = news, comicData = comic, session = session)
 
 
 @app.route('/login')
@@ -112,7 +111,11 @@ def register():
             return redirect(url_for("home"))
     return render_template('register.html')
 
-
+@app.route('/logout', methods = ['GET'])
+def logout():
+    if 'user' in session:
+        session.pop('user')
+    return redirect(url_for('home'))
 
 if __name__ == "__main__":
     app.debug = True
