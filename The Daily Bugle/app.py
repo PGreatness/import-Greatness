@@ -47,8 +47,20 @@ def home():
     news = json.loads(n.read())
     # print ( news )
 
+
     # # # Weather API
-    w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], 34, -118)) # 34,-118 is LA
+
+    # Checking the longitude and latitiude based on the ip address
+    print ("\n\nTHE IP ADDRESS: ")
+    print ( getIP() )
+    p = urllib.request.urlopen(IPAPI_STUB.format(getIP()))
+    ip = json.loads(p.read())
+    print (ip)
+    location = ""
+    location += ip['city'] + ", " + ip['country_name']
+    print (location)
+
+    w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # 34,-118 is LA
     weather = json.loads(w.read())
     # print ( weather )
 
@@ -57,13 +69,7 @@ def home():
     comic = json.loads(c.read())
     # print ( comic )
 
-    print ("\n\nTHE IP ADDRESS: ")
-    print ( getIP() )
-    p = urllib.request.urlopen(IPAPI_STUB.format(getIP()))
-    ip = json.loads(p.read())
-    print (ip)
-
-    return render_template('home.html', weatherData = weather, newsData = news, comicData = comic, session = session)
+    return render_template('home.html', weatherData = weather, location = location, newsData = news, comicData = comic, session = session)
 
 
 @app.route('/login')
