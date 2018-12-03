@@ -59,6 +59,8 @@
     <div class="row">
       <div class="col-sm-4">
         <div class="list-group">
+          <!-- generate the a tags below using jinja and a for loop -->
+          <!-- e.g. <a href="{{id}}" data-toggle="collapse"  class="list-group-item list-group-item-action">{{title}}</a> -->
           <a href="#test" data-toggle="collapse" class="list-group-item list-group-item-action">Article</a>
 
           <a href="#test2" data-toggle="collapse" class="list-group-item list-group-item-action">Article</a>
@@ -76,13 +78,19 @@
       </div>
       <div class="col-sm-8">
 
-        <div id="test" class="list-group-item list-group-item-action flex-column align-items-start collapse" data-parent="#main">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <small>3 days ago</small>
+        <!-- Generate items in the format below using jinja and the database-->
+        <div id="test" class="list-group-item list-group-item-action flex-column align-items-start collapse-in" data-parent="#main">
+          <div class="d-flex w-100 justify-content-start">
+            <a href="https://github.com/" class="linkFix"><h5 class="mb-1">Article Title Here</h5></a>
           </div>
-          <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-          <small>Donec id elit non mi porta.</small>
+          <div class="d-flex w-100 justify-content-start">
+            <small>Date Published Here</small>
+          </div>
+          <div class="d-flex w-100 justify-content-start">
+            <p class="mb-1">Abstract Here</p>
+          </div>
+          <small>Image Caption</small>
+          <img src="https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png" class="img-fluid" alt="Responsive image">
         </div>
 
         <div id="test2" class="list-group-item list-group-item-action flex-column align-items-start collapse" data-parent="#main">
