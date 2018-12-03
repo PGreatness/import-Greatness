@@ -3,6 +3,7 @@ import urllib
 import os
 
 from flask import Flask, render_template, request, session, url_for, redirect, flash, jsonify
+from passlib.hash import md5_crypt
 
 from util import db
 
@@ -84,7 +85,8 @@ def auth():
     password_input = request.form.get("password")
     all_usernames = db.get_all_users()
     if username_input in all_usernames:
-        if password_input == all_usernames[username_input]:
+        #If the hashes match
+        if md5_crypt.verify(password_input, all_usernames[username_input]):
             # Log them in
             session['user'] = username_input
             return redirect(url_for("home"))
@@ -107,13 +109,13 @@ def register():
             flash("Username taken")
         elif r_password != check_pass:
             flash("Passwords do not match!")
-        elif r_password.index(' ') != -1:
+        elif r_password.count(' ') != 0:
             flash("Password can not contain spaces")
         elif not r_username.isalnum():
             flash("Username should be alphanumeric")
         else:
             session['user'] = r_username
-            db.add_user(r_username, r_password)
+            db.add_user(r_username, md5_crypt.encrypt(r_password))
             return redirect(url_for("home"))
     return render_template('register.html')
 
