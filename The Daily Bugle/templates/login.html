@@ -1,11 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="jumbotron" style="margin:40px;">
+
+<form action ="/auth" method="POST" >
+
+  <div class="form-group">
+    <label for="exampleUsername">Username</label>
+    <input type= "text" class="form-control" name="username" placeholder="Username" required>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type= "password" class="form-control" name="password" required>
+  </div>
+
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check to agree to share your ip address</label>
+  </div>
+
+  <button type="submit" class="btn btn-primary" value="Login">Submit</button>
+</form>
+
+</div>
+<!--
 <form action ="/auth" method="POST" >
 Username: <input type= "text" name="username" required><br><br>
   Password: <input type= "password" name="password" required><br><br>
   <input type="submit" value="Login"></h4>
-</form>
+</form> -->
 <br>
 {% for msg in get_flashed_messages() %}
 {{msg}} <br>
