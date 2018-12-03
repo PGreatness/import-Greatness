@@ -25,7 +25,7 @@ def get_all_users():
     return users
 
 def save_article(date,content):
-     '''adds old page to use table'''
+     '''adds articles to articles table'''
      db = sqlite3.connect(DB)
      c = db.cursor()
      command = "INSERT INTO articles(date, content)VALUES(?,?);"
@@ -33,20 +33,18 @@ def save_article(date,content):
      db.commit()
      db.close()
 
-# def old_page():
-#     '''returns all the old pages in dict'''
-#     db = sqlite3.connect(DB)
-#     c = db.cursor()
-#     command = "SELECT link,weather,comic from pages;"
-#     c.execute(command)
-#     info = c.fetchall()
-#     oldpage = {}
-#     for item in info:
-#         oldpage[item[0]] = item[1]
-#     db.close()
-#     return oldpage
-
-
+def get_articles():
+    '''returns all the articles in dict {date:content}'''
+    db = sqlite3.connect(DB)
+    c = db.cursor()
+    command = "SELECT date,content from articles;"
+    c.execute(command)
+    info = c.fetchall()
+    articles = {}
+    for item in info:
+        articles[item[0]] = item[1]
+    db.close()
+    return articles
 # MAKE TABLES AND DATABASE IF THEY DONT EXIST
 db = sqlite3.connect(DB)
 c = db.cursor()
