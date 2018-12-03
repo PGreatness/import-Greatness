@@ -117,6 +117,15 @@ def logout():
         session.pop('user')
     return redirect(url_for('home'))
 
+# def savePage():
+#     response = urllib2.urlopen(url)
+#     webContent = response.read()
+#
+#     f = open('obo-t17800628-33.html', 'w')
+#     f.write(webContent)
+#     f.close
+
+
 if __name__ == "__main__":
     app.debug = True
     app.run()
