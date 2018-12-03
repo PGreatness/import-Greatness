@@ -24,34 +24,33 @@ def get_all_users():
     db.close()
     return users
 
-# def add_page(link, weather, comic):
-#     '''adds old page to use table'''
-#     db = sqlite3.connect(DB)
-#     c = db.cursor()
-#     command = "INSERT INTO users (link, weather, comic)VALUES(?,?);"
-#     c.execute(command, (link, weather, comic))
-#     db.commit()
-#     db.close()
-#
-# def old_page():
-#     '''returns all the old pages in dict'''
-#     db = sqlite3.connect(DB)
-#     c = db.cursor()
-#     command = "SELECT link,weather,comic from pages;"
-#     c.execute(command)
-#     info = c.fetchall()
-#     oldpage = {}
-#     for item in info:
-#         oldpage[item[0]] = item[1]
-#     db.close()
-#     return oldpage
+def save_article(date,content):
+     '''adds articles to articles table'''
+     db = sqlite3.connect(DB)
+     c = db.cursor()
+     command = "INSERT INTO articles(date, content)VALUES(?,?);"
+     c.execute(command, (date,content))
+     db.commit()
+     db.close()
 
-
+def get_articles():
+    '''returns all the articles in dict {date:content}'''
+    db = sqlite3.connect(DB)
+    c = db.cursor()
+    command = "SELECT date,content from articles;"
+    c.execute(command)
+    info = c.fetchall()
+    articles = {}
+    for item in info:
+        articles[item[0]] = item[1]
+    db.close()
+    return articles
 # MAKE TABLES AND DATABASE IF THEY DONT EXIST
 db = sqlite3.connect(DB)
 c = db.cursor()
 commands = []
 commands += ["CREATE TABLE IF NOT EXISTS users(username TEXT, password TEXT)"]
+commands += ["CREATE TABLE IF NOT EXISTS articles(date TEXT, content TEXT)"]
 # commands += ["CREATE TABLE IF NOT EXISTS pages(link TEXT, weather TEXT, comic TEXT)"]
 for command in commands:
     c.execute(command)
