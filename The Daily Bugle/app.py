@@ -61,9 +61,10 @@ def home():
     location += ip['city'] + ", " + ip['country_name']
     print (location)
 
-    w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # 34,-118 is LA
+    # implementing weather now
+    w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # based on your ip address location
     weather = json.loads(w.read())
-    # print ( weather )
+    print ( weather )
 
     # # # XKCD API
     c = urllib.request.urlopen(COMIC_STUB.format(1))
@@ -85,7 +86,7 @@ def auth():
     password_input = request.form.get("password")
     all_usernames = db.get_all_users()
     if username_input in all_usernames:
-        #If the hashes match
+        # If the hashes match
         if md5_crypt.verify(password_input, all_usernames[username_input]):
             # Log them in
             session['user'] = username_input
@@ -98,7 +99,7 @@ def auth():
         flash("Invalid username")
     return redirect(url_for("login"))
 
-@app.route('/register', methods = ["GET","POST"])
+@app.route('/register', methods = ["GET", "POST"])
 def register():
     '''Adding users to the database'''
     if request.form.get("reg_username") != None:
