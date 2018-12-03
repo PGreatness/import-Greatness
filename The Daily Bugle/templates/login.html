@@ -3,6 +3,8 @@
 {% block content %}
 <div class="jumbotron" style="margin:40px;">
 
+  <h5 class="display-4"> Welcome to The Daily Bugle! </h5> <br>
+
 <form action ="/auth" method="POST" >
 
   <div class="form-group">
@@ -14,6 +16,9 @@
     <label for="exampleInputPassword1">Password</label>
     <input type= "password" class="form-control" name="password" required>
   </div>
+
+  <i>Don't have an account? Register <a href="http://127.0.0.1:5000/register">here</a>! </i> <br><br>
+
 
   <button type="submit" class="btn btn-primary" value="Login">Submit</button>
 </form>

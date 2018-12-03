@@ -162,6 +162,12 @@ Now shows if you are logged in on the top right. Added logging out
 
 alexL -- 2018-12-1 22:32
 --------------------------------------------------------------
-Worked on the CSS of the login page 
+Worked on the CSS of the login.html page
 Began working on saving previous pages
+==============================================================
+
+alexL -- 2018-12-1 22:55
+--------------------------------------------------------------
+Worked on the CSS of the register.html page
+Added link to register page on the login page
 ==============================================================
