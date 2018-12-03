@@ -24,15 +24,15 @@ def get_all_users():
     db.close()
     return users
 
-# def add_page(link, weather, comic):
-#     '''adds old page to use table'''
-#     db = sqlite3.connect(DB)
-#     c = db.cursor()
-#     command = "INSERT INTO users (link, weather, comic)VALUES(?,?);"
-#     c.execute(command, (link, weather, comic))
-#     db.commit()
-#     db.close()
-#
+def save_article(date,content):
+     '''adds old page to use table'''
+     db = sqlite3.connect(DB)
+     c = db.cursor()
+     command = "INSERT INTO articles(date, content)VALUES(?,?);"
+     c.execute(command, (date,content))
+     db.commit()
+     db.close()
+
 # def old_page():
 #     '''returns all the old pages in dict'''
 #     db = sqlite3.connect(DB)
@@ -52,6 +52,7 @@ db = sqlite3.connect(DB)
 c = db.cursor()
 commands = []
 commands += ["CREATE TABLE IF NOT EXISTS users(username TEXT, password TEXT)"]
+commands += ["CREATE TABLE IF NOT EXISTS articles(date TEXT, content TEXT)"]
 # commands += ["CREATE TABLE IF NOT EXISTS pages(link TEXT, weather TEXT, comic TEXT)"]
 for command in commands:
     c.execute(command)
