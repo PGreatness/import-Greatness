@@ -3,12 +3,41 @@
 
 {% block content %}
 
+<div class="jumbotron" style="margin:40px;">
+
 <form action ="/register" method="POST" >
+
+  <div class="form-group">
+    <label for="exampleUsername">Username</label>
+    <input type= "text" class="form-control" name="reg_username" placeholder="Username" required>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type= "password" class="form-control" name="reg_password" required>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleCheckPassword1">Confirm Password:</label>
+    <input type= "password" class="form-control" name="check_password" required>
+  </div>
+
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check to agree to share your ip address</label>
+  </div>
+
+  <button type="submit" class="btn btn-primary" value="Login">Signup</button>
+</form>
+
+</div>
+
+<!-- <form action ="/register" method="POST" >
 Username: <input type= "text" name="reg_username" required><br><br>
   Password: <input type= "password" name="reg_password" required><br><br>
   Confirm Password: <input type= "password" name="check_password" required> <br><br>
   <input type="submit" value="Signup"></h4>
-</form>
+</form> -->
 
 {# To print messages if invalid registration #}
 {% for msg in get_flashed_messages() %}

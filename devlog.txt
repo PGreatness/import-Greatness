@@ -162,6 +162,6 @@ Now shows if you are logged in on the top right. Added logging out
 
 alexL -- 2018-12-1 22:32
 --------------------------------------------------------------
-Worked on the CSS of the login page
+Worked on the CSS of the login page 
 Began working on saving previous pages
 ==============================================================
