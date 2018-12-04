@@ -160,13 +160,13 @@ jiayangC -- 2018-12-02 12:07
 Now shows if you are logged in on the top right. Added logging out
 ==============================================================
 
-alexL -- 2018-12-1 22:32
+alexL -- 2018-12-01 22:32
 --------------------------------------------------------------
 Worked on the CSS of the login.html page
 Began working on saving previous pages
 ==============================================================
 
-alexL -- 2018-12-1 22:55
+alexL -- 2018-12-01 22:55
 --------------------------------------------------------------
 Worked on the CSS of the register.html page
 Added link to register page on the login page
@@ -182,3 +182,7 @@ ahnafH -- 2018-12-03 13:12 20:01
 Worked more on newspaper section, hardcoded an article section
 ==============================================================
 
+alexL -- 2018-12-03 13:12
+--------------------------------------------------------------
+Implemented the IP address finder with the weather and helped with the saving old pages
+==============================================================
