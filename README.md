@@ -1,6 +1,6 @@
 # import Greatness
 
-## Roster: Ray Onishi, Ahnaf Hasan, Alex Liu, Jiyang Chen
+## Roster: Ray Onishi, Ahnaf Hasan, Alex Liu, Jiayang Chen
 
 ---
 
