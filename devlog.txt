@@ -172,7 +172,13 @@ Worked on the CSS of the register.html page
 Added link to register page on the login page
 ==============================================================
 
-rayO -- 2018-12-04 13:12
+rayO -- 2018-12-03 13:12
 --------------------------------------------------------------
 Worked more on newspaper section, hardcoded an article section
 ==============================================================
+
+ahnafH -- 2018-12-03 13:12 20:01
+--------------------------------------------------------------
+Worked more on newspaper section, hardcoded an article section
+==============================================================
+
