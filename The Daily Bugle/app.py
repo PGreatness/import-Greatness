@@ -44,14 +44,6 @@ def home():
     print(json_data) # should print           {'News': 'api_key', 'Weather': 'api_key', 'Comic': ''}
     print(json_data['News']) #  should print      "api_key"
 
-    # # # News API
-    n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
-    news = json.loads(n.read())
-    # print ( news )
-
-
-    # # # Weather API
-
     # Checking the longitude and latitiude based on the ip address
     print ("\n\nTHE IP ADDRESS: ")
     print ( getIP() )
@@ -62,17 +54,49 @@ def home():
     location += ip['city'] + ", " + ip['country_name']
     print (location)
 
-    # implementing weather now
-    w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # based on your ip address location
-    weather = json.loads(w.read())
-    print ( weather )
+    #if it is time to update/never had it
+    #update it
+    today = datetime.datetime.now().strftime("%Y-%m-%d")
+    try:
+        f = open('data/articles/' + today + '.json','r')
+        data = json.loads(f.read())
+        f.close()
+    #else add to data
+    except FileNotFoundError:
+        w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # based on your ip address location
+        weather = json.loads(w.read())
 
-    # # # XKCD API
-    c = urllib.request.urlopen(COMIC_STUB.format(1))
-    comic = json.loads(c.read())
-    # print ( comic )
+        c = urllib.request.urlopen(COMIC_STUB.format(1))
+        comic = json.loads(c.read())
 
-    return render_template('home.html', weatherData = weather, location = location, newsData = news, comicData = comic, session = session)
+        n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
+        news = json.loads(n.read())
+
+        #Create our own json file for easier read/less space taken
+        data = dict()
+        data['weather-summary'] = weather['daily']['summary']
+        data['comic-image'] = comic['img']
+        data['news'] = []
+        for i in range(7): #add article info (dicts) into list of articles
+            data['news'] += [dict()]
+            copy = data['news'][i]
+            article = news['results'][i]
+            copy['id'] = i
+            copy['title'] = article['title']
+            copy['abstract'] = article['abstract']
+            copy['link'] = article['url']
+            copy['date'] = article['updated_date'].split('T')[0] #Gets the yyyy-mm-dd
+            if len(article['multimedia']) != 0:
+                copy['image-url'] = article['multimedia'][-1]['url']
+                copy['image-caption'] = article['multimedia'][-1]['caption']
+            else:
+                copy['image-url'] = 'https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png' #If there is no image
+                copy['image-caption'] = ''
+
+        f = open('data/articles/' + today + '.json','w')
+        f.write(json.dumps(data))
+        f.close()
+    return render_template('home.html', data = data, session = session)
 
 
 @app.route('/login')

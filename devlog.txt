@@ -201,3 +201,10 @@ rayO -- 2018-12-04 16:16
 --------------------------------------------------------------
 Fixed issue caused by reset page
 ==============================================================
+
+jiayangC -- 2018-12-04 18:31
+--------------------------------------------------------------
+Created new database to store json files retrieved off apis to reduce the number of calls made
+Redirect logged-in users to home if they try to access /login,/register
+Reformatted home.html to use Jinja to display all the articles and info
+==============================================================
