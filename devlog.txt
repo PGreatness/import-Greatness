@@ -177,14 +177,14 @@ rayO -- 2018-12-03 13:12
 Worked more on newspaper section, hardcoded an article section
 ==============================================================
 
+alexL -- 2018-12-03 13:15
+--------------------------------------------------------------
+Implemented the IP address finder with the weather and helped with the saving old pages
+==============================================================
+
 ahnafH -- 2018-12-03 13:12 20:01
 --------------------------------------------------------------
 Worked more on newspaper section, hardcoded an article section
-==============================================================
-
-alexL -- 2018-12-03 13:12
---------------------------------------------------------------
-Implemented the IP address finder with the weather and helped with the saving old pages
 ==============================================================
 
 rayO -- 2018-12-04 13:04
