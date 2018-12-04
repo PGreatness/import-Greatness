@@ -18,3 +18,7 @@
   text-decoration: none;
   color: #484848;
 }
+
+.linkFix:hover{
+  color: #484848;
+}
