@@ -93,6 +93,7 @@ def home():
                 copy['image-url'] = 'https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png' #If there is no image
                 copy['image-caption'] = ''
 
+        #Add it all to our own file
         f = open('data/articles/' + today + '.json','w')
         f.write(json.dumps(data))
         f.close()
@@ -101,10 +102,14 @@ def home():
 
 @app.route('/login')
 def login():
+    if 'user' in session:
+        return redirect(url_for('home'))
     return render_template('login.html')
 
 @app.route('/auth', methods = ["POST"])
 def auth():
+    if 'user' in session:
+        return redirect(url_for('home'))
     '''Intermediate to authenticate login by user'''
     # # # Authenticate
     username_input = request.form.get("username")
@@ -126,6 +131,8 @@ def auth():
 
 @app.route('/register', methods = ["GET", "POST"])
 def register():
+    if 'user' in session:
+        return redirect(url_for('home'))
     '''Adding users to the database'''
     if request.form.get("reg_username") != None:
         r_username = request.form.get("reg_username")
@@ -147,6 +154,8 @@ def register():
 
 @app.route('/reset', methods = ["POST"])
 def reset():
+    if 'user' in session:
+        return redirect(url_for('home'))
     '''To reset userpassword'''
     if request.form.get("reg_username") != None:
         r_question = request.form.get("reg_question")
