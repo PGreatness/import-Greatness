@@ -122,7 +122,7 @@ def register():
     return render_template('register.html')
 
 @app.route('/reset', methods = ["POST"])
-def auth():
+def reset():
     '''To reset userpassword'''
     if request.form.get("reg_username") != None:
         r_question = request.form.get("reg_question")
