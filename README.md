@@ -12,7 +12,7 @@ The Daily Bugle is a news site that has, as the name implies it, daily updates o
 
 ## How do I run this on my machine?
 
-In order to run this project on your machine, please make sure you have all the dependencies listed on the [Dependencies](../blob/master/README.md/#dependencies) section.
+In order to run this project on your machine, please make sure you have all the dependencies listed on the [Dependencies](../master/README.md/#dependencies) section.
 When you are ready, go to your terminal and change your directory to where your would like to clone the repo, then run the below command:
 
 ```bash
@@ -113,7 +113,7 @@ This will take you to the `localhost` where your can the project working in all 
 
 ## Dependencies
 
-Although not one of the biggest projects, The Daily Bugle still uses quite a few modules. For a more exhaustive list, along with tested versions, see the [Requirements](../blob/master/requirements.txt) plaintext file.
+Although not one of the biggest projects, The Daily Bugle still uses quite a few modules. For a more exhaustive list, along with tested versions, see the [Requirements](../master/requirements.txt) plaintext file.
 
 - urllib
 
