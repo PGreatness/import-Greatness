@@ -54,15 +54,14 @@ def home():
     location += ip['city'] + ", " + ip['country_name']
     print (location)
 
+    today = datetime.datetime.now().strftime("%Y-%m-%d")
+    f = open('data/content.json','r')
+    data = json.loads(f.read())
+    f.close()
+
     #if it is time to update/never had it
     #update it
-    today = datetime.datetime.now().strftime("%Y-%m-%d")
-    try:
-        f = open('data/articles/' + today + '.json','r')
-        data = json.loads(f.read())
-        f.close()
-    #else add to data
-    except FileNotFoundError:
+    if today not in data:
         w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # based on your ip address location
         weather = json.loads(w.read())
 
@@ -73,13 +72,13 @@ def home():
         news = json.loads(n.read())
 
         #Create our own json file for easier read/less space taken
-        data = dict()
-        data['weather-summary'] = weather['daily']['summary']
-        data['comic-image'] = comic['img']
-        data['news'] = []
+        data[today] = dict()
+        data[today]['weather-summary'] = weather['daily']['summary']
+        data[today]['comic-image'] = comic['img']
+        data[today]['news'] = []
         for i in range(7): #add article info (dicts) into list of articles
-            data['news'] += [dict()]
-            copy = data['news'][i]
+            data[today]['news'] += [dict()]
+            copy = data[today]['news'][i]
             article = news['results'][i]
             copy['id'] = i
             copy['title'] = article['title']
@@ -94,10 +93,10 @@ def home():
                 copy['image-caption'] = ''
 
         #Add it all to our own file
-        f = open('data/articles/' + today + '.json','w')
+        f = open('data/content.json','w')
         f.write(json.dumps(data))
         f.close()
-    return render_template('home.html', data = data, session = session)
+    return render_template('home.html', data = data[today], session = session)
 
 
 @app.route('/login')
