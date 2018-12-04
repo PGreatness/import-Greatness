@@ -186,3 +186,8 @@ alexL -- 2018-12-03 13:12
 --------------------------------------------------------------
 Implemented the IP address finder with the weather and helped with the saving old pages
 ==============================================================
+
+rayO -- 2018-12-04 13:04
+--------------------------------------------------------------
+Finished up newspaper section, article section to be filled with actual articles once database/newspaper works as intended.
+==============================================================
