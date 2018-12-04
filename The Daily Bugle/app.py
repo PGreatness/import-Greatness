@@ -121,6 +121,31 @@ def register():
             return redirect(url_for("home"))
     return render_template('register.html')
 
+@app.route('/reset', methods = ["POST"])
+def auth():
+    '''To reset userpassword'''
+    if request.form.get("reg_username") != None:
+        r_question = request.form.get("reg_question")
+        r_answer = request.form.get("reg_answer")
+        r_password = request.form.get("reg_password")
+        check_pass = request.form.get("check_password")
+        if r_username in db.get_all_users():
+            flash("Username taken")
+        elif r_password != check_pass:
+            flash("Passwords do not match!")
+        elif r_password.count(' ') != 0:
+            flash("Password can not contain spaces")
+        elif not r_username.isalnum():
+            flash("Username should be alphanumeric")
+        else:
+            session['user'] = r_username
+            # adds the question and answer to the db
+            db.add_user(r_question, md5_crypt.encrypt(r_answer))
+            # changes the user password
+            db.add_user(r_username, md5_crypt.encrypt(r_password))
+            return redirect(url_for("login"))
+    return render_template('register.html')
+
 @app.route('/logout', methods = ['GET'])
 def logout():
     if 'user' in session:
