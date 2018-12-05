@@ -11,6 +11,15 @@ def add_user(username, hashed_pass):
     db.commit()
     db.close()
 
+def add_userFull(username, hashed_pass, question, hashed_ans):
+    '''adds users to use table'''
+    db = sqlite3.connect(DB)
+    c = db.cursor()
+    command = "INSERT INTO users (username,password, question, answer)VALUES(?,?,?,?);"
+    c.execute(command, (username, hashed_pass, question, hashed_ans))
+    db.commit()
+    db.close()
+
 def get_all_users():
     '''returns all the users and hashed passwords in dict {user:pass}'''
     db = sqlite3.connect(DB)
@@ -46,12 +55,12 @@ def get_articles():
     db.close()
     return articles
 
-    
+
 # MAKE TABLES AND DATABASE IF THEY DONT EXIST
 db = sqlite3.connect(DB)
 c = db.cursor()
 commands = []
-commands += ["CREATE TABLE IF NOT EXISTS users(username TEXT, password TEXT)"]
+commands += ["CREATE TABLE IF NOT EXISTS users(username TEXT, password TEXT, questions TEXT, answer TEXT)"]
 commands += ["CREATE TABLE IF NOT EXISTS articles(date TEXT, content TEXT)"]
 # commands += ["CREATE TABLE IF NOT EXISTS pages(link TEXT, weather TEXT, comic TEXT)"]
 for command in commands:
