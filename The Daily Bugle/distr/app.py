@@ -137,7 +137,7 @@ def register():
         r_username = request.form.get("reg_username")
         r_password = request.form.get("reg_password")
         check_pass = request.form.get("check_password")
-        if r_username not in db.get_all_users():
+        if r_username in db.get_all_users():
             flash("Username taken")
         elif r_password != check_pass:
             flash("Passwords do not match!")
@@ -162,7 +162,7 @@ def reset():
         r_answer = request.form.get("reg_answer")
         r_password = request.form.get("reg_password")
         check_pass = request.form.get("check_password")
-        if r_username in db.get_all_users():
+        if r_username not in db.get_all_users():
             flash("Username taken")
         elif r_password != check_pass:
             flash("Passwords do not match!")
