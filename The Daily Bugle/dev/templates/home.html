@@ -60,7 +60,12 @@
         </div>
       </div>
       <div class="col-sm-8">
-
+        {% for news in data['weather-hourly'] %}
+            {% for item in news %}
+                {{news[item]}}
+            {% endfor %}
+            <br>
+        {% endfor %}
         <!-- Generate items in the format below using jinja and the database-->
         {% for article in data['news'] %}
             {% if article['id'] == 0 %}

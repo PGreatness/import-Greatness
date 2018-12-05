@@ -208,3 +208,8 @@ Created new database to store json files retrieved off apis to reduce the number
 Redirect logged-in users to home if they try to access /login,/register
 Reformatted home.html to use Jinja to display all the articles and info
 ==============================================================
+
+jiayangC -- 2018-12-05 15:25
+--------------------------------------------------------------
+Database now stores more indepth information about the weather
+==============================================================
