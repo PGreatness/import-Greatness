@@ -20,6 +20,16 @@ def add_userFull(username, hashed_pass, question, hashed_ans):
     db.commit()
     db.close()
 
+def update_pass(username, hashed_pass):
+    '''resets users password'''
+    db = sqlite3.connect(DB)
+    c = db.cursor()
+    command = "UPDATE users SET password=" + hashed_pass + "WHERE username=" + username + ";"
+    c.execute(command)
+    db.commit()
+    db.close()
+
+
 def get_all_users():
     '''returns all the users and hashed passwords in dict {user:pass}'''
     db = sqlite3.connect(DB)

@@ -165,10 +165,10 @@ def reset():
     '''To reset userpassword'''
     if request.form.get("reg_username") != None:
         r_username = request.form.get("reg_username")
-        r_question = request.form.get("reg_question")
         r_answer = request.form.get("reg_answer")
         r_password = request.form.get("reg_password")
         check_pass = request.form.get("check_password")
+        all_usernames = db.get_all_users()
         if r_username not in db.get_all_users():
             flash("Username not found")
         elif r_password != check_pass:
@@ -179,10 +179,12 @@ def reset():
             flash("Username should be alphanumeric")
         else:
             session['user'] = r_username
-            # adds the question and answer to the db
-            db.add_userFull(r_username, md5_crypt.encrypt(r_password), r_question, md5_crypt.encrypt(r_answer))
-            # changes the user password
-            db.add_user(r_username, md5_crypt.encrypt(r_password))
+            # checks the question and answer in the db
+            if r_username in all_usernames:
+                # if the hashes match
+                if md5_crypt.verify(r_answer, all_usernames[r_username]):
+                    # changes the user password
+                    db.update_pass(r_username, md5_crypt.encrypt(r_password))
             return redirect(url_for("login"))
     return render_template('register.html')
 
