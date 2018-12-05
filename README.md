@@ -6,22 +6,22 @@
 
 ## What is the The Daily Bugle?
 
-The Daily Bugle is a news site that has, as the name implies it, daily updates on major news along with the weather and a (hopefully) funny comic strip. The site uses each user's IP address (after given permission, of course) to find the weather data of their location using the IP API and Darksky API. The Ipify API is used to procure the client's IP address. The comics and news are based on the xkcd API and the NewYorkTimes API, respectively. Every day, there will be a new interesting article and a different comic strip!
+_The Daily Bugle_ is a news site that has, as the name implies it, daily updates on major news along with the weather and a (hopefully) funny comic strip. The site uses each user's IP address (after given permission, of course) to find the weather data of their location using the IP API and Darksky API. The Ipify API is used to procure the client's IP address. The comics and news are based on the xkcd API and the NewYorkTimes API, respectively. Every day, there will be a new interesting article and a different comic strip!
 
 ---
 
 ## How do I run this on my machine?
 
-In order to run this project on your machine, please make sure you have all the dependencies listed on the [Dependencies](../master/README.md/#dependencies) section.
 When you are ready, go to your terminal and change your directory to where your would like to clone the repo, then run the below command:
 
 ```bash
 git clone https://github.com/PGreatness/import-Greatness.git
 ```
 
-This will make a HTTPS clone of the repo. Another option is to download the ZIP folder after clicking `Clone or download` on GitHub, then extracting it to your desired location.
+This will make a HTTPS clone of the repo. Another option is to download the ZIP folder after clicking `Clone or download` on GitHub, then extracting it to your desired location. 
+_This project requires the dependencies listed on the [Dependencies](../master/README.md/#dependencies) section in order to run._
 
-In order to make use of The Daily Bugle, you will need the API keys for the APIs that require one. So far, you will need **2** API keys.
+In order to make use of _The Daily Bugle_, you will need the API keys for the APIs that require one. So far, you will need **2** API keys.
 For these, the links to get the API keys are listed below:
 
 - [DarkSky API](https://darksky.net/dev)
@@ -29,7 +29,7 @@ For these, the links to get the API keys are listed below:
 
 Before we delve into the explanation, it is imperative that you create a `keys.json` file to store the API keys in. The project looks specifically for that file, so please try to avoid spelling errors.
 
-In the `data` folder, run these commands to make the `keys.json` file and initialize the JSON formatting.
+Open a terminal in the `data` folder and run these commands to make the `keys.json` file and initialize the JSON formatting.
 
 ```bash
 touch keys.json
@@ -64,7 +64,7 @@ Afterwards, click on `Create API Key`. Your API key should appear in your email 
 nano keys.json
 ```
 
-Your json file should look like this at this point:
+Your JSON file should look like this at this point:
 
 ```bash
 {
@@ -87,7 +87,7 @@ Now your program is ready to go! On your terminal, run the following commands:
 
 ```bash
 cd path/to/project/dir/The/ Daily/ Bugle/
-python3 app.py
+python app.py
 ```
 
 This should cause the following to appear:
@@ -113,7 +113,30 @@ This will take you to the `localhost` where your can the project working in all 
 
 ## Dependencies
 
-Although not one of the biggest projects, The Daily Bugle still uses quite a few modules. For a more exhaustive list, along with tested versions, see the [Requirements](../master/requirements.txt) plaintext file.
+Although not one of the biggest projects, _The Daily Bugle_ still uses quite a few modules. For a more exhaustive list, along with tested versions, see the [Requirements](../master/requirements.txt) plaintext file.
+
+### **Recursive Download**
+
+If you wish to download all of the modules listed below, you can do so easily. First, make sure that you have `Python`. Run the following in your terminal:
+
+```bash
+python --version
+```
+
+This should return the current version of Python installed on your computer. Please note that you will need **Python 3.0.0** or greater to run this project. 
+
+If you do not have Python, you can download the latest version [here](https://www.python.org/downloads/), which should come with `pip` installed.
+
+To recursively download the required modules, run the following commands:
+
+```bash
+cd path/to/cloned/repo
+pip install -r < requirements.txt
+```
+
+This will change the current working directory to the cloned repo directory, then recursively install all the dependencies listed in the [requirements.txt](../master/requirements.txt) file located in the root of the repo directory. _Note: This assumes that you do not have a virtual environment to work in. If you do, please do activate it or create a new environment in order to keep your current versions._
+
+### Packages Required
 
 - urllib
 
@@ -123,12 +146,33 @@ Although not one of the biggest projects, The Daily Bugle still uses quite a few
 
 `pip` has been used to install all the extra modules like `flask` and `virtualenv`. Python (versions 2 to 2.7.9 or 3 and beyond) come with pip installed automatically.
 
-- virtualenv
+- venv
 
-`virtualenv` is used to avoid collateral damage from running the program. In essence, it provides a buffer that protects your current computer state by on a seperate, isolated environment. In order to install `virtualenv`, run this command in your terminal.
+`venv` is used to avoid collateral damage from running the program. In essence, it provides a buffer that protects your current computer state by on a seperate, isolated environment. If you are using Python 3.0.0 or higher, skip to the next step as `virtualenv` comes pre-installed. If you are using any Python distribution prior to 3.0.0, run the following in your terminal to create a virtual environment, replacing Name_Of_Environment with your desired name of the environment: 
 
 ```bash
 pip install virtualenv
+virtualenv Name_Of_Environment
+```
+
+For Python3 or higher, run the following in your terminal, replacing Name_Of_Environment with your desired name of the environment:
+
+```bash
+python -m venv Name_Of_Environment
+```
+
+You can then activate the virtual environment by running the following in your terminal, again replacing Name_Of_Environment with your virtual environment name:
+
+**For Linux/OS:**
+
+```bash
+. Name_Of_Environment/bin/activate
+```
+
+**For Windows:**
+
+```bash
+source Name_Of_Environment\Scripts\activate
 ```
 
 - Python3
