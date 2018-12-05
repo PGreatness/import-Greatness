@@ -55,12 +55,12 @@ def home():
     print (location)
 
     today = datetime.datetime.now().strftime("%Y-%m-%d")
-    f = open('data/content.json','r')
+    f = open('data/content.json', 'r')
     data = json.loads(f.read())
     f.close()
 
-    #if it is time to update/never had it
-    #update it
+    # if it is time to update/never had it
+    # update it
     if today not in data:
         w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # based on your ip address location
         weather = json.loads(w.read())
@@ -71,7 +71,7 @@ def home():
         n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
         news = json.loads(n.read())
 
-        #Create our own json file for easier read/less space taken
+        # Create our own json file for easier read/less space taken
         data[today] = dict()
         data[today]['weather-summary'] = weather['daily']['summary']
         data[today]['comic-image'] = comic['img']
@@ -92,8 +92,8 @@ def home():
                 copy['image-url'] = 'https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png' #If there is no image
                 copy['image-caption'] = ''
 
-        #Add it all to our own file
-        f = open('data/content.json','w')
+        # Add it all to our own file
+        f = open('data/content.json', 'w')
         f.write(json.dumps(data))
         f.close()
     return render_template('home.html', data = data[today], session = session)
@@ -128,6 +128,7 @@ def auth():
         flash("Invalid username")
     return redirect(url_for("login"))
 
+# to register a new user
 @app.route('/register', methods = ["GET", "POST"])
 def register():
     if 'user' in session:
@@ -151,12 +152,14 @@ def register():
             return redirect(url_for("home"))
     return render_template('register.html')
 
+# to reset an old user
 @app.route('/reset', methods = ["POST"])
 def reset():
     if 'user' in session:
         return redirect(url_for('home'))
     '''To reset userpassword'''
     if request.form.get("reg_username") != None:
+        r_username = request.form.get("reg_username")
         r_question = request.form.get("reg_question")
         r_answer = request.form.get("reg_answer")
         r_password = request.form.get("reg_password")
