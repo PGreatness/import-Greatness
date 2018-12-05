@@ -27,18 +27,25 @@ For these, the links to get the API keys are listed below:
 - [DarkSky API](https://darksky.net/dev)
 - [New York Times](https://developer.nytimes.com/)
 
-Before we delve into the explanation, it is imperative that you create a `keys.json` file to store the API keys in. The project looks specifically for that file, so please try to avoid spelling errors.
-
-Open a terminal in the `data` folder and run these commands to make the `keys.json` file and initialize the JSON formatting.
+Before we delve into the explanation, it is imperative that you are in the correct build. Open a terminal and run the following command to go to the distribution build.
 
 ```bash
-touch keys.json
-echo { } > keys.json
+cd path/to/repo/The/ Daily/ Bugle/distr/
 ```
+
+This build has a `keys.json` file located in `data/API_Keys`. Open a terminal in the `data` folder and run these commands to replace the placeholders with your API Keys.
+
+```bash
+nano keys.json
+```
+
+From there, enter your API keys by overwriting the placeholder, `Your_DarkSky_API_Key` overwritten by your DarkSky API key and `Your_New_York_Times_API_Key` overwritten by your New York Times API Key. **The quotation marks("") are required and must not be deleted.**
+
+If you do not have either of the keys, look at the subsection below to on how to get the keys. 
 
 ### **For DarkSky API**
 
-Click on `Sign Up`, and register for an account. After this, you should be given an API key. Copy this key into your clipboard and to the terminal.
+Click on `Sign Up`, and register for an account. After this, you should be given an API key. Copy this key into your clipboard and go to the terminal.
 
 Run the following command to open the JSON file.
 
@@ -46,7 +53,7 @@ Run the following command to open the JSON file.
 nano keys.json
 ```
 
-With the JSON file open, copy the below into your JSON file, replacing `Your_DarkSky_API_Key` with your DarkSky API key.
+With the JSON file open, replace `Your_DarkSky_API_Key` with your DarkSky API key.
 
 ```bash
 {
@@ -58,7 +65,7 @@ With the JSON file open, copy the below into your JSON file, replacing `Your_Dar
 
 Click on `Get API Key` in the top right corner. Fill out the required information and, where it asks for the API, select `Top Stories`. **_This is a very important part since The Daily Bugle will not work without the correct API selected._**
 
-Afterwards, click on `Create API Key`. Your API key should appear in your email shortly. Copy the API and go back to the terminal and execute this command.
+Afterwards, click on `Create API Key`. Your API key should appear in your email shortly. Copy the API and go back to the terminal to execute this command.
 
 ```bash
 nano keys.json
@@ -72,7 +79,7 @@ Your JSON file should look like this at this point:
 }
 ```
 
-Edit the file so that it looks like this, with `Your_NYTimes_API_Key` replaced with your New York Times API key.
+Replace `Your_NYTimes_API_Key` with your New York Times API key. **Remember that the quotation marks("") are required and should not be deleted.**
 
 ```bash
 {
@@ -81,7 +88,7 @@ Edit the file so that it looks like this, with `Your_NYTimes_API_Key` replaced w
 }
 ```
 
-_It is important to note that the order in which the `Weather` and `News` are done is irrelevant._
+_It is important to note that the order in which the `Weather` and `News` appear is irrelevant._
 
 Now your program is ready to go! On your terminal, run the following commands:
 
