@@ -11,6 +11,25 @@ def add_user(username, hashed_pass):
     db.commit()
     db.close()
 
+def add_userFull(username, hashed_pass, question, hashed_ans):
+    '''adds users to use table'''
+    db = sqlite3.connect(DB)
+    c = db.cursor()
+    command = "INSERT INTO users (username,password, question, answer)VALUES(?,?,?,?);"
+    c.execute(command, (username, hashed_pass, question, hashed_ans))
+    db.commit()
+    db.close()
+
+def update_pass(username, hashed_pass):
+    '''resets users password'''
+    db = sqlite3.connect(DB)
+    c = db.cursor()
+    command = "UPDATE users SET password=" + hashed_pass + "WHERE username=" + username + ";"
+    c.execute(command)
+    db.commit()
+    db.close()
+
+
 def get_all_users():
     '''returns all the users and hashed passwords in dict {user:pass}'''
     db = sqlite3.connect(DB)
@@ -24,14 +43,14 @@ def get_all_users():
     db.close()
     return users
 
-def save_article(date,content):
-     '''adds articles to articles table'''
-     db = sqlite3.connect(DB)
-     c = db.cursor()
-     command = "INSERT INTO articles(date, content)VALUES(?,?);"
-     c.execute(command, (date,content))
-     db.commit()
-     db.close()
+def save_article(date, content):
+    '''adds articles to articles table'''
+    db = sqlite3.connect(DB)
+    c = db.cursor()
+    command = "INSERT INTO articles(date, content)VALUES(?,?);"
+    c.execute(command, (date, content))
+    db.commit()
+    db.close()
 
 def get_articles():
     '''returns all the articles in dict {date:content}'''
@@ -45,11 +64,13 @@ def get_articles():
         articles[item[0]] = item[1]
     db.close()
     return articles
+
+
 # MAKE TABLES AND DATABASE IF THEY DONT EXIST
 db = sqlite3.connect(DB)
 c = db.cursor()
 commands = []
-commands += ["CREATE TABLE IF NOT EXISTS users(username TEXT, password TEXT)"]
+commands += ["CREATE TABLE IF NOT EXISTS users(username TEXT, password TEXT, questions TEXT, answer TEXT)"]
 commands += ["CREATE TABLE IF NOT EXISTS articles(date TEXT, content TEXT)"]
 # commands += ["CREATE TABLE IF NOT EXISTS pages(link TEXT, weather TEXT, comic TEXT)"]
 for command in commands:

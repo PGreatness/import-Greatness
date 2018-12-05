@@ -55,12 +55,12 @@ def home():
     print (location)
 
     today = datetime.datetime.now().strftime("%Y-%m-%d")
-    f = open('data/content.json','r')
+    f = open('data/content.json', 'r')
     data = json.loads(f.read())
     f.close()
 
-    #if it is time to update/never had it
-    #update it
+    # if it is time to update/never had it
+    # update it
     if today not in data:
         w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # based on your ip address location
         weather = json.loads(w.read())
@@ -71,7 +71,7 @@ def home():
         n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
         news = json.loads(n.read())
 
-        #Create our own json file for easier read/less space taken
+        # Create our own json file for easier read/less space taken
         data[today] = dict()
         data[today]['weather-summary'] = weather['daily']['summary']
         data[today]['comic-image'] = comic['img']
@@ -92,8 +92,8 @@ def home():
                 copy['image-url'] = 'https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png' #If there is no image
                 copy['image-caption'] = ''
 
-        #Add it all to our own file
-        f = open('data/content.json','w')
+        # Add it all to our own file
+        f = open('data/content.json', 'w')
         f.write(json.dumps(data))
         f.close()
     return render_template('home.html', data = data[today], session = session)
@@ -137,6 +137,8 @@ def register():
         r_username = request.form.get("reg_username")
         r_password = request.form.get("reg_password")
         check_pass = request.form.get("check_password")
+        r_question = request.form.get("reg_question")
+        r_answer = request.form.get("reg_answer")
         if r_username in db.get_all_users():
             flash("Username taken")
         elif r_password != check_pass:
@@ -146,9 +148,14 @@ def register():
         elif not r_username.isalnum():
             flash("Username should be alphanumeric")
         else:
-            session['user'] = r_username
-            db.add_user(r_username, md5_crypt.encrypt(r_password))
-            return redirect(url_for("home"))
+            if request.form.get("reg_question") != None:
+                session['user'] = r_username
+                db.add_userFull(r_username, md5_crypt.encrypt(r_password), r_question, md5_crypt.encrypt(r_answer))
+                return redirect(url_for("home"))
+            else:
+                session['user'] = r_username
+                db.add_user(r_username, md5_crypt.encrypt(r_password))
+                return redirect(url_for("home"))
     return render_template('register.html')
 
 @app.route('/reset', methods = ["POST"])
@@ -157,12 +164,13 @@ def reset():
         return redirect(url_for('home'))
     '''To reset userpassword'''
     if request.form.get("reg_username") != None:
-        r_question = request.form.get("reg_question")
+        r_username = request.form.get("reg_username")
         r_answer = request.form.get("reg_answer")
         r_password = request.form.get("reg_password")
         check_pass = request.form.get("check_password")
-        if r_username in db.get_all_users():
-            flash("Username taken")
+        all_usernames = db.get_all_users()
+        if r_username not in db.get_all_users():
+            flash("Username not found")
         elif r_password != check_pass:
             flash("Passwords do not match!")
         elif r_password.count(' ') != 0:
@@ -171,10 +179,12 @@ def reset():
             flash("Username should be alphanumeric")
         else:
             session['user'] = r_username
-            # adds the question and answer to the db
-            db.add_user(r_question, md5_crypt.encrypt(r_answer))
-            # changes the user password
-            db.add_user(r_username, md5_crypt.encrypt(r_password))
+            # checks the question and answer in the db
+            if r_username in all_usernames:
+                # if the hashes match
+                if md5_crypt.verify(r_answer, all_usernames[r_username]):
+                    # changes the user password
+                    db.update_pass(r_username, md5_crypt.encrypt(r_password))
             return redirect(url_for("login"))
     return render_template('register.html')
 
