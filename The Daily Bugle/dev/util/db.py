@@ -24,14 +24,14 @@ def get_all_users():
     db.close()
     return users
 
-def save_article(date,content):
-     '''adds articles to articles table'''
-     db = sqlite3.connect(DB)
-     c = db.cursor()
-     command = "INSERT INTO articles(date, content)VALUES(?,?);"
-     c.execute(command, (date,content))
-     db.commit()
-     db.close()
+def save_article(date, content):
+    '''adds articles to articles table'''
+    db = sqlite3.connect(DB)
+    c = db.cursor()
+    command = "INSERT INTO articles(date, content)VALUES(?,?);"
+    c.execute(command, (date, content))
+    db.commit()
+    db.close()
 
 def get_articles():
     '''returns all the articles in dict {date:content}'''
@@ -45,6 +45,8 @@ def get_articles():
         articles[item[0]] = item[1]
     db.close()
     return articles
+
+    
 # MAKE TABLES AND DATABASE IF THEY DONT EXIST
 db = sqlite3.connect(DB)
 c = db.cursor()
