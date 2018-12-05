@@ -8,8 +8,17 @@
 }
 
 .list-group{
-    max-height: 300px;
-    margin-bottom: 10px;
-    overflow:scroll;
-    overflow-x:hidden;
+  max-height: 300px;
+  margin-bottom: 10px;
+  overflow:scroll;
+  overflow-x:hidden;
+}
+
+.linkFix{
+  text-decoration: none;
+  color: #484848;
+}
+
+.linkFix:hover{
+  color: #484848;
 }

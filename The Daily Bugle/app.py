@@ -44,14 +44,6 @@ def home():
     print(json_data) # should print           {'News': 'api_key', 'Weather': 'api_key', 'Comic': ''}
     print(json_data['News']) #  should print      "api_key"
 
-    # # # News API
-    n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
-    news = json.loads(n.read())
-    # print ( news )
-
-
-    # # # Weather API
-
     # Checking the longitude and latitiude based on the ip address
     print ("\n\nTHE IP ADDRESS: ")
     print ( getIP() )
@@ -62,25 +54,61 @@ def home():
     location += ip['city'] + ", " + ip['country_name']
     print (location)
 
-    # implementing weather now
-    w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # based on your ip address location
-    weather = json.loads(w.read())
-    print ( weather )
+    today = datetime.datetime.now().strftime("%Y-%m-%d")
+    f = open('data/content.json','r')
+    data = json.loads(f.read())
+    f.close()
 
-    # # # XKCD API
-    c = urllib.request.urlopen(COMIC_STUB.format(1))
-    comic = json.loads(c.read())
-    # print ( comic )
+    #if it is time to update/never had it
+    #update it
+    if today not in data:
+        w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # based on your ip address location
+        weather = json.loads(w.read())
 
-    return render_template('home.html', weatherData = weather, location = location, newsData = news, comicData = comic, session = session)
+        c = urllib.request.urlopen(COMIC_STUB.format(1))
+        comic = json.loads(c.read())
+
+        n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
+        news = json.loads(n.read())
+
+        #Create our own json file for easier read/less space taken
+        data[today] = dict()
+        data[today]['weather-summary'] = weather['daily']['summary']
+        data[today]['comic-image'] = comic['img']
+        data[today]['news'] = []
+        for i in range(7): #add article info (dicts) into list of articles
+            data[today]['news'] += [dict()]
+            copy = data[today]['news'][i]
+            article = news['results'][i]
+            copy['id'] = i
+            copy['title'] = article['title']
+            copy['abstract'] = article['abstract']
+            copy['link'] = article['url']
+            copy['date'] = article['updated_date'].split('T')[0] #Gets the yyyy-mm-dd
+            if len(article['multimedia']) != 0:
+                copy['image-url'] = article['multimedia'][-1]['url']
+                copy['image-caption'] = article['multimedia'][-1]['caption']
+            else:
+                copy['image-url'] = 'https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png' #If there is no image
+                copy['image-caption'] = ''
+
+        #Add it all to our own file
+        f = open('data/content.json','w')
+        f.write(json.dumps(data))
+        f.close()
+    return render_template('home.html', data = data[today], session = session)
 
 
 @app.route('/login')
 def login():
+    if 'user' in session:
+        return redirect(url_for('home'))
     return render_template('login.html')
 
 @app.route('/auth', methods = ["POST"])
 def auth():
+    if 'user' in session:
+        return redirect(url_for('home'))
     '''Intermediate to authenticate login by user'''
     # # # Authenticate
     username_input = request.form.get("username")
@@ -102,6 +130,8 @@ def auth():
 
 @app.route('/register', methods = ["GET", "POST"])
 def register():
+    if 'user' in session:
+        return redirect(url_for('home'))
     '''Adding users to the database'''
     if request.form.get("reg_username") != None:
         r_username = request.form.get("reg_username")
@@ -119,6 +149,33 @@ def register():
             session['user'] = r_username
             db.add_user(r_username, md5_crypt.encrypt(r_password))
             return redirect(url_for("home"))
+    return render_template('register.html')
+
+@app.route('/reset', methods = ["POST"])
+def reset():
+    if 'user' in session:
+        return redirect(url_for('home'))
+    '''To reset userpassword'''
+    if request.form.get("reg_username") != None:
+        r_question = request.form.get("reg_question")
+        r_answer = request.form.get("reg_answer")
+        r_password = request.form.get("reg_password")
+        check_pass = request.form.get("check_password")
+        if r_username in db.get_all_users():
+            flash("Username taken")
+        elif r_password != check_pass:
+            flash("Passwords do not match!")
+        elif r_password.count(' ') != 0:
+            flash("Password can not contain spaces")
+        elif not r_username.isalnum():
+            flash("Username should be alphanumeric")
+        else:
+            session['user'] = r_username
+            # adds the question and answer to the db
+            db.add_user(r_question, md5_crypt.encrypt(r_answer))
+            # changes the user password
+            db.add_user(r_username, md5_crypt.encrypt(r_password))
+            return redirect(url_for("login"))
     return render_template('register.html')
 
 @app.route('/logout', methods = ['GET'])
