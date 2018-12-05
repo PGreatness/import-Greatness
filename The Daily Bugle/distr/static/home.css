@@ -1,0 +1,24 @@
+.center {
+  text-align: center;
+}
+
+.fix{
+  padding-top: 45px;
+  margin-top: -45px;
+}
+
+.list-group{
+  max-height: 300px;
+  margin-bottom: 10px;
+  overflow:scroll;
+  overflow-x:hidden;
+}
+
+.linkFix{
+  text-decoration: none;
+  color: #484848;
+}
+
+.linkFix:hover{
+  color: #484848;
+}
