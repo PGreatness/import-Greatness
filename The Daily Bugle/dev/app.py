@@ -74,6 +74,14 @@ def home():
         # Create our own json file for easier read/less space taken
         data[today] = dict()
         data[today]['weather-summary'] = weather['daily']['summary']
+        data[today]['weather-hourly'] = []
+        for hour in weather['hourly']['data']:
+            d = dict()
+            data[today]['weather-hourly'] += [d]
+            d['time'] = hour['time']
+            d['icon'] = hour['icon']
+            d['temperature'] = hour['temperature']
+            d['summary'] = hour['summary']
         data[today]['comic-image'] = comic['img']
         data[today]['news'] = []
         for i in range(7): #add article info (dicts) into list of articles

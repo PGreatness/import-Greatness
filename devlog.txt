@@ -184,7 +184,7 @@ Implemented the IP address finder with the weather and helped with the saving ol
 
 ahnafH -- 2018-12-03 20:01
 --------------------------------------------------------------
-Worked more on newspaper section, hardcoded an article section
+Updated REAME.md to be in compliance with deliverables.
 ==============================================================
 
 rayO -- 2018-12-04 13:04
@@ -207,4 +207,15 @@ jiayangC -- 2018-12-04 18:31
 Created new database to store json files retrieved off apis to reduce the number of calls made
 Redirect logged-in users to home if they try to access /login,/register
 Reformatted home.html to use Jinja to display all the articles and info
+==============================================================
+
+<<<<<<< HEAD
+jiayangC -- 2018-12-05 15:25
+--------------------------------------------------------------
+Database now stores more indepth information about the weather
+=======
+ahnafH -- 2018-12-05 15:19
+--------------------------------------------------------------
+Updated README.md to be in compliance with our project.
+>>>>>>> c83d2751232b40dfe957f390d6993f0e929e5379
 ==============================================================
