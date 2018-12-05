@@ -35,9 +35,9 @@
 <br>
 <div class="jumbotron">
 
-  <h5 class="display-4"> Register here! </h5> <br>
+  <h5 class="display-4"> Reset Password</h5> <br>
 
-  <form action ="/register" method="POST" >
+  <form action ="/reset" method="POST" >
 
     <div class="form-group">
       <label for="exampleUsername">Username</label>
@@ -55,7 +55,6 @@
       <input type= "text" class="form-control" name="reg_answer" placeholder="Answer" required>
     </div>
 
-    Reset Password
     <div class="form-group">
       <label for="exampleInputPassword1">New Password</label>
       <input type= "password" class="form-control" name="reg_password" placeholder="Password" required>
@@ -72,12 +71,6 @@
 
 </div>
 
-<!-- <form action ="/register" method="POST" >
-Username: <input type= "text" name="reg_username" required><br><br>
-Password: <input type= "password" name="reg_password" required><br><br>
-Confirm Password: <input type= "password" name="check_password" required> <br><br>
-<input type="submit" value="Signup"></h4>
-</form> -->
 
 {# To print messages if invalid registration #}
 {% for msg in get_flashed_messages() %}

@@ -20,15 +20,34 @@ def add_userFull(username, hashed_pass, question, hashed_ans):
     db.commit()
     db.close()
 
-def update_pass(username, hashed_pass):
+def update_pass(user, hashed_pass):
     '''resets users password'''
     db = sqlite3.connect(DB)
     c = db.cursor()
-    command = "UPDATE users SET password=" + hashed_pass + "WHERE username=" + username + ";"
+    command = "SELECT * FROM users;"
     c.execute(command)
+    something = c.fetchall()
+    print(something)
+    print(user)
+    print(hashed_pass)
+    command = "UPDATE users SET password='" + hashed_pass + "'WHERE username='" + user + "';"
+    c.execute(command)
+    print("passwords updated")
     db.commit()
     db.close()
 
+def qaDict():
+    '''returns all the users and hashed answers in dict {user:answer}'''
+    db = sqlite3.connect(DB)
+    c = db.cursor()
+    command = "SELECT username,answer from users;"
+    c.execute(command)
+    info = c.fetchall()
+    users = {}
+    for item in info:
+        users[item[0]] = item[1]
+    db.close()
+    return users
 
 def get_all_users():
     '''returns all the users and hashed passwords in dict {user:pass}'''
@@ -70,7 +89,7 @@ def get_articles():
 db = sqlite3.connect(DB)
 c = db.cursor()
 commands = []
-commands += ["CREATE TABLE IF NOT EXISTS users(username TEXT, password TEXT, questions TEXT, answer TEXT)"]
+commands += ["CREATE TABLE IF NOT EXISTS users(username TEXT, password TEXT, question TEXT, answer TEXT)"]
 commands += ["CREATE TABLE IF NOT EXISTS articles(date TEXT, content TEXT)"]
 # commands += ["CREATE TABLE IF NOT EXISTS pages(link TEXT, weather TEXT, comic TEXT)"]
 for command in commands:

@@ -158,7 +158,7 @@ def register():
                 return redirect(url_for("home"))
     return render_template('register.html')
 
-@app.route('/reset', methods = ["POST"])
+@app.route('/reset', methods = ["GET", "POST"])
 def reset():
     if 'user' in session:
         return redirect(url_for('home'))
@@ -168,7 +168,7 @@ def reset():
         r_answer = request.form.get("reg_answer")
         r_password = request.form.get("reg_password")
         check_pass = request.form.get("check_password")
-        all_usernames = db.get_all_users()
+        all_usernames = db.qaDict()
         if r_username not in db.get_all_users():
             flash("Username not found")
         elif r_password != check_pass:
@@ -185,8 +185,10 @@ def reset():
                 if md5_crypt.verify(r_answer, all_usernames[r_username]):
                     # changes the user password
                     db.update_pass(r_username, md5_crypt.encrypt(r_password))
-            return redirect(url_for("login"))
-    return render_template('register.html')
+                    return redirect(url_for('home'))
+                else:
+                    flash("Error occurred")
+    return render_template('reset.html')
 
 @app.route('/logout', methods = ['GET'])
 def logout():
