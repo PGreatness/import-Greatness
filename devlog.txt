@@ -225,6 +225,12 @@ ahnafH -- 2018-12-05 15:19
 Updated README.md to be in compliance with our project.
 ==============================================================
 
+rayO -- 2018-12-05 17:01
+--------------------------------------------------------------
+Added home welcome section including outline for preview of weather and link to article
+Performed some minor styling changes to home
+==============================================================
+
 alexL -- 2018-12-05 TIME UNKNOWN
 --------------------------------------------------------------
 Implemented features to give users the ability to favorite news articles

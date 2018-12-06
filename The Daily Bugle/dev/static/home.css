@@ -22,3 +22,30 @@
 .linkFix:hover{
   color: #484848;
 }
+
+#rowTop{
+  width:80%;
+  background-color: rgba(176, 176, 176, 0.25);
+  padding: 3%;
+  border-radius: 10px;
+}
+
+#bottomCardText{
+  padding-bottom:5%;
+}
+
+#weatherPreview{
+  padding-bottom: 3%
+}
+
+#weatherBox{
+  width:95%;
+}
+
+#weatherPreviewImage{
+  display:block;
+  margin-right:auto;
+  margin-left:auto;
+  width:100px;
+  height:100px
+}
