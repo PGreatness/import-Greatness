@@ -231,8 +231,14 @@ Added home welcome section including outline for preview of weather and link to 
 Performed some minor styling changes to home
 ==============================================================
 
+<<<<<<< HEAD
+jiayangC -- 2018-12-06 17:25
+--------------------------------------------------------------
+Added button to create favorites
+=======
 alexL -- 2018-12-05 TIME UNKNOWN
 --------------------------------------------------------------
 Implemented features to give users the ability to favorite news articles
 Changed the db to add a favorites column
+>>>>>>> 8c9f207234d83ac59fad958f2001ca529aa261ea
 ==============================================================
