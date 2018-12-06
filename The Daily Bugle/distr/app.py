@@ -44,6 +44,10 @@ def home():
     print(json_data) # should print           {'News': 'api_key', 'Weather': 'api_key', 'Comic': ''}
     print(json_data['News']) #  should print      "api_key"
 
+    if json_data['Weather'] == "Your_DarkSky_API_Key":
+        flash("Error 1")
+        return render_template('error.html')
+
     # Checking the longitude and latitiude based on the ip address
     print ("\n\nTHE IP ADDRESS: ")
     print ( getIP() )
