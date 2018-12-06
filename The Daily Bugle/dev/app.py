@@ -55,9 +55,15 @@ def home():
     print (location)
 
     today = datetime.datetime.now().strftime("%Y-%m-%d")
+    #data = {}
     try:
-    f = open('data/content.json', 'r')
-    data = json.loads(f.read())
+        f = open('data/content.json', 'r')
+    except Exception as e:
+        f = open('data/content.json', 'x')
+    try:
+        data = json.loads(f.read())
+    except Exception as e:
+        data = {}
     f.close()
 
     # if it is time to update/never had it
@@ -103,7 +109,7 @@ def home():
 
         # Add it all to our own file
         f = open('data/content.json', 'w')
-        f.write(json.dumps(data))
+        f.write(json.dumps(data, indent=4))
         f.close()
     return render_template('home.html', data = data[today], session = session)
 
