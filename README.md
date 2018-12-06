@@ -41,7 +41,7 @@ git clone https://github.com/PGreatness/import-Greatness.git
 ```
 
 This will make a HTTPS clone of the repo. Another option is to download the ZIP folder after clicking `Clone or download` on GitHub, then extracting it to your desired location.
-_This project requires the dependencies listed on the [Dependencies](../master/README.md/#dependencies) section in order to run._
+_This project requires the dependencies listed on the [Dependencies](../master/README.md/#dependencies) section in order to run. Please have them downloaded before continuing._
 
 In order to make use of _The Daily Bugle_, you will need the API keys for the APIs that require one. So far, you will need **2** API keys.
 For these, the links to get the API keys are listed below:
@@ -55,9 +55,12 @@ Before we delve into the explanation, it is imperative that you are in the corre
 cd path/to/repo/The/ Daily/ Bugle/distr/
 ```
 
-This build has a `keys.json` file located in `data/API_Keys`. Open a terminal in the `data/API_Keys` folder and run these commands to replace the placeholders with your API Keys.
+This build has a `keys.json` file located in `data/API_Keys`. Open a terminal in the `data/API_Keys` folder and run these commands to replace the placeholders with your API Keys. Remember to activate your `virtual environment` to aviod any collatoral damage.
 
 ```bash
+source path/to/virtual/environment/Scripts/activate #for Windows
+. path/to/virtual/environment/bin/activate #for Linux/OS
+
 nano keys.json
 ```
 
