@@ -224,3 +224,8 @@ rayO -- 2018-12-05 17:01
 Added home welcome section including outline for preview of weather and link to article
 Performed some minor styling changes to home
 ==============================================================
+
+jiayangC -- 2018-12-06 17:25
+--------------------------------------------------------------
+Added button to create favorites
+==============================================================

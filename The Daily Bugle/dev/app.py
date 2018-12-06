@@ -211,14 +211,12 @@ def logout():
         session.pop('user')
     return redirect(url_for('home'))
 
-# def savePage():
-#     response = urllib2.urlopen(url)
-#     webContent = response.read()
-#
-#     f = open('obo-t17800628-33.html', 'w')
-#     f.write(webContent)
-#     f.close
-
+@app.route('/favorite', methods = ['GET','POST'])
+def favorite():
+    #Add to favorite here
+    timeid = request.form.get("timeid") #timeid is how we reference the article. timeid = "yyyy-mm-dd,id"
+    print(timeid,"WOWOWOW")
+    return redirect(url_for('home'))
 
 if __name__ == "__main__":
     app.debug = True
