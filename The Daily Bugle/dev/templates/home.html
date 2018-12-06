@@ -43,6 +43,33 @@
 <br>
 <br>
 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        If you continue using our services, you agree to give us access to your ip address.
+      </div>
+      <div class="modal-footer">
+        <a href="http://127.0.0.1:5000/login">
+          <button type="button" class="btn btn-secondary">Nope</button>
+        </a>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">I agree</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container center" id="news">
   <h1 class="display-4 fix">News</h1>
   <!-- Newspaper info things will go in here -->
@@ -59,13 +86,13 @@
           {% endfor %}
         </div>
       </div>
-      <div class="col-sm-8">
+      <!-- <div class="col-sm-8">
         {% for news in data['weather-hourly'] %}
             {% for item in news %}
                 {{news[item]}}
             {% endfor %}
             <br>
-        {% endfor %}
+        {% endfor %} -->
         <!-- Generate items in the format below using jinja and the database-->
         {% for article in data['news'] %}
             {% if article['id'] == 0 %}
