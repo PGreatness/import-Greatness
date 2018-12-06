@@ -24,15 +24,15 @@ def update_pass(user, hashed_pass):
     '''resets users password'''
     db = sqlite3.connect(DB)
     c = db.cursor()
-    command = "SELECT * FROM users;"
-    c.execute(command)
-    something = c.fetchall()
-    print(something)
-    print(user)
-    print(hashed_pass)
+    # command = "SELECT * FROM users;"
+    # c.execute(command)
+    # something = c.fetchall()
+    # print(something)
+    # print(user)
+    # print(hashed_pass)
     command = "UPDATE users SET password='" + hashed_pass + "'WHERE username='" + user + "';"
     c.execute(command)
-    print("passwords updated")
+    # print("passwords updated")
     db.commit()
     db.close()
 
@@ -49,6 +49,7 @@ def qaDict():
     db.close()
     return users
 
+
 def get_all_users():
     '''returns all the users and hashed passwords in dict {user:pass}'''
     db = sqlite3.connect(DB)
@@ -62,34 +63,49 @@ def get_all_users():
     db.close()
     return users
 
-def save_article(date, content):
-    '''adds articles to articles table'''
+def add_Fav(user, id, date):
+    '''adds the article to the favorites section of the user based on id and date'''
     db = sqlite3.connect(DB)
     c = db.cursor()
-    command = "INSERT INTO articles(date, content)VALUES(?,?);"
-    c.execute(command, (date, content))
+    all_usernames = favDict()
+    appendage = all_usernames[user] + id + "," + date
+    # command = "SELECT * FROM users;"
+    # c.execute(command)
+    # something = c.fetchall()
+    # print(something)
+    # print(user)
+    # print(hashed_pass)
+    command = "UPDATE users SET favorite='" + appendage + "'WHERE username='" + user + "';"
+    c.execute(command)
+    print("added to favorites")
     db.commit()
     db.close()
 
-def get_articles():
-    '''returns all the articles in dict {date:content}'''
+def favDict():
+    '''returns all the users and favorited articles in dict {user:article}'''
     db = sqlite3.connect(DB)
     c = db.cursor()
-    command = "SELECT date,content from articles;"
+    command = "SELECT username,favorite from users;"
     c.execute(command)
     info = c.fetchall()
-    articles = {}
+    users = {}
     for item in info:
-        articles[item[0]] = item[1]
+        users[item[0]] = item[1]
     db.close()
-    return articles
+    return users
 
+def show_Fav():
+    x = favDict
+    list = x.split(",")
+    for i in list:
+        print (list[i])
+    return list
 
 # MAKE TABLES AND DATABASE IF THEY DONT EXIST
 db = sqlite3.connect(DB)
 c = db.cursor()
 commands = []
-commands += ["CREATE TABLE IF NOT EXISTS users(username TEXT, password TEXT, question TEXT, answer TEXT)"]
+commands += ["CREATE TABLE IF NOT EXISTS users(username TEXT, password TEXT, question TEXT, answer TEXT, favorite TEXT)"]
 commands += ["CREATE TABLE IF NOT EXISTS articles(date TEXT, content TEXT)"]
 # commands += ["CREATE TABLE IF NOT EXISTS pages(link TEXT, weather TEXT, comic TEXT)"]
 for command in commands:
