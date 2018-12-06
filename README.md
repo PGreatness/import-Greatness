@@ -12,7 +12,7 @@ _The Daily Bugle_ is a news site that has, as the name implies it, daily updates
 
 ## RESTful APIs Used
 
-_The Daily Bugle_ makes use of **4** RESTful APIs. Each API, along with an explanation and link, are listed below.
+_The Daily Bugle_ makes use of **5** RESTful APIs. Each API, along with an explanation and link, are listed below.
 
 - <span style="color:#ff496c">DarkSky API</span>
 
@@ -29,6 +29,10 @@ A helpful and powerful API, [IPAPI](https://ipapi.co/) takes an IP address and r
 - <span style="color:#ff496c">Ipify</span>
 
 Simple and easy to use, [this REST API](https://www.ipify.org/) can give easily gives us the client's IP address. We have used this API in conjunction with IPAPI to get the client's location in longitude and latitude form.
+
+- <span style="color:#ff496c">XKCD</span>
+
+Humorous and thought-provoking, the [XKCD API](https://xkcd.com/json.html) allows us to pull straight from [xkcd](https://www.xkcd.com) and display a memorable comic for the client.
 
 ---
 
