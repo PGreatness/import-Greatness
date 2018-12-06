@@ -53,7 +53,6 @@ def home():
     location = ""
     location += ip['city'] + ", " + ip['country_name']
     print (location)
-
     today = datetime.datetime.now().strftime("%Y-%m-%d")
     #data = {}
     try:
@@ -111,6 +110,13 @@ def home():
         f = open('data/content.json', 'w')
         f.write(json.dumps(data, indent=4))
         f.close()
+    session['location'] = location
+    session['current-hour'] = datetime.datetime.now().hour
+    session['date'] = today
+    f = float(data[today]['weather-hourly'][session['current-hour']]['temperature'])
+    c = (f - 32.) * 5 / 9
+    session['temp-f'] = str(f).split('.')[0] + '°'
+    session['temp-c'] = str(c).split('.')[0] + '°'
     return render_template('home.html', data = data[today], session = session)
 
 

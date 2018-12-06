@@ -47,13 +47,13 @@
 <div class="container d-flex justify-content-center">
   <div class="row" id="rowTop">
     <div class="col-md-6">
-      <h2 class="font-weight-light">Welcome USERNAMEHERE<h2>
+      <h2 class="font-weight-light">{{session['user']}}<h2>
       <p class="lead">Most recent article </p>
-      <a href="linkToMostRecentArticle" class="linkFix">Title of Article Here </a>
+      <a href="{{data['news'][0]['link']}}" class="linkFix">{{data['news'][0]['title']}}</a>
     </div>
     <div class="col-md-6">
       <div class="card text-white bg-dark mb-3 center" id="weatherBox">
-        <div class="card-header">Location Goes Here</div>
+        <div class="card-header">{{session['location']}}</div>
         <div class="row">
           <div class="col-lg-6">
             <div class="center">
@@ -63,14 +63,14 @@
           <div class="col-lg-6">
             <div class="card-body">
               <div id="weatherPreview">
-                <h5 class="card-title collapse show" id="temperature">50F</h5>
-                <h5 class="card-title collapse" id="temperature">Celsius here</h5>
+                <h5 class="card-title collapse show" id="temperature">{{session['temp-f']}}</h5>
+                <h5 class="card-title collapse" id="temperature">{{session['temp-c']}}</h5>
                 <button type="button" class="btn btn-primary btn-sm" href="#temperature" data-toggle="collapse">Change Units</button>
               </div>
             </div>
           </div>
         </div>
-        <p class="card-text" id="bottomCardText">Summary of weather here</p>
+        <p class="card-text" id="bottomCardText">{{data['weather-summary']}}</p>
       </div>
     </div>
   </div>
