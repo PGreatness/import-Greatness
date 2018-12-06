@@ -242,3 +242,9 @@ alexL -- 2018-12-06 17:30
 Implemented features to give users the ability to favorite news articles
 Changed the db to add a favorites column
 ==============================================================
+
+rayO -- 2018-12-05 18:47
+--------------------------------------------------------------
+Moved navbar to home to inherit rather than pasting same code on every page
+Minor styling change to home. 
+==============================================================

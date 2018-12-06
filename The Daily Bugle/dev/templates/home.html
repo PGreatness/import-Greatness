@@ -4,41 +4,6 @@
 {% endblock %}
 
 {% block content %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">The Daily Bugle</a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#news">News</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#weather">Weather</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#comic">Comic</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav">
-      {% if 'user' not in session %}
-      <li class="nav-item active">
-        <a class="nav-link" href="/login">Login</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/register">Register</a>
-      </li>
-      {% else %}
-      <li class="nav-item active">
-        <a class="nav-link"> Logged in as {{session['user']}} </a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/logout"> Sign Out</a>
-      </li>
-      {% endif %}
-    </ul>
-  </div>
-</nav>
-
 <br>
 <br>
 <br>
@@ -106,7 +71,7 @@
 </div>
 
 <div class="container center" id="news">
-  <h1 class="display-4 fix">News</h1>
+  <h1 class="display-4 fixJump">News</h1>
   <!-- Newspaper info things will go in here -->
   <br>
   <!-- <button href="#test " class="btn btn-default" data-toggle="collapse">Toggle Bar</button> -->
@@ -153,14 +118,14 @@
   </div>
 
   <div class="container center" id="weather">
-    <h1 class="display-4 fix">Weather</h1>
+    <h1 class="display-4 fixJump">Weather</h1>
     <p> Weather stuff </p>
     {{data['weather-summary']}}
     <!-- Weather info things will go in here -->
   </div>
 
   <div class="container center" id="comic">
-    <h1 class="display-4 fix">Comic!</h1>
+    <h1 class="display-4 fixJump">Comic!</h1>
     <p> Comic stuff </p>
     <img src="{{data['comic-image']}}" class="img-fluid img-thumbnail">
     <!-- Comic info things will go in here -->
