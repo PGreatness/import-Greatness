@@ -10,6 +10,28 @@ _The Daily Bugle_ is a news site that has, as the name implies it, daily updates
 
 ---
 
+## RESTful APIs Used
+
+_The Daily Bugle_ makes use of **4** RESTful APIs. Each API, along with an explanation and link, are listed below.
+
+- <span style="color:#ff496c">DarkSky API</span>
+
+The [DarkSky API](https://darksky.net/dev) provides extensive information about a location's weather, along with a daily and weekly summary. We have used this API to display the client's local weather. **An API key is required to use this REST API, see below to see [how to get one](../master/README.md#For-DarkSky-API).**
+
+- <span style="color:#ff496c">New York Times API</span>
+
+The [New York Times API](https://developer.nytimes.com/) provides detailed news and headlines that, more often than not, have huge impacts around the globe. We have used this API to pull some of the stories and display them to the client. **An API key is required to use this REST API, see below to see [how to get one](../master/README.md#For-New-York-Times-API).**
+
+- <span style="color:#ff496c">IPAPI</span>
+
+A helpful and powerful API, [IPAPI](https://ipapi.co/) takes an IP address and returns a whole host of information that can help us do many things. For this project, we used this API to get the correct location of the client in longitude and latitude form.
+
+- <span style="color:#ff496c">Ipify</span>
+
+Simple and easy to use, [this REST API](https://www.ipify.org/) can give easily gives us the client's IP address. We have used this API in conjunction with IPAPI to get the client's location in longitude and latitude form.
+
+---
+
 ## How do I run this on my machine?
 
 When you are ready, go to your terminal and change your directory to where your would like to clone the repo, then run the below command:
@@ -18,7 +40,7 @@ When you are ready, go to your terminal and change your directory to where your 
 git clone https://github.com/PGreatness/import-Greatness.git
 ```
 
-This will make a HTTPS clone of the repo. Another option is to download the ZIP folder after clicking `Clone or download` on GitHub, then extracting it to your desired location. 
+This will make a HTTPS clone of the repo. Another option is to download the ZIP folder after clicking `Clone or download` on GitHub, then extracting it to your desired location.
 _This project requires the dependencies listed on the [Dependencies](../master/README.md/#dependencies) section in order to run._
 
 In order to make use of _The Daily Bugle_, you will need the API keys for the APIs that require one. So far, you will need **2** API keys.
@@ -33,17 +55,19 @@ Before we delve into the explanation, it is imperative that you are in the corre
 cd path/to/repo/The/ Daily/ Bugle/distr/
 ```
 
-This build has a `keys.json` file located in `data/API_Keys`. Open a terminal in the `data` folder and run these commands to replace the placeholders with your API Keys.
+This build has a `keys.json` file located in `data/API_Keys`. Open a terminal in the `data/API_Keys` folder and run these commands to replace the placeholders with your API Keys.
 
 ```bash
 nano keys.json
 ```
 
-From there, enter your API keys by overwriting the placeholder, `Your_DarkSky_API_Key` overwritten by your DarkSky API key and `Your_New_York_Times_API_Key` overwritten by your New York Times API Key. **The quotation marks("") are required and must not be deleted.**
+From there, enter your API keys by overwriting the placeholder, `Your_DarkSky_API_Key` overwritten by your DarkSky API key and `Your_NYTimes_API_Key` overwritten by your New York Times API Key. **The quotation marks("") are required and must not be deleted.**
 
-If you do not have either of the keys, look at the subsection below to on how to get the keys. 
+If you do not have either of the keys, look at the subsection below to on how to get the keys.
 
 ### **For DarkSky API**
+
+[Click here to go to the DarkSky API](https://darksky.net/dev)
 
 Click on `Sign Up`, and register for an account. After this, you should be given an API key. Copy this key into your clipboard and go to the terminal.
 
@@ -62,6 +86,8 @@ With the JSON file open, replace `Your_DarkSky_API_Key` with your DarkSky API ke
 ```
 
 ### **For New York Times API**
+
+[Click here to go the New York Times API](https://developer.nytimes.com/)
 
 Click on `Get API Key` in the top right corner. Fill out the required information and, where it asks for the API, select `Top Stories`. **_This is a very important part since The Daily Bugle will not work without the correct API selected._**
 
@@ -93,7 +119,7 @@ _It is important to note that the order in which the `Weather` and `News` appear
 Now your program is ready to go! On your terminal, run the following commands:
 
 ```bash
-cd path/to/project/dir/The/ Daily/ Bugle/
+cd path/to/project/dir/The/ Daily/ Bugle/distr
 python app.py
 ```
 
@@ -130,7 +156,7 @@ If you wish to download all of the modules listed below, you can do so easily. F
 python --version
 ```
 
-This should return the current version of Python installed on your computer. Please note that you will need **Python 3.0.0** or greater to run this project. 
+This should return the current version of Python installed on your computer. Please note that you will need **Python 3.0.0** or greater to run this project.
 
 If you do not have Python, you can download the latest version [here](https://www.python.org/downloads/), which should come with `pip` installed.
 
@@ -155,7 +181,7 @@ This will change the current working directory to the cloned repo directory, the
 
 - venv
 
-`venv` is used to avoid collateral damage from running the program. In essence, it provides a buffer that protects your current computer state by on a seperate, isolated environment. If you are using Python 3.0.0 or higher, skip to the next step as `virtualenv` comes pre-installed. If you are using any Python distribution prior to 3.0.0, run the following in your terminal to create a virtual environment, replacing Name_Of_Environment with your desired name of the environment: 
+`venv` is used to avoid collateral damage from running the program. In essence, it provides a buffer that protects your current computer state by on a seperate, isolated environment. If you are using Python 3.0.0 or higher, skip to the next step as `virtualenv` comes pre-installed. If you are using any Python distribution prior to 3.0.0, run the following in your terminal to create a virtual environment, replacing Name_Of_Environment with your desired name of the environment:
 
 ```bash
 pip install virtualenv
