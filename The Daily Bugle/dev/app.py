@@ -23,13 +23,7 @@ WEATHER_STUB = "https://api.darksky.net/forecast/{}/{},{}" # api key, longitude,
 COMIC_STUB = "http://xkcd.com/{}/info.0.json" # comic number
 IPAPI_STUB = "https://ipapi.co/{}/json/"
 
-@app.route("/getIP", methods=["GET"])
 def getIP():
-    # return jsonify({'ip': request.remote_addr}), 200
-    # return request.headers['X-Real-IP']
-    # return request.environ['REMOTE_ADDR']
-    # return request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
-
     # use another api to get ip, returns a text
     qwerty = urllib.request.urlopen('https://api.ipify.org')
     # decode else binary
@@ -41,20 +35,16 @@ def home():
     # read json file containing the api keys
     with open('data/API_Keys/keys.json') as json_file:
         json_data = json.loads(json_file.read())
-    print(json_data) # should print           {'News': 'api_key', 'Weather': 'api_key', 'Comic': ''}
-    print(json_data['News']) #  should print      "api_key"
 
     # Checking the longitude and latitiude based on the ip address
-    print ("\n\nTHE IP ADDRESS: ")
-    print ( getIP() )
     p = urllib.request.urlopen(IPAPI_STUB.format(getIP()))
     ip = json.loads(p.read())
-    print (ip)
     location = ""
     location += ip['city'] + ", " + ip['country_name']
-    print (location)
+
     today = datetime.datetime.now().strftime("%Y-%m-%d")
-    #data = {}
+
+    #Try to open up content
     try:
         f = open('data/content.json', 'r')
     except Exception as e:
@@ -81,6 +71,7 @@ def home():
         data[today] = dict()
         data[today]['weather-summary'] = weather['daily']['summary']
         data[today]['weather-hourly'] = []
+        #Weather hourly is a list of dictionaries containing weather info for each hour
         for hour in weather['hourly']['data']:
             d = dict()
             data[today]['weather-hourly'] += [d]
@@ -113,6 +104,7 @@ def home():
     session['location'] = location
     session['current-hour'] = datetime.datetime.now().hour
     session['date'] = today
+
     f = float(data[today]['weather-hourly'][session['current-hour']]['temperature'])
     c = (f - 32.) * 5 / 9
     session['temp-f'] = str(f).split('.')[0] + '°'
@@ -189,7 +181,7 @@ def reset():
         r_answer = request.form.get("reg_answer")
         r_password = request.form.get("reg_password")
         check_pass = request.form.get("check_password")
-        all_usernames = db.qaDict()
+        all_usernames = db.qaDict() #Returns dict {user:answer_to_question}
         if r_username not in db.get_all_users():
             flash("Username not found")
         elif r_password != check_pass:
