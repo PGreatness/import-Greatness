@@ -211,11 +211,15 @@ def logout():
         session.pop('user')
     return redirect(url_for('home'))
 
+@app.route('/add', methods = ['GET'])
+def adding():
+
+    return redirect(url_for('home'))
 
 @app.route('/favorites', methods = ['GET'])
 def fav():
 
-    return redirect(url_for('/favorites'))
+    return render_template('favorites.html')
 
 
 if __name__ == "__main__":
