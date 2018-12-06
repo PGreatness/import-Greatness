@@ -55,6 +55,7 @@ def home():
     print (location)
 
     today = datetime.datetime.now().strftime("%Y-%m-%d")
+    try:
     f = open('data/content.json', 'r')
     data = json.loads(f.read())
     f.close()
