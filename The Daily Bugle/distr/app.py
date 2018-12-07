@@ -44,9 +44,17 @@ def home():
     print(json_data) # should print           {'News': 'api_key', 'Weather': 'api_key', 'Comic': ''}
     print(json_data['News']) #  should print      "api_key"
 
-    if json_data['Weather'] == "Your_DarkSky_API_Key":
-        flash("Error 1")
-        return render_template('error.html')
+    try:
+        w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], 40.7128, 74.0060))
+    except Exception as e:
+        print(e)
+        return render_template('error.html', errMessage = "DarkSky API Key not valid", errCode = 1)
+
+    try:
+        n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
+    except Exception as e:
+        print(e)
+        return render_template('error.html', errMessage = "New York Times API Key not valid", errCode = 2)
 
     # Checking the longitude and latitiude based on the ip address
     print ("\n\nTHE IP ADDRESS: ")
@@ -66,13 +74,13 @@ def home():
     # if it is time to update/never had it
     # update it
     if today not in data:
-        w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # based on your ip address location
+        #w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # based on your ip address location
         weather = json.loads(w.read())
 
         c = urllib.request.urlopen(COMIC_STUB.format(1))
         comic = json.loads(c.read())
 
-        n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
+        #n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
         news = json.loads(n.read())
 
         # Create our own json file for easier read/less space taken

@@ -4,165 +4,205 @@
 {% endblock %}
 
 {% block content %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">The Daily Bugle</a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#news">News</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#weather">Weather</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#comic">Comic</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav">
-      {% if 'user' not in session %}
-      <li class="nav-item active">
-        <a class="nav-link" href="/login">Login</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/register">Register</a>
-      </li>
-      {% else %}
-      <li class="nav-item active">
-        <a class="nav-link"> Logged in as {{session['user']}} </a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/logout"> Sign Out</a>
-      </li>
-      {% endif %}
-    </ul>
-  </div>
-</nav>
-
 <br>
 <br>
 <br>
 <br>
 
 <div class="container d-flex justify-content-center">
+
   <div class="row" id="rowTop">
+
     <div class="col-md-6">
-      <h2 class="font-weight-light">Welcome USERNAMEHERE<h2>
-      <p class="lead">Most recent article </p>
-      <a href="linkToMostRecentArticle" class="linkFix">Title of Article Here </a>
-    </div>
-    <div class="col-md-6">
-      <div class="card text-white bg-dark mb-3 center" id="weatherBox">
-        <div class="card-header">Location Goes Here</div>
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="center">
-              <img class="card-img-top" id="weatherPreviewImage" src="http://www.transparentpng.com/thumb/weather-report/android-weather-icons-png-12.png" alt="Image missing">
+    <!-- HERE -->
+      {% if warning %}
+          <h1 class="collapse show" id="warning">
+              By using this website, you agree to allowing us to use your IP for weather purposes ONLY
+              <button href="#warning" data-toggle="collapse"> Agree </button>
+          </h1>
+      {% endif %}
+     <!-- END HERE -->
+      {% if 'user' in session %}
+      <h2 class="font-weight-light">Welcome {{session['user']}}<h2>
+        {% endif %}
+        <p class="lead">Most recent article </p>
+        <h2><a href="{{data['news'][0]['link']}}" class="linkFix">{{data['news'][0]['title']}}</a></h2>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card text-white bg-dark mb-3 center weatherBox">
+          <div class="card-header">{{session['location']}}</div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="center">
+                <img class="card-img-top" id="weatherPreviewImage" src="http://www.transparentpng.com/thumb/weather-report/android-weather-icons-png-12.png" alt="Image missing">
+              </div>
             </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="card-body">
-              <div id="weatherPreview">
-                <h5 class="card-title collapse show" id="temperature">50F</h5>
-                <h5 class="card-title collapse" id="temperature">Celsius here</h5>
-                <button type="button" class="btn btn-primary btn-sm" href="#temperature" data-toggle="collapse">Change Units</button>
+            <div class="col-lg-6">
+              <div class="card-body">
+                <div class="weatherTemp">
+                  <h5 class="card-title collapse show" id="temperature">
+                      {{session['temp-f']}}F |
+                      <a href="#temperature" data-toggle="collapse"> °C </a>
+                  </h5>
+                  <h5 class="card-title collapse" id="temperature">
+                      {{session['temp-c']}}C |
+                      <a href="#temperature" data-toggle="collapse"> °F </a>
+                  </h5>
+                </div>
               </div>
             </div>
           </div>
+          <p class="card-text" id="bottomCardText">{{data['weather-summary']}}</p>
         </div>
-        <p class="card-text" id="bottomCardText">Summary of weather here</p>
       </div>
+
     </div>
   </div>
-</div>
 
-<br>
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        If you continue using our services, you agree to give us access to your ip address.
-      </div>
-      <div class="modal-footer">
-        <a href="http://127.0.0.1:5000/login">
-          <button type="button" class="btn btn-secondary">Nope</button>
-        </a>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">I agree</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container center" id="news">
-  <h1 class="display-4 fix">News</h1>
-  <!-- Newspaper info things will go in here -->
   <br>
-  <!-- <button href="#test " class="btn btn-default" data-toggle="collapse">Toggle Bar</button> -->
-  <div id="main">
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="list-group">
-          <!-- generate the a tags below using jinja and a for loop -->
-          <!-- e.g. <a href="{{id}}" data-toggle="collapse"  class="list-group-item list-group-item-action">{{title}}</a> -->
-          {% for article in data['news'] %}
-          <a href="{{'#test' + article['id']|string}}" data-toggle="collapse" class="list-group-item list-group-item-action">{{article['title']}}</a>
-          {% endfor %}
-        </div>
-      </div>
-      <div class="col-sm-8">
-        <!-- Generate items in the format below using jinja and the database-->
-        {% for article in data['news'] %}
-        {% if article['id'] == 0 %}
-        <div id="{{'test' + article['id']|string}}" class="list-group-item list-group-item-action flex-column align-items-start collapse show " data-parent="#main">
-          {% else %}
-          <div id="{{'test' + article['id']|string}}" class="list-group-item list-group-item-action flex-column align-items-start collapse" data-parent="#main">
-            {% endif %}
-            <div class="d-flex w-100 justify-content-start">
-              <a href="{{article['link']}}" class="linkFix"><h5 class="mb-1">{{article['title']}}</h5></a>
-              <form action="/favorite" method="POST">
-                  <button name="timeid" value="{{article['date']}},{{article['id']}}">
-              </form>
-            </div>
-            <div class="d-flex w-100 justify-content-start">
-              <small>{{article['date']}}</small>
-            </div>
-            <div class="d-flex w-100 justify-content-start">
-              <p class="mb-1">{{article['abstract']}}</p>
-            </div>
-            <small>{{article['image-caption']}}</small>
-            <img src="{{article['image-url']}}" class="img-fluid img-thumbnail" alt="Responsive image">
+
+  <div class="container center" id="news">
+    <h1 class="display-4 fixJump">News</h1>
+    <p class="lead">
+      Daily top stories from The New York Times
+    </p>
+    <!-- Newspaper info things will go in here -->
+    <br>
+    <!-- <button href="#test " class="btn btn-default" data-toggle="collapse">Toggle Bar</button> -->
+    <div id="main">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="list-group">
+            <!-- generate the a tags below using jinja and a for loop -->
+            <!-- e.g. <a href="{{id}}" data-toggle="collapse"  class="list-group-item list-group-item-action">{{title}}</a> -->
+            {% for article in data['news'] %}
+            <a href="{{'#a' + article['id']|string}}" data-toggle="collapse" class="list-group-item list-group-item-action">{{article['title']}}</a>
+            {% endfor %}
           </div>
-
-          {% endfor %}
-
+        </div>
+        <div class="col-sm-8">
+          <!-- Generate items in the format below using jinja and the database-->
+          {% for article in data['news'] %}
+          {% if article['id'] == 0 %}
+          <div id="{{'a' + article['id']|string}}" class="list-group-item list-group-item-action flex-column align-items-start collapse show " data-parent="#main">
+            {% else %}
+            <div id="{{'a' + article['id']|string}}" class="list-group-item list-group-item-action flex-column align-items-start collapse" data-parent="#main">
+              {% endif %}
+              <div class="d-flex w-100 justify-content-between">
+                <a href="{{article['link']}}" class="linkFix"><h5 class="mb-1">{{article['title']}}</h5></a>
+                <form action="/favorite" method="POST">
+                  <button name="timeid" class="btn btn-outline-primary btn-sm" value="{{article['date']}},{{article['id']}}">Favorite</button>
+                </form>
+              </div>
+              <div class="d-flex w-100 justify-content-start">
+                <small>{{article['date']}}</small>
+              </div>
+              <div class="d-flex w-100 justify-content-start">
+                <p class="mb-1">{{article['abstract']}}</p>
+              </div>
+              <small>{{article['image-caption']}}</small>
+              <img src="{{article['image-url']}}" class="img-fluid img-thumbnail" alt="Image missing">
+            </div>
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="container center" id="weather">
-    <h1 class="display-4 fix">Weather</h1>
-    <p> Weather stuff </p>
-    {{data['weather-summary']}}
-    <!-- Weather info things will go in here -->
-  </div>
+    <hr class="divider">
 
-  <div class="container center" id="comic">
-    <h1 class="display-4 fix">Comic!</h1>
-    <p> Comic stuff </p>
-    <img src="{{data['comic-image']}}" class="img-fluid img-thumbnail">
-    <!-- Comic info things will go in here -->
-  </div>
-  {% endblock %}
+    <!-- Weather section of website -->
+    <div class="container center" id="weather">
+      <h1 class="display-4 fixJump">Weather</h1>
+      <p class="lead">
+        The weather forecast for the current day, switch between Celsius and Fahrenheit by clicking on the desired unit
+      </p>
+      <div id="carouselControls" class="carousel slide" data-ride="carousel" data-interval="10000">
+        <ol class="carousel-indicators">
+          <!-- Leave code below as it is, always going to be 8 items since 24 hrs in a day so this is fine as is -->
+          <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselIndicators" data-slide-to="3"></li>
+          <li data-target="#carouselIndicators" data-slide-to="4"></li>
+          <li data-target="#carouselIndicators" data-slide-to="5"></li>
+          <li data-target="#carouselIndicators" data-slide-to="6"></li>
+          <li data-target="#carouselIndicators" data-slide-to="7"></li>
+        </ol>
+
+        <div class="carousel-inner">
+
+          <!-- Below is what you will fill up w jinja (this is for the first 3 hours, since each slide holds 3 hours and this is the default shown one)-->
+          {% for i in range(8) %}
+          {% if i == 0 %}
+          <div class="carousel-item active">
+            {% else %}
+            <div class="carousel-item">
+              {% endif %}
+              <div class="card-group">
+                {% for j in range(3) %}
+                <div class="card text-white bg-dark mb-3 center weatherBox">
+
+                  <!-- Puts the correct time i.e 0 => 12:00AM, 4 => 4:00AM -->
+                  {% if (i * 3 + j) < 12 %}
+                  {% if i * 3 + j == 0 %}
+                  <div class="card-header">12:00 AM</div>
+                  {% else %}
+                  <div class="card-header">{{((i*3+j))|string + ':00 AM'}} </div>
+                  {% endif %}
+                  {% else %}
+                  {% if i * 3 + j == 12 %}
+                  <div class="card-header">12:00 PM</div>
+                  {% else %}
+                  <div class="card-header">{{((i*3+j)%12)|string + ':00 PM'}} </div>
+                  {% endif %}
+                  {% endif %}
+                  <!-- In below, replace src with the icon -->
+                  <div class="center">
+                    <img class="card-img-top" id="weatherImage" src="http://www.transparentpng.com/thumb/weather-report/android-weather-icons-png-12.png" alt="Image missing">
+                  </div>
+
+                  <!-- Replace the celsius and fahrenheit place with the hourly data instead -->
+                  <div class="card-body">
+                    <div class="weatherTemp">
+                      <h3 class="card-title collapse show" id="temperature">
+                        {{data['weather-hourly'][i * 3 + j]['temp-f']}}°F |
+                        <a href="#temperature" data-toggle="collapse"> °C </a>
+                      </h3>
+                      <h3 class="card-title collapse" id="temperature">
+                        {{data['weather-hourly'][i * 3 + j]['temp-c']}}°C |
+                        <a href="#temperature" data-toggle="collapse"> °F </a>
+                      </h3>
+                      <h4 class="card-title"> {{data['weather-hourly'][i * 3 + j]['summary']}}</h4>
+                    </div>
+                  </div>
+
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            {% endfor %}
+
+
+
+          </div>
+          <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="container center" id="comic">
+        <h1 class="display-4 fixJump">Daily xkcd</h1>
+        <img src="{{data['comic-image']}}" class="img-fluid img-thumbnail">
+        <!-- Comic info things will go in here -->
+      </div>
+      {% endblock %}
