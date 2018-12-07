@@ -266,7 +266,7 @@ def fav():
         list = db.show_Fav(user)
         for article in list:
             # print(article)
-            print(search(article))
+            #print(search(article))
             data.append(search(article)) # article is the timeid
         return render_template('favorites.html', data = data)
     else:
