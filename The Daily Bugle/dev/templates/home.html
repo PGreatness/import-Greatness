@@ -35,7 +35,7 @@
           <div class="row">
             <div class="col-lg-6">
               <div class="center">
-                <img class="card-img-top" id="weatherPreviewImage" src="http://www.transparentpng.com/thumb/weather-report/android-weather-icons-png-12.png" alt="Image missing">
+                <img class="card-img-top" id="weatherPreviewImage" src="{{data['weather-icon']}}" alt="Image missing">
               </div>
             </div>
             <div class="col-lg-6">
@@ -160,7 +160,7 @@
                   {% endif %}
                   <!-- In below, replace src with the icon -->
                   <div class="center">
-                    <img class="card-img-top" id="weatherImage" src="http://www.transparentpng.com/thumb/weather-report/android-weather-icons-png-12.png" alt="Image missing">
+                    <img class="card-img-top" id="weatherImage" src="{{data['weather-hourly'][i * 3 + j]['icon']}}" alt="Image missing">
                   </div>
 
                   <!-- Replace the celsius and fahrenheit place with the hourly data instead -->

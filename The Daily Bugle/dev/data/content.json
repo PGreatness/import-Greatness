@@ -3,354 +3,355 @@
         "weather-summary": "No precipitation throughout the week, with high temperatures bottoming out at 34\u00b0F on Saturday.",
         "weather-hourly": [
             {
-                "time": 1544144400,
-                "icon": "cloudy",
-                "temp-f": "36",
-                "temp-c": "2",
-                "summary": "Overcast"
-            },
-            {
-                "time": 1544148000,
-                "icon": "cloudy",
-                "temp-f": "36",
-                "temp-c": "2",
-                "summary": "Overcast"
-            },
-            {
                 "time": 1544151600,
-                "icon": "cloudy",
-                "temp-f": "36",
-                "temp-c": "2",
+                "icon": "/static/icons/cloudy.svg",
+                "temp-f": "37",
+                "temp-c": "3",
                 "summary": "Overcast"
             },
             {
                 "time": 1544155200,
-                "icon": "partly-cloudy-night",
-                "temp-f": "36",
-                "temp-c": "2",
-                "summary": "Mostly Cloudy"
+                "icon": "/static/icons/cloudy.svg",
+                "temp-f": "37",
+                "temp-c": "3",
+                "summary": "Overcast"
             },
             {
                 "time": 1544158800,
-                "icon": "partly-cloudy-night",
-                "temp-f": "36",
-                "temp-c": "2",
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "37",
+                "temp-c": "3",
                 "summary": "Mostly Cloudy"
             },
             {
                 "time": 1544162400,
-                "icon": "partly-cloudy-night",
-                "temp-f": "36",
-                "temp-c": "2",
-                "summary": "Partly Cloudy"
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "37",
+                "temp-c": "3",
+                "summary": "Mostly Cloudy"
             },
             {
                 "time": 1544166000,
-                "icon": "partly-cloudy-night",
-                "temp-f": "36",
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "37",
                 "temp-c": "2",
                 "summary": "Partly Cloudy"
             },
             {
                 "time": 1544169600,
-                "icon": "clear-night",
+                "icon": "/static/icons/night.svg",
                 "temp-f": "36",
                 "temp-c": "2",
                 "summary": "Clear"
             },
             {
                 "time": 1544173200,
-                "icon": "clear-night",
+                "icon": "/static/icons/night.svg",
                 "temp-f": "35",
                 "temp-c": "2",
                 "summary": "Clear"
             },
             {
                 "time": 1544176800,
-                "icon": "clear-night",
+                "icon": "/static/icons/night.svg",
                 "temp-f": "34",
                 "temp-c": "1",
                 "summary": "Clear"
             },
             {
                 "time": 1544180400,
-                "icon": "clear-night",
+                "icon": "/static/icons/night.svg",
                 "temp-f": "33",
                 "temp-c": "0",
                 "summary": "Clear"
             },
             {
                 "time": 1544184000,
-                "icon": "clear-night",
+                "icon": "/static/icons/night.svg",
                 "temp-f": "32",
                 "temp-c": "0",
                 "summary": "Clear"
             },
             {
                 "time": 1544187600,
-                "icon": "clear-day",
+                "icon": "/static/icons/day.svg",
                 "temp-f": "32",
                 "temp-c": "0",
                 "summary": "Clear"
             },
             {
                 "time": 1544191200,
-                "icon": "clear-day",
+                "icon": "/static/icons/day.svg",
                 "temp-f": "33",
-                "temp-c": "0",
+                "temp-c": "1",
                 "summary": "Clear"
             },
             {
                 "time": 1544194800,
-                "icon": "clear-day",
+                "icon": "/static/icons/day.svg",
                 "temp-f": "34",
                 "temp-c": "1",
                 "summary": "Clear"
             },
             {
                 "time": 1544198400,
-                "icon": "clear-day",
-                "temp-f": "36",
+                "icon": "/static/icons/day.svg",
+                "temp-f": "35",
                 "temp-c": "2",
                 "summary": "Clear"
             },
             {
                 "time": 1544202000,
-                "icon": "clear-day",
-                "temp-f": "37",
+                "icon": "/static/icons/day.svg",
+                "temp-f": "36",
                 "temp-c": "2",
                 "summary": "Clear"
             },
             {
                 "time": 1544205600,
-                "icon": "clear-day",
+                "icon": "/static/icons/day.svg",
                 "temp-f": "37",
-                "temp-c": "3",
+                "temp-c": "2",
                 "summary": "Clear"
             },
             {
                 "time": 1544209200,
-                "icon": "clear-day",
+                "icon": "/static/icons/day.svg",
                 "temp-f": "37",
                 "temp-c": "2",
                 "summary": "Clear"
             },
             {
                 "time": 1544212800,
-                "icon": "clear-day",
+                "icon": "/static/icons/cloudy-day-2.svg",
                 "temp-f": "36",
                 "temp-c": "2",
-                "summary": "Clear"
+                "summary": "Partly Cloudy"
             },
             {
                 "time": 1544216400,
-                "icon": "clear-day",
+                "icon": "/static/icons/cloudy-day-2.svg",
                 "temp-f": "35",
                 "temp-c": "2",
-                "summary": "Clear"
+                "summary": "Partly Cloudy"
             },
             {
                 "time": 1544220000,
-                "icon": "clear-night",
+                "icon": "/static/icons/cloudy-night-2.svg",
                 "temp-f": "34",
                 "temp-c": "1",
-                "summary": "Clear"
+                "summary": "Partly Cloudy"
             },
             {
                 "time": 1544223600,
-                "icon": "clear-night",
-                "temp-f": "32",
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "33",
                 "temp-c": "0",
-                "summary": "Clear"
+                "summary": "Partly Cloudy"
             },
             {
                 "time": 1544227200,
-                "icon": "clear-night",
+                "icon": "/static/icons/cloudy-night-2.svg",
                 "temp-f": "31",
+                "temp-c": "-0",
+                "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544230800,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "30",
                 "temp-c": "-0",
                 "summary": "Clear"
             },
             {
-                "time": 1544230800,
-                "icon": "clear-night",
-                "temp-f": "30",
-                "temp-c": "-1",
-                "summary": "Clear"
-            },
-            {
                 "time": 1544234400,
-                "icon": "clear-night",
+                "icon": "/static/icons/night.svg",
                 "temp-f": "29",
                 "temp-c": "-1",
                 "summary": "Clear"
             },
             {
                 "time": 1544238000,
-                "icon": "clear-night",
-                "temp-f": "28",
+                "icon": "/static/icons/night.svg",
+                "temp-f": "29",
                 "temp-c": "-1",
                 "summary": "Clear"
             },
             {
                 "time": 1544241600,
-                "icon": "clear-night",
+                "icon": "/static/icons/night.svg",
                 "temp-f": "28",
                 "temp-c": "-1",
                 "summary": "Clear"
             },
             {
                 "time": 1544245200,
-                "icon": "clear-night",
+                "icon": "/static/icons/night.svg",
                 "temp-f": "28",
                 "temp-c": "-2",
                 "summary": "Clear"
             },
             {
                 "time": 1544248800,
-                "icon": "clear-night",
+                "icon": "/static/icons/night.svg",
                 "temp-f": "27",
                 "temp-c": "-2",
                 "summary": "Clear"
             },
             {
                 "time": 1544252400,
-                "icon": "clear-night",
+                "icon": "/static/icons/night.svg",
                 "temp-f": "27",
                 "temp-c": "-2",
                 "summary": "Clear"
             },
             {
                 "time": 1544256000,
-                "icon": "clear-night",
+                "icon": "/static/icons/night.svg",
                 "temp-f": "27",
                 "temp-c": "-2",
                 "summary": "Clear"
             },
             {
                 "time": 1544259600,
-                "icon": "clear-night",
+                "icon": "/static/icons/night.svg",
                 "temp-f": "26",
                 "temp-c": "-2",
                 "summary": "Clear"
             },
             {
                 "time": 1544263200,
-                "icon": "clear-night",
+                "icon": "/static/icons/night.svg",
                 "temp-f": "26",
                 "temp-c": "-3",
                 "summary": "Clear"
             },
             {
                 "time": 1544266800,
-                "icon": "clear-night",
+                "icon": "/static/icons/night.svg",
                 "temp-f": "25",
                 "temp-c": "-3",
                 "summary": "Clear"
             },
             {
                 "time": 1544270400,
-                "icon": "clear-night",
+                "icon": "/static/icons/night.svg",
                 "temp-f": "25",
                 "temp-c": "-3",
                 "summary": "Clear"
             },
             {
                 "time": 1544274000,
-                "icon": "clear-day",
+                "icon": "/static/icons/day.svg",
                 "temp-f": "27",
                 "temp-c": "-2",
                 "summary": "Clear"
             },
             {
                 "time": 1544277600,
-                "icon": "clear-day",
+                "icon": "/static/icons/day.svg",
                 "temp-f": "28",
                 "temp-c": "-1",
                 "summary": "Clear"
             },
             {
                 "time": 1544281200,
-                "icon": "clear-day",
+                "icon": "/static/icons/day.svg",
                 "temp-f": "29",
                 "temp-c": "-1",
                 "summary": "Clear"
             },
             {
                 "time": 1544284800,
-                "icon": "partly-cloudy-day",
+                "icon": "/static/icons/cloudy-day-2.svg",
                 "temp-f": "31",
                 "temp-c": "-0",
                 "summary": "Partly Cloudy"
             },
             {
                 "time": 1544288400,
-                "icon": "partly-cloudy-day",
+                "icon": "/static/icons/cloudy-day-2.svg",
                 "temp-f": "32",
                 "temp-c": "0",
                 "summary": "Partly Cloudy"
             },
             {
                 "time": 1544292000,
-                "icon": "partly-cloudy-day",
+                "icon": "/static/icons/cloudy-day-2.svg",
                 "temp-f": "33",
                 "temp-c": "0",
                 "summary": "Partly Cloudy"
             },
             {
                 "time": 1544295600,
-                "icon": "partly-cloudy-day",
+                "icon": "/static/icons/cloudy-day-2.svg",
                 "temp-f": "33",
                 "temp-c": "1",
                 "summary": "Partly Cloudy"
             },
             {
                 "time": 1544299200,
-                "icon": "partly-cloudy-day",
+                "icon": "/static/icons/cloudy-day-2.svg",
                 "temp-f": "34",
                 "temp-c": "1",
                 "summary": "Partly Cloudy"
             },
             {
                 "time": 1544302800,
-                "icon": "partly-cloudy-day",
+                "icon": "/static/icons/cloudy-day-2.svg",
                 "temp-f": "34",
                 "temp-c": "1",
                 "summary": "Mostly Cloudy"
             },
             {
                 "time": 1544306400,
-                "icon": "partly-cloudy-night",
+                "icon": "/static/icons/cloudy-night-2.svg",
                 "temp-f": "34",
                 "temp-c": "1",
                 "summary": "Partly Cloudy"
             },
             {
                 "time": 1544310000,
-                "icon": "partly-cloudy-night",
+                "icon": "/static/icons/cloudy-night-2.svg",
                 "temp-f": "33",
                 "temp-c": "0",
                 "summary": "Partly Cloudy"
             },
             {
                 "time": 1544313600,
-                "icon": "partly-cloudy-night",
+                "icon": "/static/icons/cloudy-night-2.svg",
                 "temp-f": "32",
                 "temp-c": "0",
                 "summary": "Partly Cloudy"
             },
             {
                 "time": 1544317200,
-                "icon": "partly-cloudy-night",
+                "icon": "/static/icons/cloudy-night-2.svg",
                 "temp-f": "32",
                 "temp-c": "0",
                 "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544320800,
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "31",
+                "temp-c": "-0",
+                "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544324400,
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "31",
+                "temp-c": "-0",
+                "summary": "Partly Cloudy"
             }
         ],
-        "comic-image": "https://imgs.xkcd.com/comics/barrel_cropped_(1).jpg",
+        "weather-icon": "/static/icons/cloudy.svg",
+        "comic-image": "https://imgs.xkcd.com/comics/middle_latitudes.png",
         "news": [
             {
                 "id": 0,
-                "title": "Arrest of Chinese Executive Intensifies Trade War Fears",
+                "title": "Arrest of Huawei Executive Intensifies Trade War Fears",
                 "abstract": "The arrest of Meng Wanzhou, an executive at the Chinese company Huawei, could imperil trade talks. But it is part of the Trump administration\u2019s efforts to contain China and Iran.",
                 "link": "https://www.nytimes.com/2018/12/06/us/politics/huawei-meng-china-iran.html",
                 "date": "2018-12-06",
@@ -359,15 +360,6 @@
             },
             {
                 "id": 1,
-                "title": "Whiplash on Wall Street as Tension About Global Economy Mounts",
-                "abstract": "A stock rout that started in Asia, extended to Europe and rattled Wall Street early in the day reversed course before the close of trading.",
-                "link": "https://www.nytimes.com/2018/12/06/business/stocks-wall-street-huawei-trade.html",
-                "date": "2018-12-06",
-                "image-url": "https://static01.nyt.com/images/2018/12/06/business/dealbook/live-markets-global-1544108406531/live-markets-global-1544108406531-superJumbo-v4.jpg",
-                "image-caption": ""
-            },
-            {
-                "id": 2,
                 "title": "Arrest Shakes Huawei as Global Skepticism of Its Business Grows",
                 "abstract": "Britain, New Zealand, Australia and other countries have grown increasingly worried about potential security risks related to the Chinese telecom giant.",
                 "link": "https://www.nytimes.com/2018/12/06/technology/huawei-arrest-meng-wanzhou.html",
@@ -376,7 +368,7 @@
                 "image-caption": "A shopping mall in Shanghai on Thursday. China sees Huawei as a main driver of its ambitions for technological leadership. But much of the world sees it as a potential conduit for espionage and sabotage."
             },
             {
-                "id": 3,
+                "id": 2,
                 "title": "Trump Plans Major Rollback of Sage Grouse Protections to Spur Oil Exploration",
                 "abstract": "The proposal would limit the bird\u2019s protected habitat to just 1.8 million acres, essentially opening up nine million acres of land to drilling.",
                 "link": "https://www.nytimes.com/2018/12/06/climate/trump-sage-grouse-oil.html",
@@ -385,7 +377,7 @@
                 "image-caption": "A plan to roll back sage grouse protections is expected to be finalized in 2019."
             },
             {
-                "id": 4,
+                "id": 3,
                 "title": "Trump Rule Would Limit E.P.A.\u2019s Control Over Water Pollution",
                 "abstract": "The Trump administration\u2019s proposal would significantly weaken a major Obama-era regulation on clean water, according to a talking points memo.",
                 "link": "https://www.nytimes.com/2018/12/06/climate/trump-water-pollution-wotus-replacement.html",
@@ -394,7 +386,7 @@
                 "image-caption": "Runoff water flowing into a pond in Irvine, Calif."
             },
             {
-                "id": 5,
+                "id": 4,
                 "title": "\u2018Yellow Vest\u2019 Protests Shake France. Here\u2019s the Lesson for Climate Change.",
                 "abstract": "There is little doubt among scientists and economists that carbon taxes are needed to reduce fossil fuel dependence. The question is how to design them to cushion the blow on the most vulnerable.",
                 "link": "https://www.nytimes.com/2018/12/06/world/europe/france-fuel-carbon-tax.html",
@@ -403,13 +395,22 @@
                 "image-caption": "France\u2019s suspension of a fuel tax increase after violent protests signaled the perils that governments in wealthier countries may face in setting policies to fight climate change."
             },
             {
-                "id": 6,
+                "id": 5,
                 "title": "Making President Trump\u2019s Bed: A Housekeeper Without Papers",
                 "abstract": "At the president\u2019s New Jersey golf course, an undocumented immigrant has worked as a maid since 2013. She said she never imagined she \u201cwould see such important people close up.\u201d",
                 "link": "https://www.nytimes.com/2018/12/06/us/trump-bedminster-golf-undocumented-workers.html",
                 "date": "2018-12-06",
                 "image-url": "https://static01.nyt.com/images/2018/12/07/us/07trumpgolfcourse-p1/07trumpgolfcourse01-superJumbo-v2.jpg",
                 "image-caption": "Victorina Morales at her home in Bound Brook, N.J. She left Guatemala in 1999 and illegally entered the United States. She started working at the Trump National Golf Club in Bedminster, N.J., in 2013."
+            },
+            {
+                "id": 6,
+                "title": "Trump Is Expected to Name State Department Spokeswoman to U.N. Post",
+                "abstract": "Heather Nauert, a former Fox News anchor who has been the public face of the State Department since last year, would replace Nikki Haley as ambassador to the United Nations.",
+                "link": "https://www.nytimes.com/2018/12/06/us/politics/heather-nauert-united-nations.html",
+                "date": "2018-12-06",
+                "image-url": "https://static01.nyt.com/images/2018/12/07/us/politics/07dc-nauert/merlin_146214939_e215447c-6ae2-45ff-966b-46431a61769e-superJumbo.jpg",
+                "image-caption": "Heather Nauert, the State Department spokeswoman, last year in Washington. If confirmed as the next United Nations envoy, she would be one of the most prominent promoters of the president\u2019s \u201cAmerica First\u201d foreign policy."
             }
         ]
     }

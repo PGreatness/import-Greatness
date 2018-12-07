@@ -22,6 +22,17 @@ NEWS_STUB = "https://api.nytimes.com/svc/topstories/v2/{}.json?api-key={}" # sec
 WEATHER_STUB = "https://api.darksky.net/forecast/{}/{},{}" # api key, longitude, latitude
 COMIC_STUB = "http://xkcd.com/info.0.json" # comic
 IPAPI_STUB = "https://ipapi.co/{}/json/"
+ICONS = dict()
+ICONS['clear-day'] = '/static/icons/day.svg'
+ICONS['clear-night'] = '/static/icons/night.svg'
+ICONS['cloudy'] = '/static/icons/cloudy.svg'
+ICONS['rain'] = '/static/icons/rainy-1.svg'
+ICONS['snow'] = '/static/icons/snowy-1.svg'
+ICONS['sleet'] = '/static/icons/rainy-7.svg'
+ICONS['wind'] = '/static/icons/cloudy-day-1.svg'
+ICONS['fog'] = '/static/icons/cloudy.svg'
+ICONS['partly-cloudy-day'] = '/static/icons/cloudy-day-2.svg'
+ICONS['partly-cloudy-night'] = '/static/icons/cloudy-night-2.svg'
 
 def getIP():
     # use another api to get ip, returns a text
@@ -71,12 +82,13 @@ def home():
         data[today] = dict()
         data[today]['weather-summary'] = weather['daily']['summary']
         data[today]['weather-hourly'] = []
+        data[today]['weather-icon'] = ICONS[weather['currently']['icon']]
         #Weather hourly is a list of dictionaries containing weather info for each hour
         for hour in weather['hourly']['data']:
             d = dict()
             data[today]['weather-hourly'] += [d]
             d['time'] = hour['time']
-            d['icon'] = hour['icon']
+            d['icon'] = ICONS[hour['icon']]
             temp = float(hour['temperature'])
             d['temp-f'] = str(temp).split('.')[0]
             d['temp-c'] = str((temp - 32.) * 5 / 9).split('.')[0]
