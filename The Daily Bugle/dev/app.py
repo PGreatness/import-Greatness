@@ -59,13 +59,13 @@ def home():
         w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude']))
     except Exception as e:
         print(e)
-        return render_template('error.html', errMessage = "DarkSky API Key not valid", errCode = 1)
+        return render_template('error.html', err = e)
 
     try:
         n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
     except Exception as e:
         print(e)
-        return render_template('error.html', errMessage = "New York Times API Key not valid", errCode = 2)
+        return render_template('error.html', err = e)
 
     #Try to open up content
     try:
