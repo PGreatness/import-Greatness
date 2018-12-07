@@ -77,7 +77,9 @@ def home():
             data[today]['weather-hourly'] += [d]
             d['time'] = hour['time']
             d['icon'] = hour['icon']
-            d['temperature'] = hour['temperature']
+            temp = float(hour['temperature'])
+            d['temp-f'] = str(temp).split('.')[0]
+            d['temp-c'] = str((temp - 32.) * 5 / 9).split('.')[0]
             d['summary'] = hour['summary']
         data[today]['comic-image'] = comic['img']
         data[today]['news'] = []
@@ -105,7 +107,7 @@ def home():
     session['current-hour'] = datetime.datetime.now().hour
     session['date'] = today
 
-    f = float(data[today]['weather-hourly'][session['current-hour']]['temperature'])
+    f = float(data[today]['weather-hourly'][session['current-hour']]['temp-f'])
     c = (f - 32.) * 5 / 9
     session['temp-f'] = str(f).split('.')[0] + '°'
     session['temp-c'] = str(c).split('.')[0] + '°'

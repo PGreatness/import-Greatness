@@ -103,8 +103,8 @@
                 <a href="{{article['link']}}" class="linkFix"><h5 class="mb-1">{{article['title']}}</h5></a>
                 <form action="/favorite" method="POST">
                   <button name="timeid" value="{{article['date']}},{{article['id']}}">
-                  </form>
-                </div>
+                </form>
+              </div>
                 <div class="d-flex w-100 justify-content-start">
                   <small>{{article['date']}}</small>
                 </div>
@@ -140,162 +140,47 @@
           <div class="carousel-inner">
 
             <!-- Below is what you will fill up w jinja (this is for the first 3 hours, since each slide holds 3 hours and this is the default shown one)-->
-            <div class="carousel-item active">
-              <div class="card-group">
+            {% for i in range(8) %}
+                {% if i == 0 %}
+                <div class="carousel-item active">
+                {% else %}
+                <div class="carousel-item">
+                {% endif %}
+                    <div class="card-group">
+                    {% for j in range(3) %}
+                        <div class="card text-white bg-dark mb-3 center weatherBox">
 
-                <div class="card text-white bg-dark mb-3 center weatherBox">
+                            <!-- Insert the time below -->
+                            <div class="card-header">{{ i * 3 + j}}</div>
 
-                  <!-- Insert the time below -->
-                  <div class="card-header">Time here</div>
+                            <!-- In below, replace src with the icon -->
+                            <div class="center">
+                              <img class="card-img-top" id="weatherImage" src="http://www.transparentpng.com/thumb/weather-report/android-weather-icons-png-12.png" alt="Image missing">
+                            </div>
 
-                  <!-- In below, replace src with the icon -->
-                  <div class="center">
-                    <img class="card-img-top" id="weatherImage" src="http://www.transparentpng.com/thumb/weather-report/android-weather-icons-png-12.png" alt="Image missing">
-                  </div>
+                            <!-- Replace the celsius and fahrenheit place with the hourly data instead -->
+                            <div class="card-body">
+                              <div class="weatherTemp">
+                                <h3 class="card-title collapse show" id="temperature">
+                                    {{data['weather-hourly'][i * 3 + j]['temp-f']}}°F |
+                                    <a href="#temperature" data-toggle="collapse"> °C </a>
+                                </h3>
+                                <h3 class="card-title collapse" id="temperature">
+                                    {{data['weather-hourly'][i * 3 + j]['temp-c']}}°C |
+                                    <a href="#temperature" data-toggle="collapse"> °F </a>
+                                </h3>
+                                <h4 class="card-title"> {{data['weather-hourly'][i * 3 + j]['summary']}}</h4>
+                              </div>
+                            </div>
 
-                  <!-- Replace the celsius and fahrenheit place with the hourly data instead -->
-                  <div class="card-body">
-                    <div class="weatherTemp">
-                      <h3 class="card-title collapse show" id="temperature">{{session['temp-f']}}F</h3>
-                      <h3 class="card-title collapse" id="temperature">{{session['temp-c']}}C</h3>
-                      <button type="button" class="btn btn-primary btn-sm" href="#temperature" data-toggle="collapse">Change Units</button>
+                        </div>
+                    {% endfor %}
                     </div>
-                  </div>
-
                 </div>
+            {% endfor %}
 
-                <!-- Basically generate 3 of the cards above then create a new carousel-item (without active in the class) with another 3 cards with generated data -->
-                <div class="card text-white bg-dark mb-3 center weatherBox">
-                  <div class="card-header">Time here</div>
 
-                  <div class="center">
-                    <img class="card-img-top" id="weatherImage" src="http://www.transparentpng.com/thumb/weather-report/android-weather-icons-png-12.png" alt="Image missing">
-                  </div>
 
-                  <div class="card-body">
-                    <div class="weatherTemp">
-                      <h3 class="card-title collapse show" id="temperature">{{session['temp-f']}}F</h3>
-                      <h3 class="card-title collapse" id="temperature">{{session['temp-c']}}C</h3>
-                      <button type="button" class="btn btn-primary btn-sm" href="#temperature" data-toggle="collapse">Change Units</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="card text-white bg-dark mb-3 center weatherBox">
-                  <div class="card-header">Time here</div>
-
-                  <div class="center">
-                    <img class="card-img-top" id="weatherImage" src="http://www.transparentpng.com/thumb/weather-report/android-weather-icons-png-12.png" alt="Image missing">
-                  </div>
-
-                  <div class="card-body">
-                    <div class="weatherTemp">
-                      <h3 class="card-title collapse show" id="temperature">{{session['temp-f']}}F</h3>
-                      <h3 class="card-title collapse" id="temperature">{{session['temp-c']}}C</h3>
-                      <button type="button" class="btn btn-primary btn-sm" href="#temperature" data-toggle="collapse">Change Units</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="carousel-item">
-              <div class="card-group">
-                <div class="card text-white bg-dark mb-3 center weatherBox">
-                  <div class="card-header">Time here</div>
-
-                  <div class="center">
-                    <img class="card-img-top" id="weatherImage" src="http://www.transparentpng.com/thumb/weather-report/android-weather-icons-png-12.png" alt="Image missing">
-                  </div>
-
-                  <div class="card-body">
-                    <div class="weatherTemp">
-                      <h3 class="card-title collapse show" id="temperature">{{session['temp-f']}}F</h3>
-                      <h3 class="card-title collapse" id="temperature">{{session['temp-c']}}C</h3>
-                      <button type="button" class="btn btn-primary btn-sm" href="#temperature" data-toggle="collapse">Change Units</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="card text-white bg-dark mb-3 center weatherBox">
-                  <div class="card-header">Time here</div>
-
-                  <div class="center">
-                    <img class="card-img-top" id="weatherImage" src="http://www.transparentpng.com/thumb/weather-report/android-weather-icons-png-12.png" alt="Image missing">
-                  </div>
-
-                  <div class="card-body">
-                    <div class="weatherTemp">
-                      <h3 class="card-title collapse show" id="temperature">{{session['temp-f']}}F</h3>
-                      <h3 class="card-title collapse" id="temperature">{{session['temp-c']}}C</h3>
-                      <button type="button" class="btn btn-primary btn-sm" href="#temperature" data-toggle="collapse">Change Units</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="card text-white bg-dark mb-3 center weatherBox">
-                  <div class="card-header">Time here</div>
-
-                  <div class="center">
-                    <img class="card-img-top" id="weatherImage" src="http://www.transparentpng.com/thumb/weather-report/android-weather-icons-png-12.png" alt="Image missing">
-                  </div>
-
-                  <div class="card-body">
-                    <div class="weatherTemp">
-                      <h3 class="card-title collapse show" id="temperature">{{session['temp-f']}}F</h3>
-                      <h3 class="card-title collapse" id="temperature">{{session['temp-c']}}C</h3>
-                      <button type="button" class="btn btn-primary btn-sm" href="#temperature" data-toggle="collapse">Change Units</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="card-group">
-                <div class="card text-white bg-dark mb-3 center weatherBox">
-                  <div class="card-header">Time here</div>
-
-                  <div class="center">
-                    <img class="card-img-top" id="weatherImage" src="http://www.transparentpng.com/thumb/weather-report/android-weather-icons-png-12.png" alt="Image missing">
-                  </div>
-
-                  <div class="card-body">
-                    <div class="weatherTemp">
-                      <h3 class="card-title collapse show" id="temperature">{{session['temp-f']}}F</h3>
-                      <h3 class="card-title collapse" id="temperature">{{session['temp-c']}}C</h3>
-                      <button type="button" class="btn btn-primary btn-sm" href="#temperature" data-toggle="collapse">Change Units</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="card text-white bg-dark mb-3 center weatherBox">
-                  <div class="card-header">Time here</div>
-
-                  <div class="center">
-                    <img class="card-img-top" id="weatherImage" src="http://www.transparentpng.com/thumb/weather-report/android-weather-icons-png-12.png" alt="Image missing">
-                  </div>
-
-                  <div class="card-body">
-                    <div class="weatherTemp">
-                      <h3 class="card-title collapse show" id="temperature">{{session['temp-f']}}F</h3>
-                      <h3 class="card-title collapse" id="temperature">{{session['temp-c']}}C</h3>
-                      <button type="button" class="btn btn-primary btn-sm" href="#temperature" data-toggle="collapse">Change Units</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="card text-white bg-dark mb-3 center weatherBox">
-                  <div class="card-header">Time here</div>
-
-                  <div class="center">
-                    <img class="card-img-top" id="weatherImage" src="http://www.transparentpng.com/thumb/weather-report/android-weather-icons-png-12.png" alt="Image missing">
-                  </div>
-
-                  <div class="card-body">
-                    <div class="weatherTemp">
-                      <h3 class="card-title collapse show" id="temperature">{{session['temp-f']}}F</h3>
-                      <h3 class="card-title collapse" id="temperature">{{session['temp-c']}}C</h3>
-                      <button type="button" class="btn btn-primary btn-sm" href="#temperature" data-toggle="collapse">Change Units</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
           <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
