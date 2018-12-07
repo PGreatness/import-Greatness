@@ -108,7 +108,7 @@ def home():
             d['summary'] = hour['summary']
         data[today]['comic-image'] = comic['img']
         data[today]['news'] = []
-        for i in range(7): #add article info (dicts) into list of articles
+        for i in range(15): #add article info (dicts) into list of articles
             data[today]['news'] += [dict()]
             copy = data[today]['news'][i]
             article = news['results'][i]
@@ -249,7 +249,8 @@ def adding():
     print(timeid, "the timeid")
     db.add_Fav(user, timeid)
     search(timeid)
-    return redirect(url_for('home'))
+    flash("Successfully added article to favorites")
+    return redirect(url_for('fav'))
 
 @app.route('/favorites', methods = ['GET'])
 def fav():

@@ -9,7 +9,7 @@
 <br>
 <br>
 
-<!-- HERE -->
+<!-- Warning to user that ipapi is being used -->
 {% if warning %}
 <div class="container">
 <div  class="alert alert-warning center collapse show" id="warning"role="alert">
@@ -21,7 +21,8 @@
 </div>
 </div>
 {% endif %}
-<!-- END HERE -->
+
+
 <div class="container d-flex justify-content-center">
 
   <div class="row" id="rowTop">
@@ -35,6 +36,7 @@
 
       <div class="col-md-6">
         <div class="card text-white bg-dark mb-3 center weatherBox">
+          <!-- Displays location of the user -->
           <div class="card-header">{{session['location']}}</div>
           <div class="row">
             <div class="col-lg-6">
@@ -44,6 +46,7 @@
             </div>
             <div class="col-lg-6">
               <div class="card-body">
+                <!-- Allows switching between celsius and fahrenheit for temperature using bootstrap's collapse-->
                 <div class="weatherTemp">
                   <h5 class="card-title collapse show" id="temperature">
                     {{session['temp-f']}}F |
@@ -57,6 +60,7 @@
               </div>
             </div>
           </div>
+          <!-- Shows summary of the weather for the day -->
           <p class="card-text" id="bottomCardText">{{data['weather-summary']}}</p>
         </div>
       </div>
@@ -71,23 +75,21 @@
     <p class="lead">
       Daily top stories from The New York Times
     </p>
-    <!-- Newspaper info things will go in here -->
     <br>
-    <!-- <button href="#test " class="btn btn-default" data-toggle="collapse">Toggle Bar</button> -->
     <div id="main">
       <div class="row">
         <div class="col-sm-4">
           <div class="list-group">
-            <!-- generate the a tags below using jinja and a for loop -->
-            <!-- e.g. <a href="{{id}}" data-toggle="collapse"  class="list-group-item list-group-item-action">{{title}}</a> -->
+            <!-- Loops through all the articles and generates a clickable list-group item used to show more info about each article -->
             {% for article in data['news'] %}
             <a href="{{'#a' + article['id']|string}}" data-toggle="collapse" class="list-group-item list-group-item-action">{{article['title']}}</a>
             {% endfor %}
           </div>
         </div>
         <div class="col-sm-8">
-          <!-- Generate items in the format below using jinja and the database-->
+          <!-- Generates more in depth article items -->
           {% for article in data['news'] %}
+          <!-- Checking for the first article as it needs to be displayed, not hidden like the rest -->
           {% if article['id'] == 0 %}
           <div id="{{'a' + article['id']|string}}" class="list-group-item list-group-item-action flex-column align-items-start collapse show " data-parent="#main">
             {% else %}
@@ -95,9 +97,11 @@
               {% endif %}
               <div class="d-flex w-100 justify-content-between">
                 <a href="{{article['link']}}" class="linkFix"><h5 class="mb-1">{{article['title']}}</h5></a>
-                <form action="/add" method="POST">
-                  <button name="timeid" class="btn btn-outline-primary btn-sm" value="{{article['date']}}-{{article['id']}}">Favorite</button>
-                </form>
+                {% if 'user' in session %}
+                  <form action="/add" method="POST">
+                    <button name="timeid" class="btn btn-outline-primary btn-sm" value="{{article['date']}}-{{article['id']}}">Favorite</button>
+                  </form>
+                {% endif %}
               </div>
               <div class="d-flex w-100 justify-content-start">
                 <small>{{article['date']}}</small>
@@ -124,7 +128,6 @@
       </p>
       <div id="carouselControls" class="carousel slide" data-ride="carousel" data-interval="10000">
         <ol class="carousel-indicators">
-          <!-- Leave code below as it is, always going to be 8 items since 24 hrs in a day so this is fine as is -->
           <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselIndicators" data-slide-to="1"></li>
           <li data-target="#carouselIndicators" data-slide-to="2"></li>
@@ -137,7 +140,6 @@
 
         <div class="carousel-inner">
 
-          <!-- Below is what you will fill up w jinja (this is for the first 3 hours, since each slide holds 3 hours and this is the default shown one)-->
           {% for i in range(8) %}
           {% if i == 0 %}
           <div class="carousel-item active">
@@ -145,10 +147,10 @@
             <div class="carousel-item">
               {% endif %}
               <div class="card-group">
+                <!-- Generates the three weather cards on each slide of the carousel -->
                 {% for j in range(3) %}
                 <div class="card text-white bg-dark mb-3 center weatherBox">
 
-                  <!-- Puts the correct time i.e 0 => 12:00AM, 4 => 4:00AM -->
                   {% if (i * 3 + j) < 12 %}
                   {% if i * 3 + j == 0 %}
                   <div class="card-header">12:00 AM</div>
@@ -162,12 +164,10 @@
                   <div class="card-header">{{((i*3+j)%12)|string + ':00 PM'}} </div>
                   {% endif %}
                   {% endif %}
-                  <!-- In below, replace src with the icon -->
                   <div class="center">
                     <img class="card-img-top" id="weatherImage" src="{{data['weather-hourly'][i * 3 + j]['icon']}}" alt="Image missing">
                   </div>
 
-                  <!-- Replace the celsius and fahrenheit place with the hourly data instead -->
                   <div class="card-body">
                     <div class="weatherTemp">
                       <h3 class="card-title collapse show" id="temperature">
