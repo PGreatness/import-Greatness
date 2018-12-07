@@ -315,5 +315,10 @@ rayO -- 2018-12-07 00:28
 --------------------------------------------------------------
 Adding an article to favorites now redirects to favorite and also displays a success message.
 Reverted json file to previous version to get older date.
-Favorite button on articles on home checks if user is logged in. 
+Favorite button on articles on home checks if user is logged in.
+==============================================================
+
+alexL -- 2018-12-07 01:15
+--------------------------------------------------------------
+Fixed problems with the same article being favorited multiple times
 ==============================================================
