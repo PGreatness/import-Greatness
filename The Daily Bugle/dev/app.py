@@ -18,7 +18,7 @@ from util import db
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
 # stubs for paths to REST APIs
-NEWS_STUB = "https://api.nytimes.com/svc    /topstories/v2/{}.json?api-key={}" # section of news, api key
+NEWS_STUB = "https://api.nytimes.com/svc/topstories/v2/{}.json?api-key={}" # section of news, api key
 WEATHER_STUB = "https://api.darksky.net/forecast/{}/{},{}" # api key, longitude, latitude
 COMIC_STUB = "http://xkcd.com/info.0.json" # comic
 IPAPI_STUB = "https://ipapi.co/{}/json/"
