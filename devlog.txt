@@ -321,5 +321,11 @@ Favorite button on articles on home checks if user is logged in.
 alexL -- 2018-12-07 01:15
 --------------------------------------------------------------
 Fixed problems with the same article being favorited multiple times
-Fixed problems with the flash always saying "successfully added to favorites" 
+Fixed problems with the flash always saying "successfully added to favorites"
+==============================================================
+
+rayO -- 2018-12-07 02:06
+--------------------------------------------------------------
+Fixed issue with Alex's fix not fixing the issue with the error messages for favorites.
+Added colored alerts for error messages. 
 ==============================================================

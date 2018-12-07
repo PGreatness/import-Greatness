@@ -11,9 +11,18 @@
 
 <div class="container center" id="news">
   {% for msg in get_flashed_messages() %}
+  {% if "Successfully added article to favorites" == msg|string() %}
   <div class="alert alert-success" role="alert">
-  {{msg}}
+    {{msg}}
   </div>
+  {% endif %}
+
+  {% if "Cannot add the same article multiple times" == msg|string() %}
+  <div class="alert alert-danger" role="alert">
+    {{msg}}
+  </div>
+  {% endif %}
+
   {% endfor %}
   <h1 class="display-4 fix">Your Favorited News</h1>
   <!-- Newspaper info things will go in here -->
