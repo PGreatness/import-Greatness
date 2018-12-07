@@ -10,9 +10,18 @@
 <br>
 
 <div class="container d-flex justify-content-center">
+
   <div class="row" id="rowTop">
 
     <div class="col-md-6">
+    <!-- HERE -->
+      {% if warning %}
+          <h1 class="collapse show" id="warning">
+              By using this website, you agree to allowing us to use your IP for weather purposes ONLY
+              <button href="#warning" data-toggle="collapse"> Agree </button>
+          </h1>
+      {% endif %}
+     <!-- END HERE -->
       {% if 'user' in session %}
       <h2 class="font-weight-light">Welcome {{session['user']}}<h2>
         {% endif %}
@@ -32,9 +41,14 @@
             <div class="col-lg-6">
               <div class="card-body">
                 <div class="weatherTemp">
-                  <h5 class="card-title collapse show" id="temperature">{{session['temp-f']}}F</h5>
-                  <h5 class="card-title collapse" id="temperature">{{session['temp-c']}}C</h5>
-                  <button type="button" class="btn btn-primary btn-sm" href="#temperature" data-toggle="collapse">Change Units</button>
+                  <h5 class="card-title collapse show" id="temperature">
+                      {{session['temp-f']}}F |
+                      <a href="#temperature" data-toggle="collapse"> °C </a>
+                  </h5>
+                  <h5 class="card-title collapse" id="temperature">
+                      {{session['temp-c']}}C |
+                      <a href="#temperature" data-toggle="collapse"> °F </a>
+                  </h5>
                 </div>
               </div>
             </div>
@@ -47,33 +61,6 @@
   </div>
 
   <br>
-
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-  </button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          If you continue using our services, you agree to give us access to your ip address.
-        </div>
-        <div class="modal-footer">
-          <a href="http://127.0.0.1:5000/login">
-            <button type="button" class="btn btn-secondary">Nope</button>
-          </a>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">I agree</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="container center" id="news">
     <h1 class="display-4 fixJump">News</h1>
@@ -179,11 +166,11 @@
                   <!-- Replace the celsius and fahrenheit place with the hourly data instead -->
                   <div class="card-body">
                     <div class="weatherTemp">
-                      <h3 class="card-title collapse show" id="temperature" style="transition: none !important;">
+                      <h3 class="card-title collapse show" id="temperature">
                         {{data['weather-hourly'][i * 3 + j]['temp-f']}}°F |
                         <a href="#temperature" data-toggle="collapse"> °C </a>
                       </h3>
-                      <h3 class="card-title collapse" id="temperature" style="transition: none !important;">
+                      <h3 class="card-title collapse" id="temperature">
                         {{data['weather-hourly'][i * 3 + j]['temp-c']}}°C |
                         <a href="#temperature" data-toggle="collapse"> °F </a>
                       </h3>

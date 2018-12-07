@@ -20,7 +20,7 @@ app.secret_key = os.urandom(32)
 # stubs for paths to REST APIs
 NEWS_STUB = "https://api.nytimes.com/svc/topstories/v2/{}.json?api-key={}" # section of news, api key
 WEATHER_STUB = "https://api.darksky.net/forecast/{}/{},{}" # api key, longitude, latitude
-COMIC_STUB = "http://xkcd.com/{}/info.0.json" # comic number
+COMIC_STUB = "http://xkcd.com/info.0.json" # comic
 IPAPI_STUB = "https://ipapi.co/{}/json/"
 
 def getIP():
@@ -61,7 +61,7 @@ def home():
         w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # based on your ip address location
         weather = json.loads(w.read())
 
-        c = urllib.request.urlopen(COMIC_STUB.format(1))
+        c = urllib.request.urlopen(COMIC_STUB)
         comic = json.loads(c.read())
 
         n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
@@ -107,11 +107,16 @@ def home():
     session['current-hour'] = datetime.datetime.now().hour
     session['date'] = today
 
+    need_to_warn = False
+    #POPUP once per session warning of IP use
+    if 'warned' not in session:
+        session['warned'] = True
+        need_to_warn = True
     f = float(data[today]['weather-hourly'][session['current-hour']]['temp-f'])
     c = (f - 32.) * 5 / 9
     session['temp-f'] = str(f).split('.')[0] + '°'
     session['temp-c'] = str(c).split('.')[0] + '°'
-    return render_template('home.html', data = data[today], session = session)
+    return render_template('home.html', data = data[today], session = session, warning = need_to_warn)
 
 
 @app.route('/login')
