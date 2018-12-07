@@ -287,3 +287,8 @@ rayO -- 2018-12-06 23:22
 Moved css from error.html into an external file
 Fixed small issue with navbar
 ==============================================================
+
+ahnafH -- 2018-12-06 23:55
+--------------------------------------------------------------
+Update design doc to match current state of project.
+==============================================================
