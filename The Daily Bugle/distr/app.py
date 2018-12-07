@@ -246,7 +246,7 @@ def adding():
     # Add to favorite here
     user = session['user']
     timeid = request.form.get("timeid") #timeid is how we reference the article. timeid = "yyyy-mm-dd,id"
-    print(timeid, "the timeid")
+    #print(timeid, "the timeid")
     added = db.add_Fav(user, timeid)
     search(timeid)
     list = db.show_Fav(user)
@@ -293,5 +293,5 @@ def search(timeid):
 
 
 if __name__ == "__main__":
-    app.debug = True
+    #app.debug = True
     app.run()
