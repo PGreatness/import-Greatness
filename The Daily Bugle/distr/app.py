@@ -247,15 +247,15 @@ def adding():
     user = session['user']
     timeid = request.form.get("timeid") #timeid is how we reference the article. timeid = "yyyy-mm-dd,id"
     print(timeid, "the timeid")
-    db.add_Fav(user, timeid)
+    added = db.add_Fav(user, timeid)
     search(timeid)
     list = db.show_Fav(user)
-    try:
-        list.index(str(timeid))
-    except:
-        flash("Successfully added article to favorites")
+    message = ""
+    if added:
+        message = "Successfully added article to favorites"
     else:
-        flash("Cannot add the same article multiple times")
+        message = "Cannot add the same article multiple times"
+    flash(message)
     return redirect(url_for('fav'))
 
 @app.route('/favorites', methods = ['GET'])
