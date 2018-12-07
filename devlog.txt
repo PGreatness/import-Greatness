@@ -243,30 +243,36 @@ Implemented features to give users the ability to favorite news articles
 Changed the db to add a favorites column
 ==============================================================
 
-rayO -- 2018-12-05 18:47
+rayO -- 2018-12-06 18:47
 --------------------------------------------------------------
 Moved navbar to home to inherit rather than pasting same code on every page
 Minor styling change to home.
 ==============================================================
 
-rayO -- 2018-12-05 19:36
+rayO -- 2018-12-06 19:36
 --------------------------------------------------------------
 Started work on carousel weather section, hardcoded with instructions on how to use with jinja included for Jiayang.
 Added dividers between the separate sections
 ==============================================================
 
-rayO -- 2018-12-05 21:22
+rayO -- 2018-12-06 21:22
 --------------------------------------------------------------
 Improved overall design of homepage with dividers/short text.
 Created favorite button
 ==============================================================
 
-rayO -- 2018-12-05 22:05
+rayO -- 2018-12-06 22:05
 --------------------------------------------------------------
 Styled error messages for login/register pages
 ==============================================================
 
-rayO -- 2018-12-05 22:58
+jiayangC -- 2018-12-06 21:
 --------------------------------------------------------------
-Added footer and stylized Jiayang's ip warning section. 
+Added icons to the weather and added switch between celsius and fahrenheit.
+Added ip warning.
+==============================================================
+
+rayO -- 2018-12-06 22:58
+--------------------------------------------------------------
+Added footer and stylized Jiayang's ip warning section.
 ==============================================================
