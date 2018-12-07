@@ -299,8 +299,14 @@ ahnafH -- 2018-12-06 23:55
 Update design doc to match current state of project.
 ==============================================================
 
-alexL -- 2018-12-07 )0:23
+alexL -- 2018-12-07 00:23
 --------------------------------------------------------------
 Completed the show_Fav(), favDict(), add_Fav(), and search(timeid) functions
 Finished implementing the favorites into the site (from adding favorites to showing them)
+==============================================================
+
+rayO -- 2018-12-07 00:28
+--------------------------------------------------------------
+Added some comments to home.html
+Now displays 15 articles rather than just 7.
 ==============================================================
