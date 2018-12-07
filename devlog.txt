@@ -246,5 +246,11 @@ Changed the db to add a favorites column
 rayO -- 2018-12-05 18:47
 --------------------------------------------------------------
 Moved navbar to home to inherit rather than pasting same code on every page
-Minor styling change to home. 
+Minor styling change to home.
+==============================================================
+
+rayO -- 2018-12-05 19:36
+--------------------------------------------------------------
+Started work on carousel weather section, hardcoded with instructions on how to use with jinja included for Jiayang.
+Added dividers between the separate sections
 ==============================================================
