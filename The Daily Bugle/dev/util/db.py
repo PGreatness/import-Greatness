@@ -68,7 +68,10 @@ def add_Fav(user, timeid):
     db = sqlite3.connect(DB)
     c = db.cursor()
     all_usernames = favDict()
-    appendage = all_usernames[user] + "," + timeid
+    if (all_usernames[user]):
+        appendage = all_usernames[user] + "," + str(timeid)
+    else:
+        appendage = str(timeid)
     # command = "SELECT * FROM users;"
     # c.execute(command)
     # something = c.fetchall()
