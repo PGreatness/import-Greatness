@@ -91,8 +91,8 @@
               {% endif %}
               <div class="d-flex w-100 justify-content-between">
                 <a href="{{article['link']}}" class="linkFix"><h5 class="mb-1">{{article['title']}}</h5></a>
-                <form action="/favorite" method="POST">
-                  <button name="timeid" class="btn btn-outline-primary btn-sm" value="{{article['date']}},{{article['id']}}">Favorite</button>
+                <form action="/add" method="POST">
+                  <button name="timeid" class="btn btn-outline-primary btn-sm" value="{{article['date']}}-{{article['id']}}">Favorite</button>
                 </form>
               </div>
               <div class="d-flex w-100 justify-content-start">

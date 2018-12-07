@@ -63,12 +63,12 @@ def get_all_users():
     db.close()
     return users
 
-def add_Fav(user, id, date):
+def add_Fav(user, timeid):
     '''adds the article to the favorites section of the user based on id and date'''
     db = sqlite3.connect(DB)
     c = db.cursor()
     all_usernames = favDict()
-    appendage = all_usernames[user] + id + "," + date
+    appendage = all_usernames[user] + "," + timeid
     # command = "SELECT * FROM users;"
     # c.execute(command)
     # something = c.fetchall()
@@ -94,8 +94,9 @@ def favDict():
     db.close()
     return users
 
-def show_Fav():
-    x = favDict
+def show_Fav(user):
+    dict = favDict()
+    x = dict[user]
     list = x.split(",")
     for i in list:
         print (list[i])
