@@ -253,9 +253,9 @@ def adding():
     try:
         list.index(str(timeid))
     except:
-        flash("Cannot add the same article multiple times")
-    else:
         flash("Successfully added article to favorites")
+    else:
+        flash("Cannot add the same article multiple times")
     return redirect(url_for('fav'))
 
 @app.route('/favorites', methods = ['GET'])
