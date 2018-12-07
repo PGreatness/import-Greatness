@@ -69,9 +69,11 @@ def add_Fav(user, timeid):
     c = db.cursor()
     all_usernames = favDict()  ##dictionary of all the users and their saved articles
     list = show_Fav(user)
+    added = False
     try:
         list.index(str(timeid))
     except:
+        added = True
         if (all_usernames[user]): ##the string of saved articles for this user
             appendage = all_usernames[user] + "," + str(timeid)
         else:
@@ -87,6 +89,7 @@ def add_Fav(user, timeid):
         # print("added to favorites")
     db.commit()
     db.close()
+    return added
 
 def favDict():
     '''returns all the users and favorited articles in dict {user:article}'''
