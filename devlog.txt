@@ -255,6 +255,12 @@ Started work on carousel weather section, hardcoded with instructions on how to 
 Added dividers between the separate sections
 ==============================================================
 
+alexL -- 2018-12-06 19:50
+--------------------------------------------------------------
+Made a Modal to tell users about the ip address tracking
+Made a favorites.html and added a favorites tab to the nav bar
+==============================================================
+
 rayO -- 2018-12-06 21:22
 --------------------------------------------------------------
 Improved overall design of homepage with dividers/short text.
@@ -291,4 +297,10 @@ Fixed small issue with navbar
 ahnafH -- 2018-12-06 23:55
 --------------------------------------------------------------
 Update design doc to match current state of project.
+==============================================================
+
+alexL -- 2018-12-07 )0:23
+--------------------------------------------------------------
+Completed the show_Fav(), favDict(), add_Fav(), and search(timeid) functions
+Finished implementing the favorites into the site (from adding favorites to showing them)
 ==============================================================
