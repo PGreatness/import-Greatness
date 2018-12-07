@@ -9,19 +9,23 @@
 <br>
 <br>
 
+<!-- HERE -->
+{% if warning %}
+<div class="container">
+<div  class="alert alert-warning center collapse show" id="warning"role="alert">
+  <h2 class="font-weight-light">
+    By using this website, you agree to allowing us to use your IP for weather purposes ONLY
+    <br>
+    <button class="btn btn-outline-dark" href="#warning" data-toggle="collapse"> Agree </button>
+  </h2>
+</div>
+</div>
+{% endif %}
+<!-- END HERE -->
 <div class="container d-flex justify-content-center">
 
   <div class="row" id="rowTop">
-
     <div class="col-md-6">
-    <!-- HERE -->
-      {% if warning %}
-          <h1 class="collapse show" id="warning">
-              By using this website, you agree to allowing us to use your IP for weather purposes ONLY
-              <button href="#warning" data-toggle="collapse"> Agree </button>
-          </h1>
-      {% endif %}
-     <!-- END HERE -->
       {% if 'user' in session %}
       <h2 class="font-weight-light">Welcome {{session['user']}}<h2>
         {% endif %}
@@ -42,12 +46,12 @@
               <div class="card-body">
                 <div class="weatherTemp">
                   <h5 class="card-title collapse show" id="temperature">
-                      {{session['temp-f']}}F |
-                      <a href="#temperature" data-toggle="collapse"> °C </a>
+                    {{session['temp-f']}}F |
+                    <a href="#temperature" data-toggle="collapse"> °C </a>
                   </h5>
                   <h5 class="card-title collapse" id="temperature">
-                      {{session['temp-c']}}C |
-                      <a href="#temperature" data-toggle="collapse"> °F </a>
+                    {{session['temp-c']}}C |
+                    <a href="#temperature" data-toggle="collapse"> °F </a>
                   </h5>
                 </div>
               </div>
@@ -201,8 +205,18 @@
       <hr class="divider">
 
       <div class="container center" id="comic">
-        <h1 class="display-4 fixJump">Daily xkcd</h1>
+        <h1 class="display-4 fixJump">Comic</h1>
+        <p class="lead">
+          The most recent xkcd comic. Check out their website <a href="https://xkcd.com/">here</a>
+        </p>
         <img src="{{data['comic-image']}}" class="img-fluid img-thumbnail">
-        <!-- Comic info things will go in here -->
       </div>
+
+      <br>
+
+      <footer class="footer">
+        <div class="container center">
+          <span class="text-muted">Weather powered by <a href="https://darksky.net/dev">Dark Sky</a>, news powered by <a href="https://developer.nytimes.com/">New York Times</a>, and comic powered by <a href="https://xkcd.com/json.html">xkcd</a>.</span>
+        </div>
+      </footer>
       {% endblock %}
