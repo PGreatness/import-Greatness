@@ -102,6 +102,7 @@ def show_Fav(user):
         print (list[i])
     return list
 
+
 # MAKE TABLES AND DATABASE IF THEY DONT EXIST
 db = sqlite3.connect(DB)
 c = db.cursor()

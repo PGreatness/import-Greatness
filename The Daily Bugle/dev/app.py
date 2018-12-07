@@ -247,13 +247,30 @@ def adding():
     user = session['user']
     timeid = request.form.get("timeid") #timeid is how we reference the article. timeid = "yyyy-mm-dd,id"
     print(timeid, "the timeid")
-    add_Fav(user, timeid)
+    db.add_Fav(user, timeid)
+    search(timeid)
     return redirect(url_for('home'))
 
 @app.route('/favorites', methods = ['GET'])
 def fav():
+    user = session['user']
+    list = db.show_Fav(user)
+    for article in list:
+        data = search(article) # article is the timeid
+    return render_template('favorites.html', data = data)
 
-    return render_template('favorites.html')
+def search(timeid):
+    try:
+        f = open('data/content.json', 'r')
+    except Exception as e:
+        f = open('data/content.json', 'x')
+    try:
+        data = json.loads(f.read())
+    except Exception as e:
+        data = {}
+    f.close()
+    print (data)
+    return data
 
 
 
