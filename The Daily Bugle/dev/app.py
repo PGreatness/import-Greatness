@@ -241,9 +241,13 @@ def logout():
         session.pop('user')
     return redirect(url_for('home'))
 
-@app.route('/add', methods = ['GET'])
+@app.route('/add', methods = ['GET', 'POST'])
 def adding():
-
+    # Add to favorite here
+    user = session['user']
+    timeid = request.form.get("timeid") #timeid is how we reference the article. timeid = "yyyy-mm-dd,id"
+    print(timeid, "the timeid")
+    add_Fav(user, timeid)
     return redirect(url_for('home'))
 
 @app.route('/favorites', methods = ['GET'])
@@ -252,13 +256,7 @@ def fav():
     return render_template('favorites.html')
 
 
-@app.route('/favorite', methods = ['GET', 'POST'])
-def favorite():
-    # Add to favorite here
-    timeid = request.form.get("timeid") #timeid is how we reference the article. timeid = "yyyy-mm-dd,id"
-    print(timeid, "WOWOWOW")
-    return redirect(url_for('home'))
-    
+
 
 if __name__ == "__main__":
     app.debug = True
