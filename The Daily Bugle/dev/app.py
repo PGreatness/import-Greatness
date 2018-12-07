@@ -231,6 +231,7 @@ def logout():
 @app.route('/add', methods = ['GET', 'POST'])
 def adding():
     # Add to favorite here
+    user = session['user']
     timeid = request.form.get("timeid") #timeid is how we reference the article. timeid = "yyyy-mm-dd,id"
     print(timeid, "the timeid")
     add_Fav(user, timeid)
