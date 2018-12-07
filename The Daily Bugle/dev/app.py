@@ -222,12 +222,13 @@ def fav():
     return render_template('favorites.html')
 
 
-@app.route('/favorite', methods = ['GET','POST'])
+@app.route('/favorite', methods = ['GET', 'POST'])
 def favorite():
-    #Add to favorite here
+    # Add to favorite here
     timeid = request.form.get("timeid") #timeid is how we reference the article. timeid = "yyyy-mm-dd,id"
-    print(timeid,"WOWOWOW")
+    print(timeid, "WOWOWOW")
     return redirect(url_for('home'))
+    
 
 if __name__ == "__main__":
     app.debug = True
