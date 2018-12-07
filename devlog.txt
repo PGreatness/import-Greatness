@@ -310,3 +310,10 @@ rayO -- 2018-12-07 00:28
 Added some comments to home.html
 Now displays 15 articles rather than just 7.
 ==============================================================
+
+rayO -- 2018-12-07 00:28
+--------------------------------------------------------------
+Adding an article to favorites now redirects to favorite and also displays a success message.
+Reverted json file to previous version to get older date.
+Favorite button on articles on home checks if user is logged in. 
+==============================================================

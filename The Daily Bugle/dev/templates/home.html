@@ -97,9 +97,11 @@
               {% endif %}
               <div class="d-flex w-100 justify-content-between">
                 <a href="{{article['link']}}" class="linkFix"><h5 class="mb-1">{{article['title']}}</h5></a>
-                <form action="/add" method="POST">
-                  <button name="timeid" class="btn btn-outline-primary btn-sm" value="{{article['date']}}-{{article['id']}}">Favorite</button>
-                </form>
+                {% if 'user' in session %}
+                  <form action="/add" method="POST">
+                    <button name="timeid" class="btn btn-outline-primary btn-sm" value="{{article['date']}}-{{article['id']}}">Favorite</button>
+                  </form>
+                {% endif %}
               </div>
               <div class="d-flex w-100 justify-content-start">
                 <small>{{article['date']}}</small>
@@ -145,7 +147,7 @@
             <div class="carousel-item">
               {% endif %}
               <div class="card-group">
-                <!-- Generates the three weather cards on each slide of the carousel --> 
+                <!-- Generates the three weather cards on each slide of the carousel -->
                 {% for j in range(3) %}
                 <div class="card text-white bg-dark mb-3 center weatherBox">
 

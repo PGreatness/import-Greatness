@@ -249,7 +249,8 @@ def adding():
     print(timeid, "the timeid")
     db.add_Fav(user, timeid)
     search(timeid)
-    return redirect(url_for('home'))
+    flash("Successfully added article to favorites")
+    return redirect(url_for('fav'))
 
 @app.route('/favorites', methods = ['GET'])
 def fav():

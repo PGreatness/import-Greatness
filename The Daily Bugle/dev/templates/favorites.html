@@ -10,6 +10,11 @@
 <br>
 
 <div class="container center" id="news">
+  {% for msg in get_flashed_messages() %}
+  <div class="alert alert-success" role="alert">
+  {{msg}}
+  </div>
+  {% endfor %}
   <h1 class="display-4 fix">Your Favorited News</h1>
   <!-- Newspaper info things will go in here -->
   <br>

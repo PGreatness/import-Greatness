@@ -1,7 +1,21 @@
 {
-    "2018-12-07": {
-        "weather-summary": "No precipitation throughout the week, with high temperatures bottoming out at 34\u00b0F on Tuesday.",
+    "2018-12-06": {
+        "weather-summary": "No precipitation throughout the week, with high temperatures bottoming out at 34\u00b0F on Saturday.",
         "weather-hourly": [
+            {
+                "time": 1544151600,
+                "icon": "/static/icons/cloudy.svg",
+                "temp-f": "37",
+                "temp-c": "3",
+                "summary": "Overcast"
+            },
+            {
+                "time": 1544155200,
+                "icon": "/static/icons/cloudy.svg",
+                "temp-f": "37",
+                "temp-c": "3",
+                "summary": "Overcast"
+            },
             {
                 "time": 1544158800,
                 "icon": "/static/icons/cloudy-night-2.svg",
@@ -19,7 +33,7 @@
             {
                 "time": 1544166000,
                 "icon": "/static/icons/cloudy-night-2.svg",
-                "temp-f": "36",
+                "temp-f": "37",
                 "temp-c": "2",
                 "summary": "Partly Cloudy"
             },
@@ -34,7 +48,7 @@
                 "time": 1544173200,
                 "icon": "/static/icons/night.svg",
                 "temp-f": "35",
-                "temp-c": "1",
+                "temp-c": "2",
                 "summary": "Clear"
             },
             {
@@ -69,7 +83,7 @@
                 "time": 1544191200,
                 "icon": "/static/icons/day.svg",
                 "temp-f": "33",
-                "temp-c": "0",
+                "temp-c": "1",
                 "summary": "Clear"
             },
             {
@@ -96,14 +110,14 @@
             {
                 "time": 1544205600,
                 "icon": "/static/icons/day.svg",
-                "temp-f": "36",
+                "temp-f": "37",
                 "temp-c": "2",
                 "summary": "Clear"
             },
             {
                 "time": 1544209200,
                 "icon": "/static/icons/day.svg",
-                "temp-f": "36",
+                "temp-f": "37",
                 "temp-c": "2",
                 "summary": "Clear"
             },
@@ -118,7 +132,7 @@
                 "time": 1544216400,
                 "icon": "/static/icons/cloudy-day-2.svg",
                 "temp-f": "35",
-                "temp-c": "1",
+                "temp-c": "2",
                 "summary": "Partly Cloudy"
             },
             {
@@ -131,7 +145,7 @@
             {
                 "time": 1544223600,
                 "icon": "/static/icons/cloudy-night-2.svg",
-                "temp-f": "32",
+                "temp-f": "33",
                 "temp-c": "0",
                 "summary": "Partly Cloudy"
             },
@@ -167,6 +181,407 @@
                 "time": 1544241600,
                 "icon": "/static/icons/night.svg",
                 "temp-f": "28",
+                "temp-c": "-1",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544245200,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "28",
+                "temp-c": "-2",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544248800,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "27",
+                "temp-c": "-2",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544252400,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "27",
+                "temp-c": "-2",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544256000,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "27",
+                "temp-c": "-2",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544259600,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "26",
+                "temp-c": "-2",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544263200,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "26",
+                "temp-c": "-3",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544266800,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "25",
+                "temp-c": "-3",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544270400,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "25",
+                "temp-c": "-3",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544274000,
+                "icon": "/static/icons/day.svg",
+                "temp-f": "27",
+                "temp-c": "-2",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544277600,
+                "icon": "/static/icons/day.svg",
+                "temp-f": "28",
+                "temp-c": "-1",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544281200,
+                "icon": "/static/icons/day.svg",
+                "temp-f": "29",
+                "temp-c": "-1",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544284800,
+                "icon": "/static/icons/cloudy-day-2.svg",
+                "temp-f": "31",
+                "temp-c": "-0",
+                "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544288400,
+                "icon": "/static/icons/cloudy-day-2.svg",
+                "temp-f": "32",
+                "temp-c": "0",
+                "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544292000,
+                "icon": "/static/icons/cloudy-day-2.svg",
+                "temp-f": "33",
+                "temp-c": "0",
+                "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544295600,
+                "icon": "/static/icons/cloudy-day-2.svg",
+                "temp-f": "33",
+                "temp-c": "1",
+                "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544299200,
+                "icon": "/static/icons/cloudy-day-2.svg",
+                "temp-f": "34",
+                "temp-c": "1",
+                "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544302800,
+                "icon": "/static/icons/cloudy-day-2.svg",
+                "temp-f": "34",
+                "temp-c": "1",
+                "summary": "Mostly Cloudy"
+            },
+            {
+                "time": 1544306400,
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "34",
+                "temp-c": "1",
+                "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544310000,
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "33",
+                "temp-c": "0",
+                "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544313600,
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "32",
+                "temp-c": "0",
+                "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544317200,
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "32",
+                "temp-c": "0",
+                "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544320800,
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "31",
+                "temp-c": "-0",
+                "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544324400,
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "31",
+                "temp-c": "-0",
+                "summary": "Partly Cloudy"
+            }
+        ],
+        "weather-icon": "/static/icons/cloudy.svg",
+        "comic-image": "https://imgs.xkcd.com/comics/middle_latitudes.png",
+        "news": [
+            {
+                "id": 0,
+                "title": "Arrest of Huawei Executive Intensifies Trade War Fears",
+                "abstract": "The arrest of Meng Wanzhou, an executive at the Chinese company Huawei, could imperil trade talks. But it is part of the Trump administration\u2019s efforts to contain China and Iran.",
+                "link": "https://www.nytimes.com/2018/12/06/us/politics/huawei-meng-china-iran.html",
+                "date": "2018-12-06",
+                "image-url": "https://static01.nyt.com/images/2018/12/07/us/politics/07huawei-print/07dc-diplo1-superJumbo.jpg",
+                "image-caption": ""
+            },
+            {
+                "id": 1,
+                "title": "Arrest Shakes Huawei as Global Skepticism of Its Business Grows",
+                "abstract": "Britain, New Zealand, Australia and other countries have grown increasingly worried about potential security risks related to the Chinese telecom giant.",
+                "link": "https://www.nytimes.com/2018/12/06/technology/huawei-arrest-meng-wanzhou.html",
+                "date": "2018-12-06",
+                "image-url": "https://static01.nyt.com/images/2018/12/07/world/07huawei-1/merlin_147789594_a7ca384c-4309-42ed-af61-bfa7c77d09da-superJumbo.jpg",
+                "image-caption": "A shopping mall in Shanghai on Thursday. China sees Huawei as a main driver of its ambitions for technological leadership. But much of the world sees it as a potential conduit for espionage and sabotage."
+            },
+            {
+                "id": 2,
+                "title": "Trump Plans Major Rollback of Sage Grouse Protections to Spur Oil Exploration",
+                "abstract": "The proposal would limit the bird\u2019s protected habitat to just 1.8 million acres, essentially opening up nine million acres of land to drilling.",
+                "link": "https://www.nytimes.com/2018/12/06/climate/trump-sage-grouse-oil.html",
+                "date": "2018-12-06",
+                "image-url": "https://static01.nyt.com/images/2018/12/07/climate/07CLI-GROUSE-print/merlin_140494119_56de5a03-45b0-4e61-a2cb-e6eafb3c85b4-superJumbo.jpg",
+                "image-caption": "A plan to roll back sage grouse protections is expected to be finalized in 2019."
+            },
+            {
+                "id": 3,
+                "title": "Trump Rule Would Limit E.P.A.\u2019s Control Over Water Pollution",
+                "abstract": "The Trump administration\u2019s proposal would significantly weaken a major Obama-era regulation on clean water, according to a talking points memo.",
+                "link": "https://www.nytimes.com/2018/12/06/climate/trump-water-pollution-wotus-replacement.html",
+                "date": "2018-12-06",
+                "image-url": "https://static01.nyt.com/images/2018/12/07/climate/07CLI-WOTUS/07CLI-WOTUS-superJumbo.jpg",
+                "image-caption": "Runoff water flowing into a pond in Irvine, Calif."
+            },
+            {
+                "id": 4,
+                "title": "\u2018Yellow Vest\u2019 Protests Shake France. Here\u2019s the Lesson for Climate Change.",
+                "abstract": "There is little doubt among scientists and economists that carbon taxes are needed to reduce fossil fuel dependence. The question is how to design them to cushion the blow on the most vulnerable.",
+                "link": "https://www.nytimes.com/2018/12/06/world/europe/france-fuel-carbon-tax.html",
+                "date": "2018-12-06",
+                "image-url": "https://static01.nyt.com/images/2018/12/07/world/07france-climate1/merlin_147578235_8c0d237a-3fbc-4d66-8ce9-c4e696ea7631-superJumbo.jpg",
+                "image-caption": "France\u2019s suspension of a fuel tax increase after violent protests signaled the perils that governments in wealthier countries may face in setting policies to fight climate change."
+            },
+            {
+                "id": 5,
+                "title": "Making President Trump\u2019s Bed: A Housekeeper Without Papers",
+                "abstract": "At the president\u2019s New Jersey golf course, an undocumented immigrant has worked as a maid since 2013. She said she never imagined she \u201cwould see such important people close up.\u201d",
+                "link": "https://www.nytimes.com/2018/12/06/us/trump-bedminster-golf-undocumented-workers.html",
+                "date": "2018-12-06",
+                "image-url": "https://static01.nyt.com/images/2018/12/07/us/07trumpgolfcourse-p1/07trumpgolfcourse01-superJumbo-v2.jpg",
+                "image-caption": "Victorina Morales at her home in Bound Brook, N.J. She left Guatemala in 1999 and illegally entered the United States. She started working at the Trump National Golf Club in Bedminster, N.J., in 2013."
+            },
+            {
+                "id": 6,
+                "title": "Trump Is Expected to Name State Department Spokeswoman to U.N. Post",
+                "abstract": "Heather Nauert, a former Fox News anchor who has been the public face of the State Department since last year, would replace Nikki Haley as ambassador to the United Nations.",
+                "link": "https://www.nytimes.com/2018/12/06/us/politics/heather-nauert-united-nations.html",
+                "date": "2018-12-06",
+                "image-url": "https://static01.nyt.com/images/2018/12/07/us/politics/07dc-nauert/merlin_146214939_e215447c-6ae2-45ff-966b-46431a61769e-superJumbo.jpg",
+                "image-caption": "Heather Nauert, the State Department spokeswoman, last year in Washington. If confirmed as the next United Nations envoy, she would be one of the most prominent promoters of the president\u2019s \u201cAmerica First\u201d foreign policy."
+            }
+        ]
+    },
+    "2018-12-07": {
+        "weather-summary": "Rain next Friday, with high temperatures rising to 49\u00b0F next Friday.",
+        "weather-hourly": [
+            {
+                "time": 1544158800,
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "37",
+                "temp-c": "3",
+                "summary": "Mostly Cloudy"
+            },
+            {
+                "time": 1544162400,
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "37",
+                "temp-c": "3",
+                "summary": "Mostly Cloudy"
+            },
+            {
+                "time": 1544166000,
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "37",
+                "temp-c": "2",
+                "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544169600,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "36",
+                "temp-c": "2",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544173200,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "35",
+                "temp-c": "2",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544176800,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "34",
+                "temp-c": "1",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544180400,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "32",
+                "temp-c": "0",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544184000,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "32",
+                "temp-c": "0",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544187600,
+                "icon": "/static/icons/day.svg",
+                "temp-f": "32",
+                "temp-c": "0",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544191200,
+                "icon": "/static/icons/day.svg",
+                "temp-f": "34",
+                "temp-c": "1",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544194800,
+                "icon": "/static/icons/day.svg",
+                "temp-f": "35",
+                "temp-c": "1",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544198400,
+                "icon": "/static/icons/day.svg",
+                "temp-f": "36",
+                "temp-c": "2",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544202000,
+                "icon": "/static/icons/day.svg",
+                "temp-f": "36",
+                "temp-c": "2",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544205600,
+                "icon": "/static/icons/day.svg",
+                "temp-f": "36",
+                "temp-c": "2",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544209200,
+                "icon": "/static/icons/day.svg",
+                "temp-f": "37",
+                "temp-c": "2",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544212800,
+                "icon": "/static/icons/day.svg",
+                "temp-f": "36",
+                "temp-c": "2",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544216400,
+                "icon": "/static/icons/cloudy-day-2.svg",
+                "temp-f": "35",
+                "temp-c": "2",
+                "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544220000,
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "34",
+                "temp-c": "1",
+                "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544223600,
+                "icon": "/static/icons/cloudy-night-2.svg",
+                "temp-f": "33",
+                "temp-c": "0",
+                "summary": "Partly Cloudy"
+            },
+            {
+                "time": 1544227200,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "32",
+                "temp-c": "0",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544230800,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "31",
+                "temp-c": "-0",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544234400,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "30",
+                "temp-c": "-1",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544238000,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "29",
+                "temp-c": "-1",
+                "summary": "Clear"
+            },
+            {
+                "time": 1544241600,
+                "icon": "/static/icons/night.svg",
+                "temp-f": "29",
                 "temp-c": "-1",
                 "summary": "Clear"
             },
@@ -215,8 +630,8 @@
             {
                 "time": 1544266800,
                 "icon": "/static/icons/night.svg",
-                "temp-f": "25",
-                "temp-c": "-3",
+                "temp-f": "24",
+                "temp-c": "-4",
                 "summary": "Clear"
             },
             {
@@ -230,15 +645,15 @@
                 "time": 1544274000,
                 "icon": "/static/icons/day.svg",
                 "temp-f": "26",
-                "temp-c": "-2",
+                "temp-c": "-3",
                 "summary": "Clear"
             },
             {
                 "time": 1544277600,
-                "icon": "/static/icons/cloudy-day-2.svg",
+                "icon": "/static/icons/day.svg",
                 "temp-f": "28",
                 "temp-c": "-2",
-                "summary": "Partly Cloudy"
+                "summary": "Clear"
             },
             {
                 "time": 1544281200,
@@ -250,7 +665,7 @@
             {
                 "time": 1544284800,
                 "icon": "/static/icons/cloudy-day-2.svg",
-                "temp-f": "30",
+                "temp-f": "31",
                 "temp-c": "-0",
                 "summary": "Partly Cloudy"
             },
@@ -271,7 +686,7 @@
             {
                 "time": 1544295600,
                 "icon": "/static/icons/cloudy-day-2.svg",
-                "temp-f": "33",
+                "temp-f": "34",
                 "temp-c": "1",
                 "summary": "Partly Cloudy"
             },
@@ -292,15 +707,15 @@
             {
                 "time": 1544306400,
                 "icon": "/static/icons/cloudy-night-2.svg",
-                "temp-f": "33",
+                "temp-f": "34",
                 "temp-c": "1",
                 "summary": "Partly Cloudy"
             },
             {
                 "time": 1544310000,
                 "icon": "/static/icons/cloudy-night-2.svg",
-                "temp-f": "33",
-                "temp-c": "0",
+                "temp-f": "34",
+                "temp-c": "1",
                 "summary": "Partly Cloudy"
             },
             {
@@ -320,15 +735,15 @@
             {
                 "time": 1544320800,
                 "icon": "/static/icons/cloudy-night-2.svg",
-                "temp-f": "31",
-                "temp-c": "-0",
+                "temp-f": "32",
+                "temp-c": "0",
                 "summary": "Partly Cloudy"
             },
             {
                 "time": 1544324400,
                 "icon": "/static/icons/cloudy-night-2.svg",
-                "temp-f": "31",
-                "temp-c": "-0",
+                "temp-f": "32",
+                "temp-c": "0",
                 "summary": "Partly Cloudy"
             },
             {
@@ -355,8 +770,8 @@
                 "abstract": "The arrest of Meng Wanzhou, an executive at the Chinese company Huawei, could imperil trade talks. But it is part of the Trump administration\u2019s efforts to contain China and Iran.",
                 "link": "https://www.nytimes.com/2018/12/06/us/politics/huawei-meng-china-iran.html",
                 "date": "2018-12-06",
-                "image-url": "https://static01.nyt.com/images/2018/12/07/us/politics/07diplo-hp-promo/07diplo-hp-promo-superJumbo.jpg",
-                "image-caption": "Pedestrians walking past a Huawei retail shop in Beijing on Thursday."
+                "image-url": "https://static01.nyt.com/images/2018/12/07/us/politics/07huawei-print/07dc-diplo1-superJumbo.jpg",
+                "image-caption": "Meng Wanzhou, the chief financial officer of Huawei and a daughter of the company\u2019s founder, was arrested in Canada on Saturday."
             },
             {
                 "id": 1,
@@ -411,78 +826,6 @@
                 "date": "2018-12-06",
                 "image-url": "https://static01.nyt.com/images/2018/12/07/us/politics/07dc-nauert/merlin_146214939_e215447c-6ae2-45ff-966b-46431a61769e-superJumbo.jpg",
                 "image-caption": "Heather Nauert, the State Department spokeswoman, last year in Washington. If confirmed as the next United Nations envoy, she would be one of the most prominent promoters of the president\u2019s \u201cAmerica First\u201d foreign policy."
-            },
-            {
-                "id": 7,
-                "title": "Trump Weighs Bringing Back William Barr as Attorney General",
-                "abstract": "William P. Barr, a supporter of executive power who served as attorney general in 1991-93, is a front-runner to lead the Justice Department again.",
-                "link": "https://www.nytimes.com/2018/12/06/us/politics/william-barr-attorney-general-trump.html",
-                "date": "2018-12-06",
-                "image-url": "https://static01.nyt.com/images/2018/12/07/us/politics/07dc-barr/merlin_147814875_33903443-c51d-47a6-8392-a37a70ffeb5c-superJumbo.jpg",
-                "image-caption": "President Trump is considering reappointing former Attorney General William P. Barr to run the Justice Department again."
-            },
-            {
-                "id": 8,
-                "title": "\u2018I Want to Live Like a Human Being\u2019: Where N.Y. Fails Its Mentally Ill",
-                "abstract": "A cutting-edge program to help severely mentally ill people live on their own has endangered people who were not ready, a new investigation shows.",
-                "link": "https://www.nytimes.com/2018/12/06/nyregion/nyc-housing-mentally-ill.html",
-                "date": "2018-12-06",
-                "image-url": "https://static01.nyt.com/images/2018/12/06/nyregion/06SCATTERED1/06SCATTERED1-superJumbo.jpg",
-                "image-caption": "Abraham Clemente, who is schizophrenic, moved out of an adult home into his own Brooklyn apartment last year. \u201cI don\u2019t want to live like this,\u201d he said in August."
-            },
-            {
-                "id": 9,
-                "title": "Elizabeth Warren Stands by DNA Test. But Around Her, Worries Abound.",
-                "abstract": "Since releasing the results in October, the ancestry issue clouding her possible presidential campaign has only intensified.",
-                "link": "https://www.nytimes.com/2018/12/06/us/politics/elizabeth-warren-dna-test-2020.html",
-                "date": "2018-12-06",
-                "image-url": "https://static01.nyt.com/images/2018/12/07/us/politics/07WarrenDNA-print/01WarrenDNA1-superJumbo.jpg",
-                "image-caption": "Senator Elizabeth Warren of Massachusetts has defended the decision to take a DNA test showing Native American ancestry."
-            },
-            {
-                "id": 10,
-                "title": "David Valadao Concedes House Race in Another Setback for California Republicans",
-                "abstract": "The Democratic candidate, T.J. Cox, was declared the winner. With this result, Democrats have now captured 40 House seats from Republicans.",
-                "link": "https://www.nytimes.com/2018/12/06/us/politics/tj-cox-california-david-valadao.html",
-                "date": "2018-12-06",
-                "image-url": "https://static01.nyt.com/images/2018/11/22/us/politics/CoxwinsHFO2/merlin_147189729_24d642cc-432c-47b5-99dd-335e9afdcf3b-superJumbo.jpg",
-                "image-caption": "Representative David Valadao is the seventh Republican in California to be defeated this year in districts Hillary Clinton won in 2016. T.J. Cox, a Democrat, won his seat."
-            },
-            {
-                "id": 11,
-                "title": "Michigan G.O.P. Starts Limiting Power of Incoming Democratic Leaders",
-                "abstract": "Michigan Republicans are following the tactics of conservative lawmakers in Wisconsin, but Democrats in Michigan hope that the G.O.P. governor there will take their side.",
-                "link": "https://www.nytimes.com/2018/12/06/us/politics/michigan-republicans-power.html",
-                "date": "2018-12-06",
-                "image-url": "https://static01.nyt.com/images/2018/12/07/us/politics/07michigan-1-print/07michigan2-superJumbo.jpg",
-                "image-caption": "Jocelyn Benson became the first Democrat to be elected secretary of state of Michigan in more than 20 years last month."
-            },
-            {
-                "id": 12,
-                "title": "Huawei, France Protests, Mascot Mayhem: Your Thursday Evening Briefing",
-                "abstract": "Here\u2019s what you need to know at the end of the day.",
-                "link": "https://www.nytimes.com/2018/12/06/briefing/huawei-france-protests-mascots.html",
-                "date": "2018-12-06",
-                "image-url": "https://static01.nyt.com/images/2018/12/06/briefing/12062018pm-briefing-promo/12062018pm-briefing-promo-superJumbo.jpg",
-                "image-caption": ""
-            },
-            {
-                "id": 13,
-                "title": "Brexit Special: Your Friday Briefing",
-                "abstract": "Here\u2019s what you need to know to start your day.",
-                "link": "https://www.nytimes.com/2018/12/06/briefing/brexit-theresa-may-huawei.html",
-                "date": "2018-12-06",
-                "image-url": "https://static01.nyt.com/images/2018/12/06/briefing/07ambriefing-europe-promo/07ambriefing-europe-promo-superJumbo.jpg",
-                "image-caption": ""
-            },
-            {
-                "id": 14,
-                "title": "Macron\u2019s Moment of Truth",
-                "abstract": "Weeks of violent protest by France\u2019s angry working poor are testing a president who promised the people reform but has failed to govern with them, rather than over them.",
-                "link": "https://www.nytimes.com/2018/12/06/opinion/macron-yellow-vest-protests.html",
-                "date": "2018-12-06",
-                "image-url": "https://static01.nyt.com/images/2018/12/06/opinion/06kauffmannWeb/merlin_147606213_b72e5c91-29c7-4384-9804-dd33f048c601-superJumbo.jpg",
-                "image-caption": "President Emmanuel Macron, center, inspecting the damage from protests over a planned fuel tax increase in Paris this month."
             }
         ]
     }
