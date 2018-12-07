@@ -254,3 +254,9 @@ rayO -- 2018-12-05 19:36
 Started work on carousel weather section, hardcoded with instructions on how to use with jinja included for Jiayang.
 Added dividers between the separate sections
 ==============================================================
+
+rayO -- 2018-12-05 21:22
+--------------------------------------------------------------
+Improved overall design of homepage with dividers/short text.
+Created favorite button
+==============================================================
