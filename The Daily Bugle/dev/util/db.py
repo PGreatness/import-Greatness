@@ -98,11 +98,13 @@ def favDict():
     return users
 
 def show_Fav(user):
+    list = []          ## Start as an empty list
     dict = favDict()
     x = dict[user]
-    list = x.split(",")
-    for i in list:
-        print (list[i])
+    if (x):
+        list = x.split(",")
+        for i in list:
+            print (i)
     return list
 
 

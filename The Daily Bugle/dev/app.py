@@ -67,7 +67,7 @@ def home():
         print(e)
         return render_template('error.html', err = e)
 
-    #Try to open up content
+    # Try to open up content
     try:
         f = open('data/content.json', 'r')
     except Exception as e:
@@ -82,13 +82,13 @@ def home():
     # update it
     if today not in data:
         # still works with w and n defined in the try/except
-        #w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # based on your ip address location
+        # w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # based on your ip address location
         weather = json.loads(w.read())
 
         c = urllib.request.urlopen(COMIC_STUB)
         comic = json.loads(c.read())
 
-        #n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
+        # n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
         news = json.loads(n.read())
 
         # Create our own json file for easier read/less space taken
@@ -96,7 +96,7 @@ def home():
         data[today]['weather-summary'] = weather['daily']['summary']
         data[today]['weather-hourly'] = []
         data[today]['weather-icon'] = ICONS[weather['currently']['icon']]
-        #Weather hourly is a list of dictionaries containing weather info for each hour
+        # Weather hourly is a list of dictionaries containing weather info for each hour
         for hour in weather['hourly']['data']:
             d = dict()
             data[today]['weather-hourly'] += [d]
@@ -133,7 +133,7 @@ def home():
     session['date'] = today
 
     need_to_warn = False
-    #POPUP once per session warning of IP use
+    # POPUP once per session warning of IP use
     if 'warned' not in session:
         session['warned'] = True
         need_to_warn = True
@@ -253,13 +253,23 @@ def adding():
 
 @app.route('/favorites', methods = ['GET'])
 def fav():
-    user = session['user']
-    list = db.show_Fav(user)
-    for article in list:
-        data = search(article) # article is the timeid
-    return render_template('favorites.html', data = data)
+    data = []          ## Start as an empty list
+    if 'user' in session:
+        user = session['user']
+        list = db.show_Fav(user)
+        i = 0
+        for article in list:
+            data[i] = search(article) # article is the timeid
+            i += 1
+        return render_template('favorites.html', data = data)
+    else:
+        return redirect(url_for('home'))
 
 def search(timeid):
+    time = timeid[:len(timeid) - 2]
+    id = timeid[len(timeid) - 1:]
+    print(time)
+    print(id)
     try:
         f = open('data/content.json', 'r')
     except Exception as e:
@@ -269,8 +279,8 @@ def search(timeid):
     except Exception as e:
         data = {}
     f.close()
-    print (data)
-    return data
+    # print (data[time]["news"][int(id)])
+    return data[time]["news"][int(id)]
 
 
 
