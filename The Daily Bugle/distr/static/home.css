@@ -2,13 +2,18 @@
   text-align: center;
 }
 
-.fix{
-  padding-top: 45px;
-  margin-top: -45px;
+.divider{
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+}
+.fixJump{
+  padding-top: 60px;
+  margin-top: -60px;
 }
 
 .list-group{
-  max-height: 300px;
+  max-height: 450px;
   margin-bottom: 10px;
   overflow:scroll;
   overflow-x:hidden;
@@ -21,4 +26,44 @@
 
 .linkFix:hover{
   color: #484848;
+}
+
+#rowTop{
+  width:90%;
+  background-color: rgba(176, 176, 176, 0.25);
+  padding: 3%;
+  border-radius: 12px;
+}
+
+#bottomCardText{
+  padding-bottom:5%;
+}
+
+.weatherTemp{
+  padding-bottom: 3%
+}
+
+.weatherBox{
+  width:95%;
+}
+
+#weatherPreviewImage{
+  display:block;
+  margin-right:auto;
+  margin-left:auto;
+  width:100px;
+  height:100px
+}
+
+#weatherImage{
+  width: 200px;
+  height:200px;
+}
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* Set the fixed height of the footer here */
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #212529;
 }

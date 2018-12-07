@@ -20,16 +20,21 @@ app.secret_key = os.urandom(32)
 # stubs for paths to REST APIs
 NEWS_STUB = "https://api.nytimes.com/svc/topstories/v2/{}.json?api-key={}" # section of news, api key
 WEATHER_STUB = "https://api.darksky.net/forecast/{}/{},{}" # api key, longitude, latitude
-COMIC_STUB = "http://xkcd.com/{}/info.0.json" # comic number
+COMIC_STUB = "http://xkcd.com/info.0.json" # comic
 IPAPI_STUB = "https://ipapi.co/{}/json/"
+ICONS = dict()
+ICONS['clear-day'] = '/static/icons/day.svg'
+ICONS['clear-night'] = '/static/icons/night.svg'
+ICONS['cloudy'] = '/static/icons/cloudy.svg'
+ICONS['rain'] = '/static/icons/rainy-1.svg'
+ICONS['snow'] = '/static/icons/snowy-1.svg'
+ICONS['sleet'] = '/static/icons/rainy-7.svg'
+ICONS['wind'] = '/static/icons/cloudy-day-1.svg'
+ICONS['fog'] = '/static/icons/cloudy.svg'
+ICONS['partly-cloudy-day'] = '/static/icons/cloudy-day-2.svg'
+ICONS['partly-cloudy-night'] = '/static/icons/cloudy-night-2.svg'
 
-@app.route("/getIP", methods=["GET"])
 def getIP():
-    # return jsonify({'ip': request.remote_addr}), 200
-    # return request.headers['X-Real-IP']
-    # return request.environ['REMOTE_ADDR']
-    # return request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
-
     # use another api to get ip, returns a text
     qwerty = urllib.request.urlopen('https://api.ipify.org')
     # decode else binary
@@ -41,54 +46,69 @@ def home():
     # read json file containing the api keys
     with open('data/API_Keys/keys.json') as json_file:
         json_data = json.loads(json_file.read())
-    print(json_data) # should print           {'News': 'api_key', 'Weather': 'api_key', 'Comic': ''}
-    print(json_data['News']) #  should print      "api_key"
+
+    # Checking the longitude and latitiude based on the ip address
+    p = urllib.request.urlopen(IPAPI_STUB.format(getIP()))
+    ip = json.loads(p.read())
+    location = ""
+    location += ip['city'] + ", " + ip['country_name']
+
+    today = datetime.datetime.now().strftime("%Y-%m-%d")
 
     try:
-        w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], 40.7128, 74.0060))
+        w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude']))
     except Exception as e:
         print(e)
-        return render_template('error.html', errMessage = "DarkSky API Key not valid", errCode = 1)
+        return render_template('error.html', err = e)
 
     try:
         n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
     except Exception as e:
         print(e)
-        return render_template('error.html', errMessage = "New York Times API Key not valid", errCode = 2)
+        return render_template('error.html', err = e)
 
-    # Checking the longitude and latitiude based on the ip address
-    print ("\n\nTHE IP ADDRESS: ")
-    print ( getIP() )
-    p = urllib.request.urlopen(IPAPI_STUB.format(getIP()))
-    ip = json.loads(p.read())
-    print (ip)
-    location = ""
-    location += ip['city'] + ", " + ip['country_name']
-    print (location)
-
-    today = datetime.datetime.now().strftime("%Y-%m-%d")
-    f = open('data/content.json', 'r')
-    data = json.loads(f.read())
+    # Try to open up content
+    try:
+        f = open('data/content.json', 'r')
+    except Exception as e:
+        f = open('data/content.json', 'x')
+    try:
+        data = json.loads(f.read())
+    except Exception as e:
+        data = {}
     f.close()
 
     # if it is time to update/never had it
     # update it
     if today not in data:
-        #w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # based on your ip address location
+        # still works with w and n defined in the try/except
+        # w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # based on your ip address location
         weather = json.loads(w.read())
 
-        c = urllib.request.urlopen(COMIC_STUB.format(1))
+        c = urllib.request.urlopen(COMIC_STUB)
         comic = json.loads(c.read())
 
-        #n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
+        # n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
         news = json.loads(n.read())
 
         # Create our own json file for easier read/less space taken
         data[today] = dict()
         data[today]['weather-summary'] = weather['daily']['summary']
+        data[today]['weather-hourly'] = []
+        data[today]['weather-icon'] = ICONS[weather['currently']['icon']]
+        # Weather hourly is a list of dictionaries containing weather info for each hour
+        for hour in weather['hourly']['data']:
+            d = dict()
+            data[today]['weather-hourly'] += [d]
+            d['time'] = hour['time']
+            d['icon'] = ICONS[hour['icon']]
+            temp = float(hour['temperature'])
+            d['temp-f'] = str(temp).split('.')[0]
+            d['temp-c'] = str((temp - 32.) * 5 / 9).split('.')[0]
+            d['summary'] = hour['summary']
         data[today]['comic-image'] = comic['img']
         data[today]['news'] = []
-        for i in range(7): #add article info (dicts) into list of articles
+        for i in range(15): #add article info (dicts) into list of articles
             data[today]['news'] += [dict()]
             copy = data[today]['news'][i]
             article = news['results'][i]
@@ -106,9 +126,22 @@ def home():
 
         # Add it all to our own file
         f = open('data/content.json', 'w')
-        f.write(json.dumps(data))
+        f.write(json.dumps(data, indent=4))
         f.close()
-    return render_template('home.html', data = data[today], session = session)
+    session['location'] = location
+    session['current-hour'] = datetime.datetime.now().hour
+    session['date'] = today
+
+    need_to_warn = False
+    # POPUP once per session warning of IP use
+    if 'warned' not in session:
+        session['warned'] = True
+        need_to_warn = True
+    f = float(data[today]['weather-hourly'][session['current-hour']]['temp-f'])
+    c = (f - 32.) * 5 / 9
+    session['temp-f'] = str(f).split('.')[0] + '°'
+    session['temp-c'] = str(c).split('.')[0] + '°'
+    return render_template('home.html', data = data[today], session = session, warning = need_to_warn)
 
 
 @app.route('/login')
@@ -149,6 +182,8 @@ def register():
         r_username = request.form.get("reg_username")
         r_password = request.form.get("reg_password")
         check_pass = request.form.get("check_password")
+        r_question = request.form.get("reg_question")
+        r_answer = request.form.get("reg_answer")
         if r_username in db.get_all_users():
             flash("Username taken")
         elif r_password != check_pass:
@@ -158,24 +193,29 @@ def register():
         elif not r_username.isalnum():
             flash("Username should be alphanumeric")
         else:
-            session['user'] = r_username
-            db.add_user(r_username, md5_crypt.encrypt(r_password))
-            return redirect(url_for("home"))
+            if request.form.get("reg_question") != None:
+                session['user'] = r_username
+                db.add_userFull(r_username, md5_crypt.encrypt(r_password), r_question, md5_crypt.encrypt(r_answer))
+                return redirect(url_for("home"))
+            else:
+                session['user'] = r_username
+                db.add_user(r_username, md5_crypt.encrypt(r_password))
+                return redirect(url_for("home"))
     return render_template('register.html')
 
-@app.route('/reset', methods = ["POST"])
+@app.route('/reset', methods = ["GET", "POST"])
 def reset():
     if 'user' in session:
         return redirect(url_for('home'))
     '''To reset userpassword'''
     if request.form.get("reg_username") != None:
         r_username = request.form.get("reg_username")
-        r_question = request.form.get("reg_question")
         r_answer = request.form.get("reg_answer")
         r_password = request.form.get("reg_password")
         check_pass = request.form.get("check_password")
+        all_usernames = db.qaDict() #Returns dict {user:answer_to_question}
         if r_username not in db.get_all_users():
-            flash("Username taken")
+            flash("Username not found")
         elif r_password != check_pass:
             flash("Passwords do not match!")
         elif r_password.count(' ') != 0:
@@ -184,12 +224,16 @@ def reset():
             flash("Username should be alphanumeric")
         else:
             session['user'] = r_username
-            # adds the question and answer to the db
-            db.add_user(r_question, md5_crypt.encrypt(r_answer))
-            # changes the user password
-            db.add_user(r_username, md5_crypt.encrypt(r_password))
-            return redirect(url_for("login"))
-    return render_template('register.html')
+            # checks the question and answer in the db
+            if r_username in all_usernames:
+                # if the hashes match
+                if md5_crypt.verify(r_answer, all_usernames[r_username]):
+                    # changes the user password
+                    db.update_pass(r_username, md5_crypt.encrypt(r_password))
+                    return redirect(url_for('home'))
+                else:
+                    flash("Error occurred")
+    return render_template('reset.html')
 
 @app.route('/logout', methods = ['GET'])
 def logout():
@@ -197,13 +241,49 @@ def logout():
         session.pop('user')
     return redirect(url_for('home'))
 
-# def savePage():
-#     response = urllib2.urlopen(url)
-#     webContent = response.read()
-#
-#     f = open('obo-t17800628-33.html', 'w')
-#     f.write(webContent)
-#     f.close
+@app.route('/add', methods = ['GET', 'POST'])
+def adding():
+    # Add to favorite here
+    user = session['user']
+    timeid = request.form.get("timeid") #timeid is how we reference the article. timeid = "yyyy-mm-dd,id"
+    print(timeid, "the timeid")
+    db.add_Fav(user, timeid)
+    search(timeid)
+    flash("Successfully added article to favorites")
+    return redirect(url_for('fav'))
+
+@app.route('/favorites', methods = ['GET'])
+def fav():
+    data = []          ## Start as an empty list
+    if 'user' in session:
+        user = session['user']
+        list = db.show_Fav(user)
+        for article in list:
+            # print(article)
+            print(search(article))
+            data.append(search(article)) # article is the timeid
+        return render_template('favorites.html', data = data)
+    else:
+        return redirect(url_for('home'))
+
+def search(timeid):
+    time = timeid[:len(timeid) - 2]
+    id = timeid[len(timeid) - 1:]
+    # print(time)
+    # print(id)
+    try:
+        f = open('data/content.json', 'r')
+    except Exception as e:
+        f = open('data/content.json', 'x')
+    try:
+        data = json.loads(f.read())
+    except Exception as e:
+        data = {}
+    f.close()
+    # print (data[time]["news"][int(id)])
+    return data[time]["news"][int(id)]
+
+
 
 
 if __name__ == "__main__":
