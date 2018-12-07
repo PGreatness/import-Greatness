@@ -20,14 +20,14 @@
         <div class="list-group">
           <!-- generate the a tags below using jinja and a for loop -->
           <!-- e.g. <a href="{{id}}" data-toggle="collapse"  class="list-group-item list-group-item-action">{{title}}</a> -->
-          {% for article in data['news'] %}
+          {% for article in data %}
           <a href="{{'#test' + article['id']|string}}" data-toggle="collapse" class="list-group-item list-group-item-action">{{article['title']}}</a>
           {% endfor %}
         </div>
       </div>
       <div class="col-sm-8">
         <!-- Generate items in the format below using jinja and the database-->
-        {% for article in data['news'] %}
+        {% for article in data %}
         {% if article['id'] == 0 %}
         <div id="{{'test' + article['id']|string}}" class="list-group-item list-group-item-action flex-column align-items-start collapse show " data-parent="#main">
           {% else %}

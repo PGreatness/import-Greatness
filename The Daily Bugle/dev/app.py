@@ -257,10 +257,10 @@ def fav():
     if 'user' in session:
         user = session['user']
         list = db.show_Fav(user)
-        i = 0
         for article in list:
-            data[i] = search(article) # article is the timeid
-            i += 1
+            # print(article)
+            print(search(article))
+            data.append(search(article)) # article is the timeid
         return render_template('favorites.html', data = data)
     else:
         return redirect(url_for('home'))
@@ -268,8 +268,8 @@ def fav():
 def search(timeid):
     time = timeid[:len(timeid) - 2]
     id = timeid[len(timeid) - 1:]
-    print(time)
-    print(id)
+    # print(time)
+    # print(id)
     try:
         f = open('data/content.json', 'r')
     except Exception as e:
