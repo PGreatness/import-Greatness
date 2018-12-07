@@ -67,20 +67,24 @@ def add_Fav(user, timeid):
     '''adds the article to the favorites section of the user based on id and date'''
     db = sqlite3.connect(DB)
     c = db.cursor()
-    all_usernames = favDict()
-    if (all_usernames[user]):
-        appendage = all_usernames[user] + "," + str(timeid)
-    else:
-        appendage = str(timeid)
-    # command = "SELECT * FROM users;"
-    # c.execute(command)
-    # something = c.fetchall()
-    # print(something)
-    # print(user)
-    # print(hashed_pass)
-    command = "UPDATE users SET favorite='" + appendage + "'WHERE username='" + user + "';"
-    c.execute(command)
-    print("added to favorites")
+    all_usernames = favDict()  ##dictionary of all the users and their saved articles
+    list = show_Fav(user)
+    try:
+        list.index(str(timeid))
+    except:
+        if (all_usernames[user]): ##the string of saved articles for this user
+            appendage = all_usernames[user] + "," + str(timeid)
+        else:
+            appendage = str(timeid)
+        # command = "SELECT * FROM users;"
+        # c.execute(command)
+        # something = c.fetchall()
+        # print(something)
+        # print(user)
+        # print(hashed_pass)
+        command = "UPDATE users SET favorite='" + appendage + "'WHERE username='" + user + "';"
+        c.execute(command)
+        # print("added to favorites")
     db.commit()
     db.close()
 
