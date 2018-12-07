@@ -249,7 +249,13 @@ def adding():
     print(timeid, "the timeid")
     db.add_Fav(user, timeid)
     search(timeid)
-    flash("Successfully added article to favorites")
+    list = db.show_Fav(user)
+    try:
+        list.index(str(timeid))
+    except:
+        flash("Successfully added article to favorites")
+    else:
+        flash("Cannot add the same article multiple times")
     return redirect(url_for('fav'))
 
 @app.route('/favorites', methods = ['GET'])
