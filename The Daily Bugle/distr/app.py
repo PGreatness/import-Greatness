@@ -55,18 +55,7 @@ def home():
 
     today = datetime.datetime.now().strftime("%Y-%m-%d")
 
-    try:
-        w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude']))
-    except Exception as e:
-        print(e)
-        return render_template('error.html', err = e)
-
-    try:
-        n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
-    except Exception as e:
-        print(e)
-        return render_template('error.html', err = e)
-
+    
     # Try to open up content
     try:
         f = open('data/content.json', 'r')
@@ -81,6 +70,19 @@ def home():
     # if it is time to update/never had it
     # update it
     if today not in data:
+        
+        try:
+            w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude']))
+        except Exception as e:
+            print(e)
+            return render_template('error.html', err = e)
+
+        try:
+            n = urllib.request.urlopen(NEWS_STUB.format("home", json_data['News']))
+        except Exception as e:
+            print(e)
+            return render_template('error.html', err = e)
+
         # still works with w and n defined in the try/except
         # w = urllib.request.urlopen(WEATHER_STUB.format(json_data['Weather'], ip['latitude'], ip['longitude'])) # based on your ip address location
         weather = json.loads(w.read())
